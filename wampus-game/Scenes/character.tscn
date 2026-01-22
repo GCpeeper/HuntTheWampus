@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=3 uid="uid://tlu7gp2yuarc"]
+[gd_scene load_steps=15 format=3 uid="uid://tlu7gp2yuarc"]
 
 [ext_resource type="Texture2D" uid="uid://d3kpsoqwj2hc0" path="res://Assests/CharacterAssets/adventurer-v1.5-Sheet.png" id="1_lkv7d"]
 
@@ -116,6 +116,9 @@ animations = [{
 "speed": 5.0
 }]
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_lkv7d"]
+size = Vector2(9, 28)
+
 [node name="Character" type="CharacterBody2D"]
 script = SubResource("GDScript_lkv7d")
 
@@ -123,6 +126,6 @@ script = SubResource("GDScript_lkv7d")
 sprite_frames = SubResource("SpriteFrames_l1rcp")
 frame_progress = 0.22782677
 
-[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="."]
-position = Vector2(0, 1)
-polygon = PackedVector2Array(-5, -8, 4, -8, 5, 17, -5, 17)
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(-0.5, 4)
+shape = SubResource("RectangleShape2D_lkv7d")
