@@ -5,5 +5,7 @@ Please keep the files organized based on folder name. I.e. Scenes go in the Senc
 Theme: Anceint Greece Legends, Heracules Hunting the Neniam Wampus or Sphinx so there is riddles
 
 Grady: Make rooms and find/make assests
+
 Atalay: Work on chacter movement
+
 Owen: Try to make a home screen or figure out how to make a procedually generated map
