@@ -347,7 +347,8 @@ sources/0 = SubResource("TileSetAtlasSource_26yhd")
 [node name="Map" type="Node2D"]
 
 [node name="TileMapLayer" type="TileMapLayer" parent="."]
-tile_map_data = PackedByteArray("AAACABsAAAAhAAMAAAADABsAAAAiAAMAAAAEABsAAAAjAAMAAAAIABsAAAAhAAMAAAAJABsAAAAiAAMAAAAKABsAAAAjAAMAAAA=")
+scale = Vector2(2, 2)
+tile_map_data = PackedByteArray("AAABAA8AAAAhAAMAAAACAA8AAAAiAAMAAAADAA8AAAAjAAMAAAAHAA8AAAAhAAMAAAAIAA8AAAAiAAMAAAAJAA8AAAAjAAMAAAA=")
 tile_set = SubResource("TileSet_p3ir5")
 
 [node name="Character" parent="." instance=ExtResource("2_26yhd")]
