@@ -10,3 +10,11 @@ Grady: Make assets.
 Atalay: Work on making the rooms
 
 Owen: figure out how to make a procedually generated map, and create rooms
+
+Room Attributes:
+
+Number (1-30)
+Adj. Rooms (1-3)
+Pit (only if 28 other rooms don’t have it)
+Bats (only if 28 other rooms don't have it and if this room doesn’t have a pit)
+Wumpus (only if 29 other rooms don’t have it)
