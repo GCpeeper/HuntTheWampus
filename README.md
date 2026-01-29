@@ -3,9 +3,10 @@
 Please keep the files organized based on folder name. I.e. Scenes go in the Sences folder, assests go in the asset folder, create subfolders as needed to keep everything organized. Color Scheme and vibe will be decided later, focuse on adding functionality over making it look good right now.
 
 Theme: Anceint Greece Legends, Heracules Hunting the Neniam Wampus or Sphinx so there is riddles
+Assets: I (Grady) am making assets. If there is any asset you reqire please ask
 
-Grady: Make rooms and find/make assests
+Grady: Make assets.
 
-Atalay: Work on chacter movement
+Atalay: Work on making the rooms
 
-Owen: Try to make a home screen or figure out how to make a procedually generated map
+Owen: figure out how to make a procedually generated map, and create rooms
