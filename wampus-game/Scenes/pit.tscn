@@ -1,0 +1,88 @@
+[gd_scene load_steps=6 format=4 uid="uid://fa072c1hwq7w"]
+
+[ext_resource type="Texture2D" uid="uid://g78fd3e5acvj" path="res://Assests/Terrain/MarbleTileset.png" id="1_ltng5"]
+[ext_resource type="PackedScene" uid="uid://tlu7gp2yuarc" path="res://Scenes/character.tscn" id="1_tques"]
+
+[sub_resource type="Theme" id="Theme_ltng5"]
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_2uyid"]
+texture = ExtResource("1_ltng5")
+texture_region_size = Vector2i(32, 32)
+1:1/0 = 0
+1:1/0/physics_layer_0/polygon_0/points = PackedVector2Array(16, -16, -8.830626, -16, 6.0995045, 10.651373, 16, 16)
+2:1/0 = 0
+2:1/0/physics_layer_0/polygon_0/points = PackedVector2Array(-16, -16, 16, -16, 16, 16, -16, 16)
+3:1/0 = 0
+3:1/0/physics_layer_0/polygon_0/points = PackedVector2Array(-16, -16, 8.64855, -16, -5.189131, 8.466475, -16, 16)
+4:1/0 = 0
+4:1/0/physics_layer_0/polygon_0/points = PackedVector2Array(-16, -16, 16, -16, 16, 16, -16, 16)
+5:1/0 = 0
+5:1/0/physics_layer_0/polygon_0/points = PackedVector2Array(-16, -16, 16, -16, 16, 16, -16, 16)
+0:2/0 = 0
+0:2/0/physics_layer_0/polygon_0/points = PackedVector2Array(-16, -16, 16, -16, 16, 16, -16, 16)
+1:2/0 = 0
+2:2/0 = 0
+0:3/0 = 0
+0:3/0/physics_layer_0/polygon_0/points = PackedVector2Array(-16, -16, 16, -16, 16, 16, -16, 16)
+2:3/0 = 0
+2:3/0/physics_layer_0/polygon_0/points = PackedVector2Array(-10.651373, -13.928717, 16, -13.928717, 16, 16, -10.8334465, 16)
+3:3/0 = 0
+3:3/0/physics_layer_0/polygon_0/points = PackedVector2Array(-16, -13.564568, 16, -13.564568, 16, 16, -16, 16)
+4:3/0 = 0
+4:3/0/physics_layer_0/polygon_0/points = PackedVector2Array(-16, -13.564568, 16, -13.564568, 16, 16, -16, 16)
+5:3/0 = 0
+5:3/0/physics_layer_0/polygon_0/points = PackedVector2Array(-16, -13.564568, 9.376848, -13.382492, 9.376848, 16, -16, 16)
+0:4/0 = 0
+0:4/0/physics_layer_0/polygon_0/points = PackedVector2Array(-16, -16, 16, -16, 16, 16, -16, 16)
+2:4/0 = 0
+2:4/0/physics_layer_0/polygon_0/points = PackedVector2Array(-11.015522, -16, 16, -16, 16, 16, -10.8334465, 16)
+3:4/0 = 0
+4:4/0 = 0
+5:4/0 = 0
+5:4/0/physics_layer_0/polygon_0/points = PackedVector2Array(-16, -16, 9.558924, -16, 9.376848, 16, -16, 16)
+0:5/0 = 0
+0:5/0/physics_layer_0/polygon_0/points = PackedVector2Array(-16, -16, 16, -16, 16, 16, -16, 16)
+2:5/0 = 0
+2:5/0/physics_layer_0/polygon_0/points = PackedVector2Array(-11.015522, -16, 16, -16, 16, 16, -10.8334465, 16)
+3:5/0 = 0
+4:5/0 = 0
+5:5/0 = 0
+5:5/0/physics_layer_0/polygon_0/points = PackedVector2Array(-16, -16, 9.558924, -16, 9.376848, 16, -16, 16)
+
+[sub_resource type="TileSet" id="TileSet_tgwfy"]
+tile_size = Vector2i(32, 32)
+physics_layer_0/collision_layer = 1
+sources/0 = SubResource("TileSetAtlasSource_2uyid")
+
+[node name="Node2D" type="Node2D"]
+
+[node name="ColorRect3" type="ColorRect" parent="."]
+offset_left = 7.0
+offset_top = 296.0
+offset_right = 1150.0
+offset_bottom = 453.0
+theme = SubResource("Theme_ltng5")
+color = Color(0.22567728, 0.22567728, 0.22567716, 1)
+
+[node name="ColorRect2" type="ColorRect" parent="."]
+offset_left = 8.0
+offset_top = 414.0
+offset_right = 1151.0
+offset_bottom = 571.0
+theme = SubResource("Theme_ltng5")
+color = Color(0.12695411, 0.12695408, 0.12695408, 1)
+
+[node name="ColorRect" type="ColorRect" parent="."]
+offset_left = 1.0
+offset_top = 539.0
+offset_right = 1144.0
+offset_bottom = 696.0
+theme = SubResource("Theme_ltng5")
+color = Color(0, 0, 0, 1)
+
+[node name="TileMapLayer" type="TileMapLayer" parent="."]
+tile_map_data = PackedByteArray("AAAAAA4AAAAFAAQAAAAAAA8AAAAFAAQAAAAAABAAAAAFAAQAAAAAABEAAAAFAAQAAAAAABIAAAAFAAQAAAAAABMAAAAFAAQAAAAAABQAAAAFAAQAAAAjAAkAAAACAAQAAAAjAAoAAAACAAQAAAAjAAsAAAACAAQAAAAjAAwAAAACAAQAAAAjAA0AAAACAAUAAAAjAA4AAAACAAUAAAAjAA8AAAACAAUAAAAjABAAAAACAAQAAAAjABEAAAACAAQAAAAjABIAAAACAAUAAAAjABMAAAADAAQAAAAAAA0AAAAFAAQAAAAAAAwAAAAFAAQAAAAAAAsAAAAFAAQAAAAAAAoAAAAFAAQAAAAAAAkAAAAFAAQAAAAAABUAAAAFAAQAAAAAABYAAAAFAAQAAAAAABcAAAAFAAQAAAAAAAAAAAAFAAQAAAAAAAEAAAAFAAQAAAAAAAIAAAAFAAQAAAAAAAMAAAAFAAQAAAAAAAQAAAAFAAQAAAAAAAUAAAAFAAQAAAAAAAYAAAAFAAQAAAAAAAcAAAAFAAQAAAAAAAgAAAAFAAQAAAAjAP7/AAACAAQAAAAjAP//AAACAAQAAAAjAAAAAAACAAQAAAAjAAEAAAACAAQAAAAjAAIAAAACAAQAAAAjAAMAAAACAAQAAAAjAAQAAAACAAQAAAAjAAUAAAACAAQAAAAjAAYAAAACAAQAAAAjAAcAAAACAAQAAAAjAAgAAAACAAQAAAAjABQAAAACAAQAAAA=")
+tile_set = SubResource("TileSet_tgwfy")
+
+[node name="Character" parent="." instance=ExtResource("1_tques")]
+position = Vector2(142, 285)
