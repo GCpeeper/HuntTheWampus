@@ -1,6 +1,7 @@
-[gd_scene load_steps=5 format=4 uid="uid://casrnc0q3x0r0"]
+[gd_scene load_steps=6 format=4 uid="uid://casrnc0q3x0r0"]
 
 [ext_resource type="Texture2D" uid="uid://cvnj2b3vimxfi" path="res://Assests/Terrain/Platformer Tiles.png" id="1_ci6au"]
+[ext_resource type="Script" uid="uid://bmci3la80cafy" path="res://Scenes/map.gd" id="1_p3ir5"]
 [ext_resource type="PackedScene" uid="uid://tlu7gp2yuarc" path="res://Scenes/character.tscn" id="2_26yhd"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_26yhd"]
@@ -345,6 +346,7 @@ physics_layer_0/collision_layer = 1
 sources/0 = SubResource("TileSetAtlasSource_26yhd")
 
 [node name="Map" type="Node2D"]
+script = ExtResource("1_p3ir5")
 
 [node name="TileMapLayer" type="TileMapLayer" parent="."]
 scale = Vector2(2, 2)
