@@ -5,11 +5,14 @@ Please keep the files organized based on folder name. I.e. Scenes go in the Senc
 Theme: Anceint Greece Legends, Heracules Hunting the Neniam Wampus or Sphinx so there is riddles
 Assets: I (Grady) am making assets. If there is any asset you reqire please ask
 
+Rooms: Use tiles set. 45 tiles horizontal by 26 tiles vertial
+
 Grady: Make assets. Work to make the procdural generation
 
 Atalay: Work on making the rooms
 
 Owen: Work with Grady to make the procedual generated map
+
 
 Room Attributes:
 
