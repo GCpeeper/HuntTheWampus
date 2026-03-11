@@ -7,11 +7,12 @@ Assets: I (Grady) am making assets. If there is any asset you reqire please ask
 
 Rooms: Use tiles set. 45 tiles horizontal by 26 tiles vertial
 
-Grady: Make assets. Work to make the procdural generation
+Weekly Roles:
+Grady: Make and find assets. Given time work on the bat.
 
-Atalay: Work on making the rooms
+Atalay: Work on making the bottom less pit
 
-Owen: Work with Grady to make the procedual generated map
+Owen: Work make the procedual generated map
 
 
 Room Attributes:
