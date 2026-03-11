@@ -21,3 +21,13 @@ Adj. Rooms (1-3)
 Pit (only if 28 other rooms don’t have it)
 Bats (only if 28 other rooms don't have it and if this room doesn’t have a pit)
 Wumpus (only if 29 other rooms don’t have it)
+
+
+Bat:
+When character enters room they get frozen, bat flies over then fade to black. Character appears in valid room chosen at random.
+
+Wampus:
+Red lion thing.
+
+Bottomless Pit:
+Character fall and reaches the bottom,  wampus with a beard asks riddles. Need three answers to be let out
