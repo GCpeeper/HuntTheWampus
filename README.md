@@ -8,6 +8,8 @@ Assets: I (Grady) am making assets. If there is any asset you reqire please ask
 Rooms: Use tiles set. 45 tiles horizontal by 26 tiles vertial
 
 Weekly Roles:
+
+
 Grady: Make and find assets. Given time work on the bat.
 
 Atalay: Work on making the bottom less pit
@@ -27,8 +29,10 @@ Wumpus (only if 29 other rooms don’t have it)
 Bat:
 When character enters room they get frozen, bat flies over then fade to black. Character appears in valid room chosen at random.
 
+
 Wampus:
 Red lion thing.
+
 
 Bottomless Pit:
 Character fall and reaches the bottom,  wampus with a beard asks riddles. Need three answers to be let out
