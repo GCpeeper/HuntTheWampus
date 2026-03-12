@@ -1,9 +1,8 @@
-[gd_scene load_steps=14 format=4 uid="uid://fa072c1hwq7w"]
+[gd_scene load_steps=13 format=4 uid="uid://fa072c1hwq7w"]
 
 [ext_resource type="Texture2D" uid="uid://g78fd3e5acvj" path="res://Assests/Terrain/MarbleTileset.png" id="1_ltng5"]
 [ext_resource type="PackedScene" uid="uid://tlu7gp2yuarc" path="res://Scenes/character.tscn" id="1_tques"]
 [ext_resource type="Script" uid="uid://bs7l80y2jxj5n" path="res://Scripts/pit.gd" id="3_2uyid"]
-[ext_resource type="Script" uid="uid://wynj0jg1ke7p" path="res://Scripts/riddles.gd" id="4_tgwfy"]
 
 [sub_resource type="Theme" id="Theme_ltng5"]
 
@@ -146,10 +145,11 @@ label_settings = SubResource("LabelSettings_vvulc")
 layout_mode = 0
 offset_left = -1045.0
 offset_top = 37.0
-offset_right = -764.0
-offset_bottom = 99.0
+offset_right = 247.0
+offset_bottom = 445.0
 text = "What is __?"
 label_settings = SubResource("LabelSettings_wvmdu")
+autowrap_mode = 2
 
 [node name="Answers" type="Label" parent="Control"]
 layout_mode = 0
@@ -162,9 +162,6 @@ B:
 C:
 D:"
 label_settings = SubResource("LabelSettings_aacys")
-
-[node name="Riddles" type="Node" parent="Control"]
-script = ExtResource("4_tgwfy")
 
 [node name="Timer" type="Timer" parent="."]
 wait_time = 3.0
