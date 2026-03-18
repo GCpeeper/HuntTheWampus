@@ -16,8 +16,8 @@ func setAdjacents(adjacentList):
 	adjacents=adjacentList
 
 #add an adjacent node
-func appendAdjacents(room, enterance):
-	adjacents.append([room, enterance])
+func appendAdjacents(room, enter):
+	adjacents.append([room, enter])
 
 #remove an adjacent node
 func rmAdjacents(room):

@@ -17,7 +17,18 @@ func fillrooms():
 	#fully connect rooms
 	for i in range(6):
 		for j in range(5):
-			roomList[i][j].setAdjacents([])
+			if (roomList[i][j].getAdjacents()==0):
+				if (Global.rng.randi_range(0,1)==1):
+					roomList[i][j].setAdjacents([
+						[roomList[i][(j+1)%5],roomList[i][j].enterance.SOUTH],
+						[roomList[i][(j-1)%5],roomList[i][j].enterance.NORTH],
+						
+						
+						#[roomList[(i+1)%6][j-(i%2)],null],
+						#[roomList[(i+1)%6][j+1-(i%2)],null],
+
+					])
+	
 	
 	
 	#PLACEHOLDER randomly delete connections

@@ -2,9 +2,11 @@ extends Node
 
 var rooms = []
 var room
+var rng = RandomNumberGenerator.new()
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
+	rng.set_seed(0)
 	pass # Replace with function body.
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
@@ -17,3 +19,5 @@ func generateRoom(top: bool, left: bool, right: bool, bottom: bool, hazard: int,
 func connectRooms():
 	while rooms.size() < 30:
 		rooms.append(room)
+		
+		
