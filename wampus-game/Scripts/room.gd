@@ -24,3 +24,6 @@ func rmAdjacents(room):
 	for i in range(adjacents.size):
 		if (adjacents[i][0]==room):
 			adjacents.remove_at(i)
+			
+func fillRooms():
+	pass
