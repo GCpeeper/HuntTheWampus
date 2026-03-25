@@ -21,6 +21,10 @@ Owen: Finish and test the procedual generated map
 
 Global.gd is called on start and can be call from anywhere. Call Global.rng to get random numbers based on a set seed.
 
+<h2>Coinage</h2>
+
+Collect coins when going between rooms, have parcour between rooms to obtain coin or a bypass if they don't need them. Coinage is used when responding to a question or to pay at the store. Total ending coinage is added to the score.
+
 <h2>Room Attributes:</h2>
 
 Number (1-30)
