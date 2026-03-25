@@ -23,7 +23,7 @@ Global.gd is called on start and can be call from anywhere. Call Global.rng to g
 
 <h2>Coinage</h2>
 
-Collect coins when going between rooms, have parcour between rooms to obtain coin or a bypass if they don't need them. Coinage is used when responding to a question or to pay at the store. Total ending coinage is added to the score.
+Collect coins when going between rooms, have parcour between rooms to obtain coin or a bypass if they don't need them. This is a good place to mess around with procedural generation. Coinage is used when responding to a question or to pay at the store. Total ending coinage is added to the score.
 
 <h2>Room Attributes:</h2>
 
