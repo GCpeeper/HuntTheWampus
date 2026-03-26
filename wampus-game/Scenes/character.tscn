@@ -352,7 +352,7 @@ _data = {
 }
 
 [node name="Character" type="CharacterBody2D"]
-scale = Vector2(2, 2)
+scale = Vector2(1.5, 1.5)
 script = SubResource("GDScript_lkv7d")
 
 [node name="SpriteAnimations" type="AnimatedSprite2D" parent="."]
