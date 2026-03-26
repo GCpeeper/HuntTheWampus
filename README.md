@@ -10,7 +10,7 @@ Rooms: Use tiles set. 45 tiles horizontal by 26 tiles vertial
 
 <h1>Weekly Roles:</h1>
 
-Grady: Make the wampus, (priorize making the pit wampus and the store wampus)
+Grady: Add spikes. Make the wampus, (priorize making the pit wampus and the store wampus)
 
 Atalay: Update the rooms with new tileset
 
