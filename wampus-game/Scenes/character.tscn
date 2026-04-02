@@ -12,7 +12,7 @@ script/source = "extends CharacterBody2D
 @onready var _animation_player = $AnimationPlayer # made and animation player system which could work better for more complicated animations (attacks and stuff mainly but otherwise works the same as other method)
 
 const SPEED = 300.0
-const JUMP_VELOCITY = -400.0
+const JUMP_VELOCITY = -500.0
 var start_pos
 
 func _ready() -> void:
@@ -352,7 +352,7 @@ _data = {
 }
 
 [node name="Character" type="CharacterBody2D"]
-scale = Vector2(2, 2)
+scale = Vector2(1.5, 1.5)
 script = SubResource("GDScript_lkv7d")
 
 [node name="SpriteAnimations" type="AnimatedSprite2D" parent="."]

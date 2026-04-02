@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://c0gyyvaewy5dd"
-path="res://.godot/imported/char_a_p1_5hat_pfht_v01.png-c927e7be4206be7f7db8aec370b57a62.ctex"
+uid="uid://bg08ee67kunqp"
+path="res://.godot/imported/Talk.png-b139b6afbfe6901c6c7e4280ba5a0b1d.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assests/CharacterBase/char_a_p1/5hat/char_a_p1_5hat_pfht_v01.png"
-dest_files=["res://.godot/imported/char_a_p1_5hat_pfht_v01.png-c927e7be4206be7f7db8aec370b57a62.ctex"]
+source_file="res://Assests/PitWampus/Talk.png"
+dest_files=["res://.godot/imported/Talk.png-b139b6afbfe6901c6c7e4280ba5a0b1d.ctex"]
 
 [params]
 

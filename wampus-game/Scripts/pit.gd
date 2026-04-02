@@ -6,13 +6,15 @@ extends Control
 @onready var answers = $Answers
 @onready var player = $"../Character"
 @onready var timer = $"../Timer"
+@onready var riddleTimer = $"../Riddle_Timer"
+@onready var timerBar = $ProgressBar
 var step = 0
 var riddleList = []
-var riddle1 = ["What has roots that nobody sees, is taller than trees, up, up it goes, and yet never grows?", "A tall tree.", "A mountain", "A shadow.", "The Parthenon."]
-var riddle2 = ["There is a right triangle with sides A, B, and C. Side AB is 5 feet, angle A is 45, and angle B is 90. What is the area of the triangle?", "56 feet squared.", "25 feet squared.", "12.5 feet squared.", "25.5 feet squared."]
-var riddle3 = ["Idk man.", "56 feet squared.", "25 feet squared.", "12.5 feet squared.", "25.5 feet squared."]
-
-
+var riddle1 = ["What has roots that nobody sees, is taller than trees, up, up it goes, and yet never grows?", "A tall tree.", "A mountain", "A shadow.", "The Parthenon.", 2]
+var riddle2 = ["There is a right triangle with sides A, B, and C. Side AB is 5 feet, angle A is 45, and angle B is 90. What is the area of the triangle?", "56 feet squared.", "25 feet squared.", "12.5 feet squared.", "25.5 feet squared.", 3]
+var riddle3 = ["Idk man.", "56 feet squared.", "25 feet squared.", "12.5 feet squared.", "25.5 feet squared.", 1]
+var answer: int
+var buttonList : Dictionary
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
@@ -20,26 +22,50 @@ func _ready() -> void:
 	announcement2.hide()
 	question.hide()
 	answers.hide()
+	timerBar.value = 15
 	riddleList = [riddle1, riddle2, riddle3]
+	buttonList = {$Buttons/A: 1,$Buttons/B: 2,$Buttons/C: 3,$Buttons/D:4}
+	for i in buttonList.keys():
+		i.pressed.connect(some_button_pressed)
 
+func some_button_pressed():
+	print("yeah")
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
 	if player.position.y > 700 and step == 0:
 		announcement.show()
+		announcement.text = "You fell down the Pit!"
 		announcement2.show()
 		timer.start()
 		step += 1
+	if timerBar.visible == true:
+		timerBar.value = riddleTimer.time_left
 
 
 
 func _on_timer_timeout() -> void:
-	print("this works")
 	announcement.hide()
 	announcement2.hide()
 	question.show()
 	answers.show()
+	$Buttons.show()
+	timerBar.show()
+	riddleTimer.start()
 	var riddleChoice = randi_range(0,2)
 	print(riddleChoice)
-	$Question.text = (riddleList[riddleChoice])[0]
-	$Answers.text = "A: " + (riddleList[riddleChoice])[1] + "\nB: " + (riddleList[riddleChoice])[2] + "\nC: " + (riddleList[riddleChoice])[3] + "\nD: " + (riddleList[riddleChoice])[4]
+	question.text = (riddleList[riddleChoice])[0]
+	answers.text = ": " + (riddleList[riddleChoice])[1] + "\n: " + (riddleList[riddleChoice])[2] + "\n: " + (riddleList[riddleChoice])[3] + "\n: " + (riddleList[riddleChoice])[4]
+
+
+func _on_pressed() -> void:
+	pass # Replace with function body.
+
+
+func _on_riddle_timer_timeout() -> void:
+	announcement.show()
+	announcement.text = "You ran out of time!"
+	question.hide()
+	answers.hide()
+	$Buttons.hide()
+	timerBar.hide()
