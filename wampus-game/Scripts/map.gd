@@ -3,6 +3,9 @@ extends Node2D
 #list of collumns of rooms
 var roomList = []
 
+func _ready() -> void:
+	fillrooms()
+
 
 func fillrooms():
 	#add rooms to array
@@ -12,12 +15,13 @@ func fillrooms():
 		#fill in collumn
 		for j in range(5):
 			var room = load("res://Scenes/room.tscn")
-			roomList[i].append(room)
+			var roomScene = room.instantiate()
+			roomList[i].append(roomScene)
 	
 	#connect rooms vertically, and randomly right to left
 	for i in range(6):
 		for j in range(5):
-			if (roomList[i][j].getAdjacents()==0):
+			if (roomList[i][j].getAdjacents()==null):
 				if (Global.rng.randi_range(0,1)==1): #randomly decide if the room gets an extra connection
 					roomList[i][j].setAdjacents([
 						[roomList[i][(j+1)%5],roomList[i][j].enterance.SOUTH],

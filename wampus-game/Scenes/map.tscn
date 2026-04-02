@@ -1,4 +1,4 @@
-[gd_scene load_steps=6 format=4 uid="uid://casrnc0q3x0r0"]
+[gd_scene load_steps=6 format=3 uid="uid://casrnc0q3x0r0"]
 
 [ext_resource type="Texture2D" uid="uid://cvnj2b3vimxfi" path="res://Assests/Terrain/Platformer Tiles.png" id="1_ci6au"]
 [ext_resource type="Script" uid="uid://bmci3la80cafy" path="res://Scripts/map.gd" id="1_p3ir5"]
@@ -350,7 +350,6 @@ script = ExtResource("1_p3ir5")
 
 [node name="TileMapLayer" type="TileMapLayer" parent="."]
 scale = Vector2(2, 2)
-tile_map_data = PackedByteArray("AAABAA8AAAAhAAMAAAACAA8AAAAiAAMAAAADAA8AAAAjAAMAAAAHAA8AAAAhAAMAAAAIAA8AAAAiAAMAAAAJAA8AAAAjAAMAAAA=")
 tile_set = SubResource("TileSet_p3ir5")
 
 [node name="Character" parent="." instance=ExtResource("2_26yhd")]

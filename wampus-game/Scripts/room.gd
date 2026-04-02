@@ -1,4 +1,5 @@
 extends Node2D
+class_name Room
 
 enum entrance {
 	NORTH,
@@ -10,6 +11,9 @@ enum entrance {
 # list of rooms each room is [room scene, connection] so that north means that traveling from this 
 #to that scene would have you enter via the north
 var adjacents = []
+
+func getAdjacents():
+	return adjacents
 
 #set ajacents to a new list
 func setAdjacents(adjacentList):
