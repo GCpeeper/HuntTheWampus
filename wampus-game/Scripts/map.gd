@@ -4,10 +4,10 @@ extends Node2D
 var roomList = []
 
 func _ready() -> void:
-	fillrooms()
+	pass
 
 
-func fillrooms():
+func connectRooms():
 	#add rooms to array
 	for i in range(6):
 		#create a collumn
@@ -50,7 +50,8 @@ func fillrooms():
 	
 	
 	#PLACEHOLDER randomly delete connections
-	
-	
+
+
+
 		
 		
