@@ -150,7 +150,7 @@ animations = [{
 }]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_lkv7d"]
-size = Vector2(16, 58)
+size = Vector2(26.666664, 60.111107)
 
 [sub_resource type="Animation" id="Animation_owm7s"]
 length = 0.001
@@ -376,8 +376,8 @@ texture = ExtResource("2_ushfy")
 hframes = 6
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(0, 7)
-scale = Vector2(0.975, 0.975)
+position = Vector2(-0.33333334, 5.9708343)
+scale = Vector2(0.9750001, 0.9750001)
 shape = SubResource("RectangleShape2D_lkv7d")
 
 [node name="CoyoteTime" type="Timer" parent="."]
