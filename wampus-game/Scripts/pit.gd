@@ -13,13 +13,16 @@ var riddleList = []
 var riddle1 = ["What has roots that nobody sees, is taller than trees, up, up it goes, and yet never grows?", "A tall tree.", "A mountain", "A shadow.", "The Parthenon.", 2]
 var riddle2 = ["There is a right triangle with sides A, B, and C. Side AB is 5 feet, angle A is 45, and angle B is 90. What is the area of the triangle?", "56 feet squared.", "25 feet squared.", "12.5 feet squared.", "25.5 feet squared.", 3]
 var riddle3 = ["Idk man.", "56 feet squared.", "25 feet squared.", "12.5 feet squared.", "25.5 feet squared.", 1]
-var riddle4 = ["When was the Parthenon completed?", "431 BC", "432 BC", "433 BC", "259 BC", "All of the Above", 2]
+var riddle4 = ["When was the Parthenon completed?", "431 BC", "432 BC", "433 BC", "259 BC", 2]
 var riddle5 = ["What is the only land mammal that can't jump?", "Whale", "Deer", "Goat", "Elephant", 4]
 var riddle6 = ["Who made the original Hunt the Wumpus?","Jimmy Donaldson","Gregory Donaldson","Gregory Yob", "Jimmy Yob", 3]
 var riddle7 = ["How many peanuts does it take to make a jar of peanut butter?", "540", "320", "342", "200", 1]
 var riddle8 = ["Using Archimedes' Principle, if the bouyant force on an object is 10 newtons, what is the mass of the object (using 9.8 meters squared)?", "2.3","1.56","1.02", "3",3]
 var answer: int
 var buttonList : Dictionary
+var riddleChoice: int
+var tries = 3
+var correctTries = 0
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
@@ -31,10 +34,15 @@ func _ready() -> void:
 	riddleList = [riddle1, riddle2, riddle3, riddle4,riddle5,riddle6,riddle7,riddle8]
 	buttonList = {$Buttons/A: 1,$Buttons/B: 2,$Buttons/C: 3,$Buttons/D:4}
 	for i in buttonList.keys():
-		i.pressed.connect(some_button_pressed)
+		i.pressed.connect(some_button_pressed.bind(i))
 
-func some_button_pressed():
-	print("yeah")
+func some_button_pressed(button):
+	if buttonList.get(button) == (riddleList[riddleChoice])[5]:
+		print("yeah")
+		success()
+	else:
+		print("nah")
+		failure()
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
@@ -47,9 +55,42 @@ func _process(delta: float) -> void:
 	if timerBar.visible == true:
 		timerBar.value = riddleTimer.time_left
 
-
+func success():
+	announcement.show()
+	announcement.text = "Good job!"
+	question.hide()
+	answers.hide()
+	$Buttons.hide()
+	timerBar.hide()
+	correctTries += 1
+	tries -= 1
+	if tries > 0 and correctTries != 2:
+		timer.start()
+	else:
+		if correctTries == 2:
+			await get_tree().create_timer(1.0).timeout
+			announcement.text = "You survive!!!"
+		else:
+			await get_tree().create_timer(1.0).timeout
+			announcement.text = "You lose!!!"
+	
+func failure():
+	announcement.show()
+	announcement.text = "Wrong answer!"
+	question.hide()
+	answers.hide()
+	$Buttons.hide()
+	timerBar.hide()
+	tries -= 1
+	if tries > 0:
+		timer.start()
+	else:
+		await get_tree().create_timer(1.0).timeout
+		announcement.text = "You lose!!!"
 
 func _on_timer_timeout() -> void:
+	print("tries" + str(tries))
+	print("correct tries" + str(correctTries))
 	announcement.hide()
 	announcement2.hide()
 	question.show()
@@ -57,8 +98,8 @@ func _on_timer_timeout() -> void:
 	$Buttons.show()
 	timerBar.show()
 	riddleTimer.start()
-	var riddleChoice = randi_range(0,7)
-	print(riddleChoice)
+	riddleChoice = randi_range(0,7)
+	#print(riddleChoice)
 	question.text = (riddleList[riddleChoice])[0]
 	answers.text = ": " + (riddleList[riddleChoice])[1] + "\n: " + (riddleList[riddleChoice])[2] + "\n: " + (riddleList[riddleChoice])[3] + "\n: " + (riddleList[riddleChoice])[4]
 
