@@ -4,7 +4,10 @@ extends Node2D
 var roomList = []
 
 func _ready() -> void:
-	pass
+	connectRooms()
+	var realRoom = roomList[0][0].getRealRoom()
+	realRoom.enterRoom(realRoom.entrance.WEST)
+	add_child(realRoom)
 
 
 func connectRooms():
@@ -14,38 +17,42 @@ func connectRooms():
 		roomList.append([])
 		#fill in collumn
 		for j in range(5):
-			var room = load("res://Scenes/room.tscn")
+			var room = preload("res://Scenes/room.tscn")
 			var roomScene = room.instantiate()
+			if roomScene == null:
+				print("what")
+			else:
+				print("room is not null")
 			roomList[i].append(roomScene)
 	
 	#connect rooms vertically, and randomly right to left
 	for i in range(6):
 		for j in range(5):
-			if (roomList[i][j].getAdjacents()==null):
+			if (roomList[i][j].getAdjacents().size()==0):
 				if (Global.rng.randi_range(0,1)==1): #randomly decide if the room gets an extra connection
 					roomList[i][j].setAdjacents([
-						[roomList[i][(j+1)%5],roomList[i][j].enterance.SOUTH],
-						[roomList[i][(j-1)%5],roomList[i][j].enterance.NORTH],
+						[roomList[i][(j+1)%5],roomList[i][j].entrance.SOUTH],
+						[roomList[i][(j-1)%5],roomList[i][j].entrance.NORTH],
 						#[roomList[(i+1)%6][j-(i%2)],null],
 						#[roomList[(i+1)%6][j+1-(i%2)],null],
 					])
 				elif (Global.rng.randi_range(0,1)==1): #randomly decide if up or down
 					roomList[i][j].setAdjacents([
-						[roomList[i][(j+1)%5],roomList[i][j].enterance.SOUTH],
-						[roomList[i][(j-1)%5],roomList[i][j].enterance.NORTH],
+						[roomList[i][(j+1)%5],roomList[i][j].entrance.SOUTH],
+						[roomList[i][(j-1)%5],roomList[i][j].entrance.NORTH],
 						
-						[roomList[(i+1)%6][j-(i%2)],roomList[i][j].enterance.EAST],
+						[roomList[(i+1)%6][j-(i%2)],roomList[i][j].entrance.EAST],
 
 					])
-					roomList[(i+1)%6][j-(i%2)].appendAdjacents([roomList[i][j], roomList[(i+1)%6][j-(i%2)].enterence.WEST])
+					roomList[(i+1)%6][j-(i%2)].appendAdjacents(roomList[i][j], roomList[(i+1)%6][j-(i%2)].entrance.WEST)
 				else:
 					roomList[i][j].setAdjacents([
-						[roomList[i][(j+1)%5],roomList[i][j].enterance.SOUTH],
-						[roomList[i][(j-1)%5],roomList[i][j].enterance.NORTH],
+						[roomList[i][(j+1)%5],roomList[i][j].entrance.SOUTH],
+						[roomList[i][(j-1)%5],roomList[i][j].entrance.NORTH],
 						
-						[roomList[(i+1)%6][j+1-(i%2)],roomList[i][j].enterance.EAST],
+						[roomList[(i+1)%6][j+1-(i%2)],roomList[i][j].entrance.EAST],
 					])
-					roomList[(i+1)%6][j+1-(i%2)].appendAdjacents([roomList[i][j], roomList[(i+1)%6][j+1-(i%2)].enterence.WEST])
+					roomList[(i+1)%6][j+1-(i%2)].appendAdjacents(roomList[i][j], roomList[(i+1)%6][j+1-(i%2)].entrance.WEST)
 	#TODO: the behavior here is wierd with wrapping
 	
 	

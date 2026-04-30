@@ -50,7 +50,37 @@ func enterRoom(direction):
 			$Character.position = Vector2(1380, 530)
 
 
+func _ready():
+	
+	$Character.exit_room.connect(_on_exit_room)
 
+func _on_exit_room(d):
+	match d:
+		1:
+			for adjacent in adjacents:
+				if adjacent[1] == entrance.WEST:
+					adjacent.getRealRoom()
+					adjacent.enterRoom(entrance.WEST)
+					add_child(adjacent)
+		2:
+			for adjacent in adjacents:
+				if adjacent[1] == entrance.EAST:
+					adjacent.getRealRoom()
+					adjacent.enterRoom(entrance.EAST)
+					add_child(adjacent)
+		3:
+			for adjacent in adjacents:
+				if adjacent[1] == entrance.NORTH:
+					adjacent.getRealRoom()
+					adjacent.enterRoom(entrance.NORTH)
+					add_child(adjacent)
+		4:
+			for adjacent in adjacents:
+				if adjacent[1] == entrance.SOUTH:
+					adjacent.getRealRoom()
+					adjacent.enterRoom(entrance.SOUTH)
+					add_child(adjacent)
+	self.queue_free()
 
 func getRealRoom():
 	var realRoom
@@ -58,38 +88,41 @@ func getRealRoom():
 		1:
 			match adjacents[0][1]:
 				entrance.NORTH:
-					realRoom = load("res://Scenes/deadend/DeadC.tscn")
+					realRoom = preload("res://Scenes/deadend/DeadC.tscn")
 				entrance.SOUTH:
-					realRoom = load("res://Scenes/deadend/DeadD.tscn")
+					realRoom = preload("res://Scenes/deadend/DeadD.tscn")
 				entrance.EAST:
-					realRoom = load("res://Scenes/deadend/DeadA.tscn")
+					realRoom = preload("res://Scenes/deadend/DeadA.tscn")
 				entrance.WEST:
-					realRoom = load("res://Scenes/deadend/DeadB.tscn")
+					realRoom = preload("res://Scenes/deadend/DeadB.tscn")
 		2:
 			var directions = [adjacents[0][1],adjacents[1][1]]
 			match directions:
 				[entrance.EAST,entrance.NORTH], [entrance.NORTH,entrance.EAST]:
-					realRoom = load("res://Scenes/2door/CornerB.tscn")
+					realRoom = preload("res://Scenes/2door/CornerB.tscn")
 				[entrance.EAST,entrance.WEST], [entrance.WEST,entrance.EAST]:
-					realRoom = load("res://Scenes/2door/HallwayA.tscn")
+					realRoom = preload("res://Scenes/2door/HallwayA.tscn")
 				[entrance.EAST,entrance.SOUTH], [entrance.SOUTH,entrance.EAST]:
-					realRoom = load("res://Scenes/2door/CornerD.tscn")
+					realRoom = preload("res://Scenes/2door/CornerD.tscn")
 				[entrance.WEST,entrance.NORTH], [entrance.NORTH,entrance.WEST]:
-					realRoom = load("res://Scenes/2door/CornerA.tscn")
+					realRoom = preload("res://Scenes/2door/CornerA.tscn")
 				[entrance.WEST,entrance.SOUTH], [entrance.SOUTH,entrance.WEST]:
-					realRoom = load("res://Scenes/2door/HallwayC.tscn")
+					realRoom = preload("res://Scenes/2door/CornerC.tscn")
 				[entrance.SOUTH,entrance.NORTH], [entrance.NORTH,entrance.SOUTH]:
-					realRoom = load("res://Scenes/2door/HallwayB.tscn")
+					realRoom = preload("res://Scenes/2door/HallwayB.tscn")
 		3:
 			var directions = [adjacents[0][1],adjacents[1][1], adjacents[2][1]]
 			if entrance.NORTH not in directions:
-				realRoom = load("res://Scenes/3door/SideC.tscn")
+				realRoom = preload("res://Scenes/3door/SideC.tscn")
 			elif entrance.SOUTH not in directions:
-				realRoom = load("res://Scenes/3door/SideD.tscn")
+				realRoom = preload("res://Scenes/3door/SideD.tscn")
 			elif entrance.EAST not in directions:
-				realRoom = load("res://Scenes/3door/SideA.tscn")
+				realRoom = preload("res://Scenes/3door/SideA.tscn")
 			else:
-				realRoom = load("res://Scenes/3door/SideB.tscn")
+				realRoom = preload("res://Scenes/3door/SideB.tscn")
+	if realRoom == null:
+		print("Failed to load room!")
+		print(adjacents.size())
 	
 	realRoom = realRoom.instantiate()
 	realRoom.setAdjacents(adjacents)
