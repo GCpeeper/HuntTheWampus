@@ -18,6 +18,7 @@ var riddle5 = ["What is the only land mammal that can't jump?", "Whale", "Deer",
 var riddle6 = ["Who made the original Hunt the Wumpus?","Jimmy Donaldson","Gregory Donaldson","Gregory Yob", "Jimmy Yob", 3]
 var riddle7 = ["How many peanuts does it take to make a jar of peanut butter?", "540", "320", "342", "200", 1]
 var riddle8 = ["Using Archimedes' Principle, if the bouyant force on an object is 10 newtons, what is the mass of the object (using 9.8 meters squared)?", "2.3","1.56","1.02", "3",3]
+var riddle9 = ["There is one father with 12 children, who each have 30 or so of their own. They are all immortal and yet all fade away. What is the father?", "A guy with a lot of kids", "A year", "A grandfather", "A spider", 2]
 var answer: int
 var buttonList : Dictionary
 var riddleChoice: int
@@ -31,7 +32,7 @@ func _ready() -> void:
 	question.hide()
 	answers.hide()
 	timerBar.value = 15
-	riddleList = [riddle1, riddle2, riddle3, riddle4,riddle5,riddle6,riddle7,riddle8]
+	riddleList = [riddle1, riddle2, riddle3, riddle4,riddle5,riddle6,riddle7,riddle8,riddle9]
 	buttonList = {$Buttons/A: 1,$Buttons/B: 2,$Buttons/C: 3,$Buttons/D:4}
 	for i in buttonList.keys():
 		i.pressed.connect(some_button_pressed.bind(i))
