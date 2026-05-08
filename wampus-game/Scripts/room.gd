@@ -51,8 +51,8 @@ func enterRoom(direction):
 
 
 func _ready():
-	
-	$Character.exit_room.connect(_on_exit_room)
+	pass
+	#$Character.exit_room.connect(_on_exit_room)
 
 func _on_exit_room(d):
 	match d:
