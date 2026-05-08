@@ -1,6 +1,6 @@
 extends CharacterBody2D
 
-@onready var _sprite = $Sprite2D # replaced it with a different asset pack placeholder as the other one didnt work very well with animations and frame division
+@onready var _sprite = $Sprite2D2 # replaced it with a different asset pack placeholder as the other one didnt work very well with animations and frame division
 @onready var _animation_player = $AnimationPlayer # made and animation player system which could work better for more complicated animations (attacks and stuff mainly but otherwise works the same as other method)
 
 const SPEED = 300.0
@@ -11,7 +11,7 @@ var sliding = false
 
 func _ready() -> void:
 	start_pos = position
-	_animation_player.play("idle")
+	_animation_player.play("fall")
 
 
 func _physics_process(delta: float) -> void:
@@ -33,9 +33,7 @@ func _physics_process(delta: float) -> void:
 		else:
 			sliding = false
 		await get_tree().process_frame
-		if velocity.y < 0:
-			_animation_player.play("jump")
-		elif velocity.y > 0:
+		if velocity.y > 0:
 			_animation_player.play("fall")
 	else:
 		sliding = false
@@ -43,6 +41,7 @@ func _physics_process(delta: float) -> void:
 	# Handle jump.
 	if Input.is_action_just_pressed("jump"):
 		if is_on_floor() or !$CoyoteTime.is_stopped() or sliding:
+			_animation_player.play("jump")
 			velocity.y = JUMP_VELOCITY
 			if sliding:
 				$WallJump.start()
@@ -59,12 +58,13 @@ func _physics_process(delta: float) -> void:
 		# Flipping sprite and hitboxes accordingly
 		_sprite.flip_h = direction < 0
 		$ShapeCast2D.rotation_degrees = -90*direction
-		if is_on_floor():
+		if is_on_floor() and velocity.y == 0:
 			_animation_player.play("walk")
 	else:
 		velocity.x = move_toward(velocity.x, 0, SPEED)
-		if is_on_floor():
+		if is_on_floor() and velocity.y == 0:
 			_animation_player.play("idle")
+			print("i am idle")
 	var was_on_floor = is_on_floor()
 	move_and_slide()
 	

@@ -1,127 +1,43 @@
-[gd_scene load_steps=25 format=3 uid="uid://tlu7gp2yuarc"]
+[gd_scene load_steps=13 format=3 uid="uid://tlu7gp2yuarc"]
 
 [ext_resource type="Script" uid="uid://cqxowjopiums0" path="res://Scripts/character.gd" id="1_ejsiy"]
-[ext_resource type="Texture2D" uid="uid://d3kpsoqwj2hc0" path="res://Assests/CharacterAssets/adventurer-v1.5-Sheet.png" id="1_lkv7d"]
-[ext_resource type="Texture2D" uid="uid://cmtkr617tv22i" path="res://Assests/Gangsters_placeholder/Idle.png" id="2_ushfy"]
-[ext_resource type="Texture2D" uid="uid://r867icaldtfx" path="res://Assests/Gangsters_placeholder/Walk.png" id="3_owm7s"]
-[ext_resource type="Texture2D" uid="uid://bnna7nrxro0c4" path="res://Assests/Gangsters_placeholder/Jump.png" id="4_nytcm"]
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_ushfy"]
-atlas = ExtResource("1_lkv7d")
-region = Rect2(0, 0, 50, 37)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_owm7s"]
-atlas = ExtResource("1_lkv7d")
-region = Rect2(50, 0, 50, 37)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_nytcm"]
-atlas = ExtResource("1_lkv7d")
-region = Rect2(100, 0, 50, 37)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_ejsiy"]
-atlas = ExtResource("1_lkv7d")
-region = Rect2(150, 0, 50, 37)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_2mse5"]
-atlas = ExtResource("1_lkv7d")
-region = Rect2(50, 37, 50, 37)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_reotu"]
-atlas = ExtResource("1_lkv7d")
-region = Rect2(100, 37, 50, 37)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_a5ess"]
-atlas = ExtResource("1_lkv7d")
-region = Rect2(150, 37, 50, 37)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_wbia7"]
-atlas = ExtResource("1_lkv7d")
-region = Rect2(200, 37, 50, 37)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_kq7hj"]
-atlas = ExtResource("1_lkv7d")
-region = Rect2(250, 37, 50, 37)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_7iw6i"]
-atlas = ExtResource("1_lkv7d")
-region = Rect2(300, 37, 50, 37)
-
-[sub_resource type="SpriteFrames" id="SpriteFrames_l1rcp"]
-animations = [{
-"frames": [{
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_ushfy")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_owm7s")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_nytcm")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_ejsiy")
-}],
-"loop": true,
-"name": &"default",
-"speed": 5.0
-}, {
-"frames": [{
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_2mse5")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_reotu")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_a5ess")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_wbia7")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_kq7hj")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_7iw6i")
-}],
-"loop": true,
-"name": &"walk",
-"speed": 5.0
-}]
+[ext_resource type="Texture2D" uid="uid://tqh7s8urhjq7" path="res://Assests/Character Test/character_idle.png" id="3_2mse5"]
+[ext_resource type="Texture2D" uid="uid://lnhjkavb77yb" path="res://Assests/Character Test/character_walk.png" id="5_ejsiy"]
+[ext_resource type="Texture2D" uid="uid://djm1hu7fm6vvg" path="res://Assests/Character Test/character_jump.png" id="5_reotu"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_lkv7d"]
-size = Vector2(26.666664, 60.111107)
+size = Vector2(26.666664, 49.230766)
 
 [sub_resource type="Animation" id="Animation_owm7s"]
 length = 0.001
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("Sprite2D:texture")
+tracks/0/path = NodePath("Sprite2D2:texture")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 1,
-"values": [ExtResource("2_ushfy")]
+"values": [ExtResource("3_2mse5")]
 }
 tracks/1/type = "value"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath("Sprite2D:hframes")
+tracks/1/path = NodePath("Sprite2D2:hframes")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 1,
-"values": [6]
+"values": [10]
 }
 tracks/2/type = "value"
 tracks/2/imported = false
 tracks/2/enabled = true
-tracks/2/path = NodePath("Sprite2D:frame")
+tracks/2/path = NodePath("Sprite2D2:frame")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/keys = {
@@ -137,19 +53,58 @@ length = 0.1
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("Sprite2D:texture")
+tracks/0/path = NodePath("Sprite2D2:texture")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 1,
-"values": [ExtResource("4_nytcm")]
+"values": [ExtResource("5_reotu")]
 }
 tracks/1/type = "value"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath("Sprite2D:hframes")
+tracks/1/path = NodePath("Sprite2D2:hframes")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [7]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Sprite2D2:frame")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [6]
+}
+
+[sub_resource type="Animation" id="Animation_ushfy"]
+resource_name = "idle"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D2:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [ExtResource("3_2mse5")]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Sprite2D2:hframes")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
@@ -161,48 +116,47 @@ tracks/1/keys = {
 tracks/2/type = "value"
 tracks/2/imported = false
 tracks/2/enabled = true
-tracks/2/path = NodePath("Sprite2D:frame")
+tracks/2/path = NodePath("Sprite2D2:frame")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
+"times": PackedFloat32Array(0, 0.10000001, 0.20000002, 0.3, 0.40000004, 0.5, 0.6, 0.70000005, 0.8000001, 0.90000004),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
 "update": 1,
-"values": [7]
+"values": [0, 1, 2, 3, 4, 5, 6, 7, 8, 9]
 }
 
-[sub_resource type="Animation" id="Animation_ushfy"]
-resource_name = "idle"
+[sub_resource type="Animation" id="Animation_ejsiy"]
+resource_name = "jump"
 length = 0.6
-loop_mode = 1
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("Sprite2D:texture")
+tracks/0/path = NodePath("Sprite2D2:texture")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 1,
-"values": [ExtResource("2_ushfy")]
+"values": [ExtResource("5_reotu")]
 }
 tracks/1/type = "value"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath("Sprite2D:hframes")
+tracks/1/path = NodePath("Sprite2D2:hframes")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 1,
-"values": [6]
+"values": [7]
 }
 tracks/2/type = "value"
 tracks/2/imported = false
 tracks/2/enabled = true
-tracks/2/path = NodePath("Sprite2D:frame")
+tracks/2/path = NodePath("Sprite2D2:frame")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/keys = {
@@ -212,64 +166,24 @@ tracks/2/keys = {
 "values": [0, 1, 2, 3, 4, 5]
 }
 
-[sub_resource type="Animation" id="Animation_ejsiy"]
-resource_name = "jump"
-length = 0.1
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("Sprite2D:texture")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [ExtResource("4_nytcm")]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("Sprite2D:hframes")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [10]
-}
-tracks/2/type = "value"
-tracks/2/imported = false
-tracks/2/enabled = true
-tracks/2/path = NodePath("Sprite2D:frame")
-tracks/2/interp = 1
-tracks/2/loop_wrap = true
-tracks/2/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [5]
-}
-
 [sub_resource type="Animation" id="Animation_nytcm"]
 resource_name = "walk"
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("Sprite2D:texture")
+tracks/0/path = NodePath("Sprite2D2:texture")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 1,
-"values": [ExtResource("3_owm7s")]
+"values": [ExtResource("5_ejsiy")]
 }
 tracks/1/type = "value"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath("Sprite2D:hframes")
+tracks/1/path = NodePath("Sprite2D2:hframes")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
@@ -281,7 +195,7 @@ tracks/1/keys = {
 tracks/2/type = "value"
 tracks/2/imported = false
 tracks/2/enabled = true
-tracks/2/path = NodePath("Sprite2D:frame")
+tracks/2/path = NodePath("Sprite2D2:frame")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/keys = {
@@ -307,20 +221,14 @@ size = Vector2(45, 20)
 scale = Vector2(1.5, 1.5)
 script = ExtResource("1_ejsiy")
 
-[node name="SpriteAnimations" type="AnimatedSprite2D" parent="."]
-visible = false
-scale = Vector2(2, 2)
-sprite_frames = SubResource("SpriteFrames_l1rcp")
-
-[node name="Sprite2D" type="Sprite2D" parent="."]
-position = Vector2(3, -18)
-scale = Vector2(0.8320312, 0.8320312)
-texture = ExtResource("2_ushfy")
-hframes = 6
+[node name="Sprite2D2" type="Sprite2D" parent="."]
+scale = Vector2(1.5, 1.5)
+texture = ExtResource("3_2mse5")
+hframes = 10
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(-0.33333334, 5.9708343)
-scale = Vector2(0.9750001, 0.9750001)
+position = Vector2(-0.33333334, 1.5894572e-07)
+scale = Vector2(0.865, 0.975)
 shape = SubResource("RectangleShape2D_lkv7d")
 
 [node name="CoyoteTime" type="Timer" parent="."]
@@ -337,6 +245,7 @@ wait_time = 0.3
 one_shot = true
 
 [node name="ShapeCast2D" type="ShapeCast2D" parent="."]
+visible = false
 rotation = -1.5707964
 shape = SubResource("RectangleShape2D_ejsiy")
 target_position = Vector2(-1.7484555e-07, 4)
