@@ -64,7 +64,6 @@ func _physics_process(delta: float) -> void:
 		velocity.x = move_toward(velocity.x, 0, SPEED)
 		if is_on_floor() and velocity.y == 0:
 			_animation_player.play("idle")
-			print("i am idle")
 	var was_on_floor = is_on_floor()
 	move_and_slide()
 	

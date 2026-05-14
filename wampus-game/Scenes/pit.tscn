@@ -1,8 +1,9 @@
-[gd_scene load_steps=16 format=4 uid="uid://fa072c1hwq7w"]
+[gd_scene load_steps=21 format=4 uid="uid://fa072c1hwq7w"]
 
 [ext_resource type="Texture2D" uid="uid://g78fd3e5acvj" path="res://Assests/Terrain/MarbleTileset.png" id="1_ltng5"]
 [ext_resource type="PackedScene" uid="uid://tlu7gp2yuarc" path="res://Scenes/character.tscn" id="1_tques"]
 [ext_resource type="Script" uid="uid://bs7l80y2jxj5n" path="res://Scripts/pit.gd" id="3_2uyid"]
+[ext_resource type="Texture2D" uid="uid://bg08ee67kunqp" path="res://Assests/PitWampus/Talk.png" id="4_tgwfy"]
 
 [sub_resource type="Theme" id="Theme_ltng5"]
 
@@ -82,6 +83,61 @@ bg_color = Color(0.1764706, 0, 0, 1)
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_vvulc"]
 bg_color = Color(0, 0.18431373, 0, 1)
+
+[sub_resource type="Animation" id="Animation_tgwfy"]
+resource_name = "idle"
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Pit Wampus:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
+
+[sub_resource type="Animation" id="Animation_vvulc"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Pit Wampus:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
+
+[sub_resource type="Animation" id="Animation_wvmdu"]
+resource_name = "talking"
+length = 0.4
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Pit Wampus:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.10000001, 0.20000002, 0.3),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 1,
+"values": [0, 1, 2, 3]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_aacys"]
+_data = {
+&"RESET": SubResource("Animation_vvulc"),
+&"idle": SubResource("Animation_tgwfy"),
+&"talking": SubResource("Animation_wvmdu")
+}
 
 [node name="Node2D" type="Node2D"]
 
@@ -227,9 +283,9 @@ text = "D"
 [node name="ProgressBar" type="ProgressBar" parent="Control"]
 visible = false
 layout_mode = 0
-offset_left = 117.0
+offset_left = -217.0
 offset_top = 263.0
-offset_right = 174.0
+offset_right = -160.0
 offset_bottom = 717.0
 theme_override_styles/background = SubResource("StyleBoxFlat_tgwfy")
 theme_override_styles/fill = SubResource("StyleBoxFlat_vvulc")
@@ -246,6 +302,17 @@ one_shot = true
 [node name="Riddle_Timer" type="Timer" parent="."]
 wait_time = 15.0
 one_shot = true
+
+[node name="Pit Wampus" type="Sprite2D" parent="."]
+position = Vector2(1535, 646)
+scale = Vector2(8.1328125, 8.1328125)
+texture = ExtResource("4_tgwfy")
+vframes = 4
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+&"": SubResource("AnimationLibrary_aacys")
+}
 
 [connection signal="timeout" from="Timer" to="Control" method="_on_timer_timeout"]
 [connection signal="timeout" from="Riddle_Timer" to="Control" method="_on_riddle_timer_timeout"]

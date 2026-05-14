@@ -8,6 +8,7 @@ extends Control
 @onready var timer = $"../Timer"
 @onready var riddleTimer = $"../Riddle_Timer"
 @onready var timerBar = $ProgressBar
+@onready var animation_player = $"../AnimationPlayer"
 var step = 0
 var riddleList = []
 var riddle1 = ["What has roots that nobody sees, is taller than trees, up, up it goes, and yet never grows?", "A tall tree.", "A mountain", "A shadow.", "The Parthenon.", 2]
@@ -49,6 +50,8 @@ func some_button_pressed(button):
 func _process(delta: float) -> void:
 	if player.position.y > 700 and step == 0:
 		announcement.show()
+		$"../Pit Wampus".show()
+		animation_player.play("talking")
 		announcement.text = "You fell down the Pit!"
 		announcement2.show()
 		timer.start()
@@ -57,6 +60,7 @@ func _process(delta: float) -> void:
 		timerBar.value = riddleTimer.time_left
 
 func success():
+	animation_player.play("talking")
 	announcement.show()
 	announcement.text = "Good job!"
 	question.hide()
@@ -76,6 +80,7 @@ func success():
 			announcement.text = "You lose!!!"
 	
 func failure():
+	animation_player.play("talking")
 	announcement.show()
 	announcement.text = "Wrong answer!"
 	question.hide()
@@ -90,6 +95,7 @@ func failure():
 		announcement.text = "You lose!!!"
 
 func _on_timer_timeout() -> void:
+	animation_player.play("idle")
 	print("tries" + str(tries))
 	print("correct tries" + str(correctTries))
 	announcement.hide()
@@ -110,6 +116,7 @@ func _on_pressed() -> void:
 
 
 func _on_riddle_timer_timeout() -> void:
+	animation_player.play("talking")
 	announcement.show()
 	announcement.text = "You ran out of time!"
 	question.hide()
