@@ -9,6 +9,7 @@ extends Control
 @onready var riddleTimer = $"../Riddle_Timer"
 @onready var timerBar = $ProgressBar
 @onready var animation_player = $"../AnimationPlayer"
+@onready var bubble = $"../TileMapLayer2"
 var step = 0
 var riddleList = []
 var riddle1 = ["What has roots that nobody sees, is taller than trees, up, up it goes, and yet never grows?", "A tall tree.", "A mountain", "A shadow.", "The Parthenon.", 2]
@@ -30,6 +31,7 @@ var correctTries = 0
 func _ready() -> void:
 	announcement.hide()
 	announcement2.hide()
+	bubble.visible = false
 	question.hide()
 	answers.hide()
 	timerBar.value = 15
@@ -50,7 +52,8 @@ func some_button_pressed(button):
 func _process(delta: float) -> void:
 	if player.position.y > 700 and step == 0:
 		announcement.show()
-		$"../Pit Wampus".show()
+		bubble.visible = true
+		$"../Pit Wampus".visible = true
 		animation_player.play("talking")
 		announcement.text = "You fell down the Pit!"
 		announcement2.show()
@@ -62,6 +65,7 @@ func _process(delta: float) -> void:
 func success():
 	animation_player.play("talking")
 	announcement.show()
+	bubble.show()
 	announcement.text = "Good job!"
 	question.hide()
 	answers.hide()
@@ -81,6 +85,7 @@ func success():
 	
 func failure():
 	animation_player.play("talking")
+	bubble.show()
 	announcement.show()
 	announcement.text = "Wrong answer!"
 	question.hide()
@@ -95,6 +100,7 @@ func failure():
 		announcement.text = "You lose!!!"
 
 func _on_timer_timeout() -> void:
+	bubble.visible = false
 	animation_player.play("idle")
 	print("tries" + str(tries))
 	print("correct tries" + str(correctTries))
@@ -117,6 +123,7 @@ func _on_pressed() -> void:
 
 func _on_riddle_timer_timeout() -> void:
 	animation_player.play("talking")
+	bubble.visible = true
 	announcement.show()
 	announcement.text = "You ran out of time!"
 	question.hide()
