@@ -1,0 +1,255 @@
+[gd_scene load_steps=7 format=3 uid="uid://crkuufpeip0bj"]
+
+[ext_resource type="PackedScene" uid="uid://blrlrgcjj7p2y" path="res://Scenes/bat.tscn" id="1_fcsq1"]
+[ext_resource type="Texture2D" uid="uid://tqh7s8urhjq7" path="res://Assests/Character Test/character_idle.png" id="2_dhyv6"]
+[ext_resource type="Texture2D" uid="uid://djm1hu7fm6vvg" path="res://Assests/Character Test/character_jump.png" id="3_i6jrk"]
+
+[sub_resource type="Animation" id="Animation_dlypk"]
+resource_name = "bat cutscene"
+length = 4.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Bats:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1, 2, 4),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [Vector2(-421, 16), Vector2(508, 146), Vector2(508, 146), Vector2(1351, 34)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Sprite2D2:texture")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(1.5, 2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [ExtResource("2_dhyv6"), ExtResource("3_i6jrk")]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Sprite2D2:hframes")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(1.5, 2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [10, 7]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Sprite2D2:position")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(2, 4),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(743, 388), Vector2(1612, 267.00003)]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("Sprite2D2:frame")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(1.5000001, 2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [0, 5]
+}
+
+[sub_resource type="Animation" id="Animation_lwsui"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Bats:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(-421, 16)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Sprite2D2:texture")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [ExtResource("2_dhyv6")]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Sprite2D2:hframes")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [10]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Sprite2D2:position")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(743, 388)]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("Sprite2D2:frame")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [5]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_8r4mf"]
+_data = {
+&"RESET": SubResource("Animation_lwsui"),
+&"bat cutscene": SubResource("Animation_dlypk")
+}
+
+[node name="Node2D" type="Node2D"]
+
+[node name="Bats" type="Node2D" parent="."]
+position = Vector2(-421, 16)
+
+[node name="Bat" parent="Bats" instance=ExtResource("1_fcsq1")]
+position = Vector2(117, 142)
+
+[node name="Bat2" parent="Bats" instance=ExtResource("1_fcsq1")]
+position = Vector2(220, 168)
+
+[node name="Bat3" parent="Bats" instance=ExtResource("1_fcsq1")]
+position = Vector2(141, 217)
+
+[node name="Bat4" parent="Bats" instance=ExtResource("1_fcsq1")]
+position = Vector2(156, 170)
+
+[node name="Bat5" parent="Bats" instance=ExtResource("1_fcsq1")]
+position = Vector2(198, 233)
+
+[node name="Bat6" parent="Bats" instance=ExtResource("1_fcsq1")]
+position = Vector2(151, 288)
+
+[node name="Bat7" parent="Bats" instance=ExtResource("1_fcsq1")]
+position = Vector2(249, 195)
+
+[node name="Bat8" parent="Bats" instance=ExtResource("1_fcsq1")]
+position = Vector2(216, 268)
+
+[node name="Bat9" parent="Bats" instance=ExtResource("1_fcsq1")]
+position = Vector2(195, 195)
+
+[node name="Bat10" parent="Bats" instance=ExtResource("1_fcsq1")]
+position = Vector2(239, 229)
+
+[node name="Bat11" parent="Bats" instance=ExtResource("1_fcsq1")]
+position = Vector2(260, 159)
+
+[node name="Bat12" parent="Bats" instance=ExtResource("1_fcsq1")]
+position = Vector2(176, 215)
+
+[node name="Bat13" parent="Bats" instance=ExtResource("1_fcsq1")]
+position = Vector2(279, 241)
+
+[node name="Bat14" parent="Bats" instance=ExtResource("1_fcsq1")]
+position = Vector2(200, 290)
+
+[node name="Bat15" parent="Bats" instance=ExtResource("1_fcsq1")]
+position = Vector2(215, 243)
+
+[node name="Bat16" parent="Bats" instance=ExtResource("1_fcsq1")]
+position = Vector2(257, 306)
+
+[node name="Bat17" parent="Bats" instance=ExtResource("1_fcsq1")]
+position = Vector2(210, 361)
+
+[node name="Bat18" parent="Bats" instance=ExtResource("1_fcsq1")]
+position = Vector2(308, 268)
+
+[node name="Bat19" parent="Bats" instance=ExtResource("1_fcsq1")]
+position = Vector2(275, 341)
+
+[node name="Bat20" parent="Bats" instance=ExtResource("1_fcsq1")]
+position = Vector2(254, 268)
+
+[node name="Bat21" parent="Bats" instance=ExtResource("1_fcsq1")]
+position = Vector2(298, 302)
+
+[node name="Bat22" parent="Bats" instance=ExtResource("1_fcsq1")]
+position = Vector2(319, 232)
+
+[node name="Bat23" parent="Bats" instance=ExtResource("1_fcsq1")]
+position = Vector2(204, 150)
+
+[node name="Bat24" parent="Bats" instance=ExtResource("1_fcsq1")]
+position = Vector2(307, 176)
+
+[node name="Bat25" parent="Bats" instance=ExtResource("1_fcsq1")]
+position = Vector2(228, 225)
+
+[node name="Bat26" parent="Bats" instance=ExtResource("1_fcsq1")]
+position = Vector2(243, 178)
+
+[node name="Bat27" parent="Bats" instance=ExtResource("1_fcsq1")]
+position = Vector2(285, 241)
+
+[node name="Bat28" parent="Bats" instance=ExtResource("1_fcsq1")]
+position = Vector2(238, 296)
+
+[node name="Bat29" parent="Bats" instance=ExtResource("1_fcsq1")]
+position = Vector2(336, 203)
+
+[node name="Bat30" parent="Bats" instance=ExtResource("1_fcsq1")]
+position = Vector2(303, 276)
+
+[node name="Bat31" parent="Bats" instance=ExtResource("1_fcsq1")]
+position = Vector2(282, 203)
+
+[node name="Bat32" parent="Bats" instance=ExtResource("1_fcsq1")]
+position = Vector2(326, 237)
+
+[node name="Bat33" parent="Bats" instance=ExtResource("1_fcsq1")]
+position = Vector2(347, 167)
+
+[node name="Sprite2D2" type="Sprite2D" parent="."]
+position = Vector2(743, 388)
+scale = Vector2(1.5, 1.5)
+texture = ExtResource("2_dhyv6")
+hframes = 10
+frame = 5
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+&"": SubResource("AnimationLibrary_8r4mf")
+}
+autoplay = "bat cutscene"
