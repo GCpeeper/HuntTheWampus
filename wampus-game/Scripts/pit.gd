@@ -29,6 +29,7 @@ var correctTries = 0
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
+	player.taking_input = false
 	announcement.hide()
 	announcement2.hide()
 	bubble.visible = false

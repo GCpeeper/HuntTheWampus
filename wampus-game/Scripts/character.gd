@@ -8,6 +8,7 @@ const JUMP_VELOCITY = -500.0
 var start_pos
 signal exit_room(direction)
 var sliding = false
+var taking_input = true
 
 func _ready() -> void:
 	start_pos = position
@@ -37,33 +38,33 @@ func _physics_process(delta: float) -> void:
 			_animation_player.play("fall")
 	else:
 		sliding = false
+	if taking_input:
+		# Handle jump.
+		if Input.is_action_just_pressed("jump"):
+			if is_on_floor() or !$CoyoteTime.is_stopped() or sliding:
+				_animation_player.play("jump")
+				velocity.y = JUMP_VELOCITY
+				if sliding:
+					$WallJump.start()
+					if _sprite.flip_h:
+						velocity.x = 1000
+					else:
+						velocity.x = -1000
 
-	# Handle jump.
-	if Input.is_action_just_pressed("jump"):
-		if is_on_floor() or !$CoyoteTime.is_stopped() or sliding:
-			_animation_player.play("jump")
-			velocity.y = JUMP_VELOCITY
-			if sliding:
-				$WallJump.start()
-				if _sprite.flip_h:
-					velocity.x = 1000
-				else:
-					velocity.x = -1000
-
-	# Get the input direction and handle the movement/deceleration.
-	# As good practice, you should replace UI actions with custom gameplay actions.
-	var direction := Input.get_axis("left", "right")
-	if direction and $WallJump.is_stopped():
-		velocity.x = direction * SPEED
-		# Flipping sprite and hitboxes accordingly
-		_sprite.flip_h = direction < 0
-		$ShapeCast2D.rotation_degrees = -90*direction
-		if is_on_floor() and velocity.y == 0:
-			_animation_player.play("walk")
-	else:
-		velocity.x = move_toward(velocity.x, 0, SPEED)
-		if is_on_floor() and velocity.y == 0:
-			_animation_player.play("idle")
+		# Get the input direction and handle the movement/deceleration.
+		# As good practice, you should replace UI actions with custom gameplay actions.
+		var direction := Input.get_axis("left", "right")
+		if direction and $WallJump.is_stopped():
+			velocity.x = direction * SPEED
+			# Flipping sprite and hitboxes accordingly
+			_sprite.flip_h = direction < 0
+			$ShapeCast2D.rotation_degrees = -90*direction
+			if is_on_floor() and velocity.y == 0:
+				_animation_player.play("walk")
+		else:
+			velocity.x = move_toward(velocity.x, 0, SPEED)
+			if is_on_floor() and velocity.y == 0:
+				_animation_player.play("idle")
 	var was_on_floor = is_on_floor()
 	move_and_slide()
 	
