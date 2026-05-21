@@ -243,7 +243,7 @@ position = Vector2(347, 167)
 
 [node name="Sprite2D2" type="Sprite2D" parent="."]
 position = Vector2(743, 388)
-scale = Vector2(1.5, 1.5)
+scale = Vector2(2.5, 2.5)
 texture = ExtResource("2_dhyv6")
 hframes = 10
 frame = 5

@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=3 uid="uid://cfvgfc7xbfs3r"]
+[gd_scene load_steps=15 format=3 uid="uid://cfvgfc7xbfs3r"]
 
 [ext_resource type="Script" uid="uid://mflvxrgdgxov" path="res://Scripts/room.gd" id="1_mbine"]
 [ext_resource type="Texture2D" uid="uid://c5wttv25pxrxm" path="res://Assests/background/1.png" id="2_ilpkg"]
@@ -11,6 +11,9 @@
 [ext_resource type="Texture2D" uid="uid://cj8gqxd35wb43" path="res://Assests/background/7.png" id="8_0tv2a"]
 [ext_resource type="Texture2D" uid="uid://dpanm5fk4jy71" path="res://Assests/background/8fx.png" id="9_b8klh"]
 [ext_resource type="Texture2D" uid="uid://wstj8msu1uwn" path="res://Assests/background/9.png" id="10_rp6s2"]
+[ext_resource type="PackedScene" uid="uid://tlu7gp2yuarc" path="res://Scenes/character.tscn" id="12_03u2k"]
+[ext_resource type="PackedScene" uid="uid://bvq88xerv8uyt" path="res://Scenes/2door/CornerC.tscn" id="13_5fqy3"]
+[ext_resource type="PackedScene" uid="uid://crkuufpeip0bj" path="res://Scenes/bat cutscene.tscn" id="14_5fqy3"]
 
 [node name="Room" type="Node2D"]
 script = ExtResource("1_mbine")
@@ -46,3 +49,11 @@ texture = ExtResource("9_b8klh")
 
 [node name="Fifth Stalactites" type="Sprite2D" parent="Parallax Control"]
 texture = ExtResource("10_rp6s2")
+
+[node name="Character" parent="." instance=ExtResource("12_03u2k")]
+position = Vector2(247, 316.00003)
+
+[node name="CornerC" parent="." instance=ExtResource("13_5fqy3")]
+
+[node name="Node2D" parent="." instance=ExtResource("14_5fqy3")]
+visible = false
