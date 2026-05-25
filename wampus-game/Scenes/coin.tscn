@@ -1,6 +1,46 @@
-[gd_scene load_steps=6 format=3 uid="uid://dyvbl3wahdfou"]
+[gd_scene load_steps=7 format=3 uid="uid://dyvbl3wahdfou"]
 
 [ext_resource type="Texture2D" uid="uid://b4uvsw5d6ha02" path="res://Assests/Objects/Silver coin.png" id="1_2qo34"]
+[ext_resource type="Script" uid="uid://bhddoutnv2op3" path="res://Scripts/coin.gd" id="1_jgi06"]
+
+[sub_resource type="Animation" id="Animation_g537i"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [ExtResource("1_2qo34")]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Sprite2D:hframes")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [4]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Sprite2D:frame")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
 
 [sub_resource type="Animation" id="Animation_jgi06"]
 resource_name = "coin"
@@ -43,45 +83,6 @@ tracks/2/keys = {
 "values": [0, 1, 2, 3]
 }
 
-[sub_resource type="Animation" id="Animation_g537i"]
-length = 0.001
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("Sprite2D:texture")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [ExtResource("1_2qo34")]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("Sprite2D:hframes")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [4]
-}
-tracks/2/type = "value"
-tracks/2/imported = false
-tracks/2/enabled = true
-tracks/2/path = NodePath("Sprite2D:frame")
-tracks/2/interp = 1
-tracks/2/loop_wrap = true
-tracks/2/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [0]
-}
-
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_h2p6v"]
 _data = {
 &"RESET": SubResource("Animation_g537i"),
@@ -92,7 +93,8 @@ _data = {
 
 [node name="Coin" type="Area2D"]
 collision_layer = 2
-collision_mask = 2
+collision_mask = 3
+script = ExtResource("1_jgi06")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 scale = Vector2(2.5, 2.5)
@@ -108,3 +110,5 @@ autoplay = "coin"
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 scale = Vector2(1.255, 1.255)
 shape = SubResource("RectangleShape2D_2qo34")
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
