@@ -10,6 +10,7 @@ signal exit_room(direction)
 var sliding = false
 var taking_input = true
 var coins = 0
+var has_sword = false
 
 func _ready() -> void:
 	start_pos = position
