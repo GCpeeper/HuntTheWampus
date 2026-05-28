@@ -16,7 +16,7 @@
 [ext_resource type="Texture2D" uid="uid://tqh7s8urhjq7" path="res://Assests/Character Test/character_idle.png" id="15_vu2mo"]
 [ext_resource type="Texture2D" uid="uid://dwjtattbdqvc2" path="res://Assests/Character Test/character_attack.png" id="16_8rq6b"]
 [ext_resource type="Texture2D" uid="uid://melwt0j2lm0a" path="res://Assests/Character Test/character_sword.png" id="17_bepui"]
-[ext_resource type="Texture2D" uid="uid://bg08ee67kunqp" path="res://Assests/PitWampus/Talk.png" id="17_vu2mo"]
+[ext_resource type="Texture2D" uid="uid://bxgj8ql3ni55b" path="res://Assests/WampusRoarAttack.png" id="17_vu2mo"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_0vuao"]
 texture = ExtResource("2_6bmdi")
@@ -222,64 +222,12 @@ sources/0 = SubResource("TileSetAtlasSource_0vuao")
 sources/1 = SubResource("TileSetAtlasSource_dp60g")
 sources/2 = SubResource("TileSetAtlasSource_ya3bp")
 
-[sub_resource type="Animation" id="Animation_oxqgj"]
-resource_name = "wampus hit"
-length = 4.0
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("Sprite2D2:texture")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 2.5, 3, 3.4, 3.8000002),
-"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
-"update": 1,
-"values": [ExtResource("1_yojdq"), ExtResource("15_vu2mo"), ExtResource("16_8rq6b"), ExtResource("17_bepui"), ExtResource("15_vu2mo")]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("Sprite2D2:hframes")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0, 2.5, 3.0000002, 3.4, 3.8000002),
-"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
-"update": 1,
-"values": [10, 10, 3, 4, 10]
-}
-tracks/2/type = "value"
-tracks/2/imported = false
-tracks/2/enabled = true
-tracks/2/path = NodePath("Sprite2D2:frame")
-tracks/2/interp = 1
-tracks/2/loop_wrap = true
-tracks/2/keys = {
-"times": PackedFloat32Array(0, 0.10000001, 0.20000002, 0.3, 0.40000004, 0.5, 0.6, 0.70000005, 0.8000001, 0.90000004, 1, 1.1, 1.2, 1.3000001, 1.4000001, 1.5000001, 1.6000001, 1.7, 1.8000001, 1.9000001, 2, 2.1000001, 2.2, 2.3000002, 2.4, 2.5, 3.0000002, 3.1000001, 3.2000003, 3.4, 3.5000002, 3.6000001, 3.7000003, 3.8),
-"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
-"update": 1,
-"values": [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 0, 1, 2, 3, 4, 0, 0, 1, 2, 0, 1, 2, 3, 0]
-}
-tracks/3/type = "value"
-tracks/3/imported = false
-tracks/3/enabled = true
-tracks/3/path = NodePath("Sprite2D2:position")
-tracks/3/interp = 1
-tracks/3/loop_wrap = true
-tracks/3/keys = {
-"times": PackedFloat32Array(0, 2.5),
-"transitions": PackedFloat32Array(1, 1),
-"update": 0,
-"values": [Vector2(36, 716.00006), Vector2(695, 716.00006)]
-}
-
 [sub_resource type="Animation" id="Animation_bsyvh"]
 length = 0.001
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("Sprite2D2:texture")
+tracks/0/path = NodePath("PlayerChar:texture")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
@@ -291,7 +239,7 @@ tracks/0/keys = {
 tracks/1/type = "value"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath("Sprite2D2:hframes")
+tracks/1/path = NodePath("PlayerChar:hframes")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
@@ -303,7 +251,7 @@ tracks/1/keys = {
 tracks/2/type = "value"
 tracks/2/imported = false
 tracks/2/enabled = true
-tracks/2/path = NodePath("Sprite2D2:frame")
+tracks/2/path = NodePath("PlayerChar:frame")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/keys = {
@@ -315,7 +263,7 @@ tracks/2/keys = {
 tracks/3/type = "value"
 tracks/3/imported = false
 tracks/3/enabled = true
-tracks/3/path = NodePath("Sprite2D2:position")
+tracks/3/path = NodePath("PlayerChar:position")
 tracks/3/interp = 1
 tracks/3/loop_wrap = true
 tracks/3/keys = {
@@ -325,49 +273,49 @@ tracks/3/keys = {
 "values": [Vector2(36, 716.00006)]
 }
 
-[sub_resource type="Animation" id="Animation_vu2mo"]
-resource_name = "wampus not hit"
+[sub_resource type="Animation" id="Animation_oxqgj"]
+resource_name = "wampus hit"
 length = 4.0
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("Sprite2D2:texture")
+tracks/0/path = NodePath("PlayerChar:texture")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0, 2.5),
-"transitions": PackedFloat32Array(1, 1),
+"times": PackedFloat32Array(0, 2.5, 3, 3.4, 3.8000002),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
 "update": 1,
-"values": [ExtResource("1_yojdq"), ExtResource("15_vu2mo")]
+"values": [ExtResource("1_yojdq"), ExtResource("15_vu2mo"), ExtResource("16_8rq6b"), ExtResource("17_bepui"), ExtResource("15_vu2mo")]
 }
 tracks/1/type = "value"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath("Sprite2D2:hframes")
+tracks/1/path = NodePath("PlayerChar:hframes")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
-"times": PackedFloat32Array(0, 2.5),
-"transitions": PackedFloat32Array(1, 1),
+"times": PackedFloat32Array(0, 2.5, 3.0000002, 3.4, 3.8000002),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
 "update": 1,
-"values": [10, 10]
+"values": [10, 10, 3, 4, 10]
 }
 tracks/2/type = "value"
 tracks/2/imported = false
 tracks/2/enabled = true
-tracks/2/path = NodePath("Sprite2D2:frame")
+tracks/2/path = NodePath("PlayerChar:frame")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/keys = {
-"times": PackedFloat32Array(0, 0.10000001, 0.20000002, 0.3, 0.40000004, 0.5, 0.6, 0.70000005, 0.8000001, 0.90000004, 1, 1.1, 1.2, 1.3000001, 1.4000001, 1.5000001, 1.6000001, 1.7, 1.8000001, 1.9000001, 2, 2.1000001, 2.2, 2.3000002, 2.4, 2.5),
-"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"times": PackedFloat32Array(0, 0.10000001, 0.20000002, 0.3, 0.40000004, 0.5, 0.6, 0.70000005, 0.8000001, 0.90000004, 1, 1.1, 1.2, 1.3000001, 1.4000001, 1.5000001, 1.6000001, 1.7, 1.8000001, 1.9000001, 2, 2.1000001, 2.2, 2.3000002, 2.4, 2.5, 3.0000002, 3.1000001, 3.2000003, 3.4, 3.5000002, 3.6000001, 3.7000003, 3.8),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
 "update": 1,
-"values": [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 0, 1, 2, 3, 4, 0]
+"values": [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 0, 1, 2, 3, 4, 0, 0, 1, 2, 0, 1, 2, 3, 0]
 }
 tracks/3/type = "value"
 tracks/3/imported = false
 tracks/3/enabled = true
-tracks/3/path = NodePath("Sprite2D2:position")
+tracks/3/path = NodePath("PlayerChar:position")
 tracks/3/interp = 1
 tracks/3/loop_wrap = true
 tracks/3/keys = {
@@ -383,7 +331,7 @@ length = 4.0
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("Sprite2D2:texture")
+tracks/0/path = NodePath("PlayerChar:texture")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
@@ -395,7 +343,7 @@ tracks/0/keys = {
 tracks/1/type = "value"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath("Sprite2D2:hframes")
+tracks/1/path = NodePath("PlayerChar:hframes")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
@@ -407,7 +355,7 @@ tracks/1/keys = {
 tracks/2/type = "value"
 tracks/2/imported = false
 tracks/2/enabled = true
-tracks/2/path = NodePath("Sprite2D2:frame")
+tracks/2/path = NodePath("PlayerChar:frame")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/keys = {
@@ -419,7 +367,59 @@ tracks/2/keys = {
 tracks/3/type = "value"
 tracks/3/imported = false
 tracks/3/enabled = true
-tracks/3/path = NodePath("Sprite2D2:position")
+tracks/3/path = NodePath("PlayerChar:position")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 2.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(36, 716.00006), Vector2(695, 716.00006)]
+}
+
+[sub_resource type="Animation" id="Animation_vu2mo"]
+resource_name = "wampus not hit"
+length = 4.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("PlayerChar:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 2.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [ExtResource("1_yojdq"), ExtResource("15_vu2mo")]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("PlayerChar:hframes")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 2.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [10, 10]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("PlayerChar:frame")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.10000001, 0.20000002, 0.3, 0.40000004, 0.5, 0.6, 0.70000005, 0.8000001, 0.90000004, 1, 1.1, 1.2, 1.3000001, 1.4000001, 1.5000001, 1.6000001, 1.7, 1.8000001, 1.9000001, 2, 2.1000001, 2.2, 2.3000002, 2.4, 2.5),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 0, 1, 2, 3, 4, 0]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("PlayerChar:position")
 tracks/3/interp = 1
 tracks/3/loop_wrap = true
 tracks/3/keys = {
@@ -470,13 +470,7 @@ texture = ExtResource("9_yas4m")
 [node name="Fifth Stalactites" type="Sprite2D" parent="Parallax Control"]
 texture = ExtResource("10_qo2oe")
 
-[node name="Sprite2D" type="Sprite2D" parent="."]
-position = Vector2(1007, 623.5)
-scale = Vector2(5.6093755, 4.7031245)
-texture = ExtResource("17_vu2mo")
-vframes = 4
-
-[node name="Sprite2D2" type="Sprite2D" parent="."]
+[node name="PlayerChar" type="Sprite2D" parent="."]
 position = Vector2(36, 716.00006)
 scale = Vector2(3.25, 3.25)
 texture = ExtResource("1_yojdq")
@@ -491,3 +485,8 @@ libraries = {
 &"": SubResource("AnimationLibrary_xc1dj")
 }
 autoplay = "wampus hit"
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("17_vu2mo")
+vframes = 13
+frame = 1
