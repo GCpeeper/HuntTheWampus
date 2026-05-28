@@ -1,10 +1,11 @@
-[gd_scene load_steps=14 format=4 uid="uid://frypor8tgpum"]
+[gd_scene load_steps=15 format=4 uid="uid://frypor8tgpum"]
 
 [ext_resource type="Script" uid="uid://mflvxrgdgxov" path="res://Scripts/room.gd" id="1_d1t77"]
 [ext_resource type="Texture2D" uid="uid://g78fd3e5acvj" path="res://Assests/Terrain/MarbleTileset.png" id="1_yw2ra"]
 [ext_resource type="Texture2D" uid="uid://bkvosnt3w6uyd" path="res://Assests/Terrain/MarbleTilesetFinished.png" id="2_xaacl"]
 [ext_resource type="Texture2D" uid="uid://7orsg281nhyk" path="res://Assests/Terrain/MarbleTilesetFlat.png" id="3_d1t77"]
 [ext_resource type="PackedScene" uid="uid://byn1dr43hxpyj" path="res://Scenes/sword.tscn" id="5_d1t77"]
+[ext_resource type="PackedScene" uid="uid://cfkek3b32f6q6" path="res://Scenes/spike.tscn" id="6_1h11j"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_u3tby"]
 texture = ExtResource("1_yw2ra")
@@ -425,3 +426,7 @@ tile_set = SubResource("TileSet_u3tby")
 
 [node name="Sword" parent="." instance=ExtResource("5_d1t77")]
 position = Vector2(1084, 501)
+
+[node name="Node2D" parent="." instance=ExtResource("6_1h11j")]
+position = Vector2(718, 751)
+scale = Vector2(66.84, 1)

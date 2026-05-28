@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=4 uid="uid://bonepfii1338o"]
+[gd_scene load_steps=16 format=4 uid="uid://bonepfii1338o"]
 
 [ext_resource type="Texture2D" uid="uid://g78fd3e5acvj" path="res://Assests/Terrain/MarbleTileset.png" id="1_i3n3r"]
 [ext_resource type="Script" uid="uid://mflvxrgdgxov" path="res://Scripts/room.gd" id="1_tws2i"]
@@ -6,6 +6,7 @@
 [ext_resource type="Texture2D" uid="uid://7orsg281nhyk" path="res://Assests/Terrain/MarbleTilesetFlat.png" id="3_tws2i"]
 [ext_resource type="PackedScene" uid="uid://byn1dr43hxpyj" path="res://Scenes/sword.tscn" id="5_tws2i"]
 [ext_resource type="PackedScene" uid="uid://dyvbl3wahdfou" path="res://Scenes/coin.tscn" id="6_27kr4"]
+[ext_resource type="PackedScene" uid="uid://cfkek3b32f6q6" path="res://Scenes/spike.tscn" id="7_ykgoi"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_27kr4"]
 texture = ExtResource("1_i3n3r")
@@ -432,3 +433,11 @@ position = Vector2(563, 649)
 
 [node name="Coin2" parent="." instance=ExtResource("6_27kr4")]
 position = Vector2(786, 650)
+
+[node name="Node2D" parent="." instance=ExtResource("7_ykgoi")]
+position = Vector2(-126, 751)
+scale = Vector2(66.84, 1)
+
+[node name="Node2D2" parent="." instance=ExtResource("7_ykgoi")]
+position = Vector2(1470, 756)
+scale = Vector2(66.84, 1)
