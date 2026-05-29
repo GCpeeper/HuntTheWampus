@@ -4,7 +4,7 @@ extends Control
 @onready var announcement2 = $Label2
 @onready var question = $Question
 @onready var answers = $Answers
-@onready var player = $"../Character"
+@onready var player = get_parent().player
 @onready var timer = $"../Timer"
 @onready var riddleTimer = $"../Riddle_Timer"
 @onready var timerBar = $ProgressBar
@@ -83,6 +83,13 @@ func success():
 		else:
 			await get_tree().create_timer(1.0).timeout
 			announcement.text = "You lose!!!"
+			await get_tree().create_timer(3.0).timeout
+			get_tree().change_scene_to_file("res://Scenes/main_menu.tscn")
+		await get_tree().create_timer(3.0).timeout
+		player.taking_input = true
+		get_parent().get_parent().doneWithHazard = true
+		get_parent().get_parent().enterRoom(get_parent().direction)
+		get_parent().queue_free()
 	
 func failure():
 	animation_player.play("talking")

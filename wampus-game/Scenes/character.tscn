@@ -292,3 +292,11 @@ visible = false
 rotation = -1.5707964
 shape = SubResource("RectangleShape2D_ejsiy")
 target_position = Vector2(-1.7484555e-07, 4)
+
+[node name="Label" type="Label" parent="."]
+offset_left = -44.0
+offset_top = 25.333334
+offset_right = 93.0
+offset_bottom = 48.333336
+text = "I smell a Wumpus"
+horizontal_alignment = 1

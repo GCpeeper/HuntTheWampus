@@ -36,18 +36,7 @@ func rmAdjacents(room):
 func fillRooms():
 	pass
 
-func enterRoom(direction):
-	
-	match direction:
-		entrance.NORTH:
-			$Character.velocity.y=-800
-			$Character.position = Vector2(670,830)
-		entrance.SOUTH:
-			$Character.position = Vector2(670, 70) #NEEDS TO BE LOWER THAN ROOM EXIT HIEGHT
-		entrance.EAST:
-			$Character.position = Vector2(60, 530)
-		entrance.WEST:
-			$Character.position = Vector2(1380, 530)
+
 
 
 func _ready():
@@ -60,26 +49,30 @@ func _on_exit_room(d):
 			for adjacent in adjacents:
 				if adjacent[1] == entrance.WEST:
 					adjacent.getRealRoom()
-					adjacent.enterRoom(entrance.WEST)
-					add_child(adjacent)
+					get_parent().enterRoom(entrance.WEST)
+					get_parent().add_child(adjacent)
+					queue_free()
 		2:
 			for adjacent in adjacents:
 				if adjacent[1] == entrance.EAST:
 					adjacent.getRealRoom()
-					adjacent.enterRoom(entrance.EAST)
-					add_child(adjacent)
+					get_parent().enterRoom(entrance.WEST)
+					get_parent().add_child(adjacent)
+					queue_free()
 		3:
 			for adjacent in adjacents:
 				if adjacent[1] == entrance.NORTH:
 					adjacent.getRealRoom()
-					adjacent.enterRoom(entrance.NORTH)
-					add_child(adjacent)
+					get_parent().enterRoom(entrance.WEST)
+					get_parent().add_child(adjacent)
+					queue_free()
 		4:
 			for adjacent in adjacents:
 				if adjacent[1] == entrance.SOUTH:
 					adjacent.getRealRoom()
-					adjacent.enterRoom(entrance.SOUTH)
-					add_child(adjacent)
+					get_parent().enterRoom(entrance.WEST)
+					get_parent().add_child(adjacent)
+					queue_free()
 	self.queue_free()
 
 func getRealRoom():

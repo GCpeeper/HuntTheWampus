@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=3 uid="uid://casrnc0q3x0r0"]
+[gd_scene load_steps=17 format=3 uid="uid://casrnc0q3x0r0"]
 
 [ext_resource type="Script" uid="uid://bmci3la80cafy" path="res://Scripts/map.gd" id="1_p3ir5"]
 [ext_resource type="Script" uid="uid://b03tdrhc008y1" path="res://Scripts/parallax_control.gd" id="2_5qtum"]
@@ -14,43 +14,104 @@
 [ext_resource type="Texture2D" uid="uid://wstj8msu1uwn" path="res://Assests/background/9.png" id="11_macow"]
 [ext_resource type="PackedScene" uid="uid://crkuufpeip0bj" path="res://Scenes/bat cutscene.tscn" id="13_ltf6m"]
 
+[sub_resource type="SystemFont" id="SystemFont_5qtum"]
+font_names = PackedStringArray("Trebuchet MS")
+
+[sub_resource type="LabelSettings" id="LabelSettings_ie368"]
+font = SubResource("SystemFont_5qtum")
+font_size = 161
+font_color = Color(0.29803923, 0.15686275, 0, 1)
+
+[sub_resource type="LabelSettings" id="LabelSettings_5qtum"]
+font_size = 41
+font_color = Color(0.43629372, 0.43629366, 0.43629366, 1)
+
 [node name="Map" type="Node2D"]
 script = ExtResource("1_p3ir5")
 
-[node name="Parallax Control" type="Node2D" parent="."]
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+layer = -1
+
+[node name="Labels for Directions" type="Control" parent="CanvasLayer"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Current Room" type="Label" parent="CanvasLayer/Labels for Directions"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -11.5
+offset_right = 20.0
+offset_bottom = 11.5
+grow_horizontal = 2
+grow_vertical = 2
+text = "0"
+label_settings = SubResource("LabelSettings_ie368")
+horizontal_alignment = 1
+
+[node name="Sword" type="Label" parent="CanvasLayer/Labels for Directions"]
+layout_mode = 0
+offset_left = 629.0
+offset_top = 479.0
+offset_right = 819.0
+offset_bottom = 536.0
+text = "Swords: 0"
+label_settings = SubResource("LabelSettings_5qtum")
+horizontal_alignment = 1
+
+[node name="Character" parent="." instance=ExtResource("2_26yhd")]
+position = Vector2(670, 830)
+
+[node name="Node2D" parent="." instance=ExtResource("13_ltf6m")]
+visible = false
+
+[node name="CanvasLayer2" type="CanvasLayer" parent="."]
+layer = -2
+
+[node name="Parallax Control" type="Node2D" parent="CanvasLayer2"]
 position = Vector2(714, 420)
 scale = Vector2(0.765, 0.765)
 script = ExtResource("2_5qtum")
 
-[node name="Blue" type="Sprite2D" parent="Parallax Control"]
+[node name="Blue" type="Sprite2D" parent="CanvasLayer2/Parallax Control"]
+z_index = -2
 texture = ExtResource("3_ie368")
 
-[node name="Back Stalactites" type="Sprite2D" parent="Parallax Control"]
+[node name="Back Stalactites" type="Sprite2D" parent="CanvasLayer2/Parallax Control"]
 texture = ExtResource("4_x5dfk")
 
-[node name="Back Light" type="Sprite2D" parent="Parallax Control"]
+[node name="Back Light" type="Sprite2D" parent="CanvasLayer2/Parallax Control"]
 texture = ExtResource("5_fls3e")
 
-[node name="Second Stalactites" type="Sprite2D" parent="Parallax Control"]
+[node name="Second Stalactites" type="Sprite2D" parent="CanvasLayer2/Parallax Control"]
 texture = ExtResource("6_k63oc")
 
-[node name="Third Stalactites" type="Sprite2D" parent="Parallax Control"]
+[node name="Third Stalactites" type="Sprite2D" parent="CanvasLayer2/Parallax Control"]
 texture = ExtResource("7_j4oe2")
 
-[node name="Second Light" type="Sprite2D" parent="Parallax Control"]
+[node name="Second Light" type="Sprite2D" parent="CanvasLayer2/Parallax Control"]
 texture = ExtResource("8_riaky")
 
-[node name="Fourth Stalactites" type="Sprite2D" parent="Parallax Control"]
+[node name="Fourth Stalactites" type="Sprite2D" parent="CanvasLayer2/Parallax Control"]
 texture = ExtResource("9_vtkp8")
 
-[node name="Third Light" type="Sprite2D" parent="Parallax Control"]
+[node name="Third Light" type="Sprite2D" parent="CanvasLayer2/Parallax Control"]
 texture = ExtResource("10_rg57b")
 
-[node name="Fifth Stalactites" type="Sprite2D" parent="Parallax Control"]
+[node name="Fifth Stalactites" type="Sprite2D" parent="CanvasLayer2/Parallax Control"]
 texture = ExtResource("11_macow")
 
-[node name="Character" parent="." instance=ExtResource("2_26yhd")]
-position = Vector2(247, 316.00003)
+[node name="Hazard Timer" type="Timer" parent="."]
+wait_time = 5.0
+one_shot = true
 
-[node name="Node2D" parent="." instance=ExtResource("13_ltf6m")]
-visible = false
+[connection signal="exit_room" from="Character" to="." method="_on_character_exit_room"]
+[connection signal="timeout" from="Hazard Timer" to="." method="_on_hazard_timer_timeout"]

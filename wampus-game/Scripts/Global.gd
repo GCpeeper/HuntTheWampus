@@ -16,7 +16,7 @@ func _process(delta: float) -> void:
 func generateRoom(top: bool, left: bool, right: bool, bottom: bool, hazard: int, has_wumpus: bool):
 	pass
 
-func connectRooms():
+#func connectRooms():
 	while rooms.size() < 30:
 		rooms.append(room)
 		

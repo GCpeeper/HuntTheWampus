@@ -1,4 +1,6 @@
-[gd_scene load_steps=3 format=3 uid="uid://bxu81g647bgra"]
+[gd_scene load_steps=4 format=3 uid="uid://bxu81g647bgra"]
+
+[ext_resource type="Script" uid="uid://dgxqvvyioeg8e" path="res://Scripts/main_menu.gd" id="1_28flt"]
 
 [sub_resource type="Shader" id="Shader_erv1k"]
 code = "shader_type canvas_item;
@@ -27,6 +29,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+script = ExtResource("1_28flt")
 
 [node name="ColorRect" type="ColorRect" parent="."]
 custom_minimum_size = Vector2(1440, 832)
@@ -47,3 +50,5 @@ text = "Load Save"
 [node name="HighScores" type="MenuButton" parent="VBoxContainer"]
 layout_mode = 2
 text = "Leader Board"
+
+[connection signal="pressed" from="VBoxContainer/NewGame" to="." method="_on_new_game_pressed"]

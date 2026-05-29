@@ -2,30 +2,60 @@ extends CharacterBody2D
 
 @onready var _sprite = $Sprite2D2 # replaced it with a different asset pack placeholder as the other one didnt work very well with animations and frame division
 @onready var _animation_player = $AnimationPlayer # made and animation player system which could work better for more complicated animations (attacks and stuff mainly but otherwise works the same as other method)
+@onready var _sense = $Label
 
 const SPEED = 300.0
 const JUMP_VELOCITY = -500.0
 var start_pos
 signal exit_room(direction)
 var sliding = false
-var taking_input = true
+var taking_input = false
 var coins = 0
 var has_sword = false
+var smelling = false
+var hearing = false
+var feeling = false
 
 func _ready() -> void:
 	start_pos = position
 	_animation_player.play("fall")
 
+func _process(delta: float) -> void:
+	if smelling:
+		_sense.visible = true
+		if hearing:
+			if feeling:
+				_sense.text = "I smell a wumpus, hear bats, and feel an updraft"
+			else:
+				_sense.text = "I smell a wumpus and hear bats"
+		elif feeling:
+			_sense.text = "I smell a wumpus and feel an updraft"
+		else:
+			_sense.text = "I smell a WUMPUS"
+	elif hearing:
+		_sense.visible = true
+		if feeling:
+			_sense.text = "I hear bats and feel an updraft"
+		else:
+			_sense.text = "I hear bats"				
+	elif feeling:
+		_sense.visible = true
+		_sense.text = "I feel an updraft"
+	else:
+		_sense.visible = false
+
 
 func _physics_process(delta: float) -> void:
-	if position.y >= 2000:
-		emit_signal("exit_room", 4)
-	elif position.y <= 2000:
-		emit_signal("exit_room", 3)
-	elif position.x <= 50:
-		emit_signal("exit_room", 1)
-	elif position.x>=1390:
-		emit_signal("exit_room", 2)
+	if taking_input:
+		if position.y >= 875:
+			emit_signal("exit_room", 2)
+		elif position.y <= 0:
+			emit_signal("exit_room", 0)
+		elif position.x <= 50:
+			emit_signal("exit_room", 3)
+		elif position.x>=1390:
+			emit_signal("exit_room", 1)
+		
 	
 	# Add the gravity.
 	if not is_on_floor():
