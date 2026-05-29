@@ -352,6 +352,7 @@ func runHazard(hazard):
 		$Character.visible = true
 		curRoom = roomList[randi_range(0,4)][randi_range(0,5)]
 		print("new room is " + str(curRoom[8]))
+		enterRoom(4)
 		$Character.taking_input = true
 	elif hazard == 1:
 		var pit = Pit.instantiate()
@@ -394,8 +395,9 @@ func enterRoom(direction):
 	if curRoom:
 		if curRoom[5] == true and not doneWithHazard:
 			await runWumpus()
-		if not doneWithHazard:
+		if not doneWithHazard and curRoom[6] >= 0:
 			await runHazard(curRoom[6])
+			return
 		var roomInstance = curRoom[4].instantiate()
 		if curRoom[6] != 1 or doneWithHazard:
 			add_child(roomInstance)
@@ -417,6 +419,8 @@ func enterRoom(direction):
 				$Character.position = Vector2(1380, 530)
 			entrance.WEST:
 				$Character.position = Vector2(60, 530)
+			4:
+				$Character.position = Vector2(724,422)
 		print(curRoom[5])
 		$"CanvasLayer/Labels for Directions/Current Room".text = str(curRoom[8])
 		$Character.smelling = false
