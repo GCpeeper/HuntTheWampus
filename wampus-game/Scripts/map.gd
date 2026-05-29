@@ -399,6 +399,7 @@ func enterRoom(direction):
 		var roomInstance = curRoom[4].instantiate()
 		if curRoom[6] != 1 or doneWithHazard:
 			add_child(roomInstance)
+			$"CanvasLayer2/Parallax Control".offset()
 			travels += 1
 			for node in roomInstance.get_children():
 				if node.name == "Sword" and curRoom[7] != 1:

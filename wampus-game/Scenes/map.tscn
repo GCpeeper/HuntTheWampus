@@ -96,7 +96,7 @@ layer = -2
 
 [node name="Parallax Control" type="Node2D" parent="CanvasLayer2"]
 position = Vector2(714, 420)
-scale = Vector2(0.765, 0.765)
+scale = Vector2(0.815, 0.815)
 script = ExtResource("2_5qtum")
 
 [node name="Blue" type="Sprite2D" parent="CanvasLayer2/Parallax Control"]
