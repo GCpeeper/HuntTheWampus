@@ -69,12 +69,19 @@ label_settings = SubResource("LabelSettings_ie368")
 horizontal_alignment = 1
 
 [node name="Sword" type="Label" parent="CanvasLayer/Labels for Directions"]
-layout_mode = 0
-offset_left = 629.0
-offset_top = 479.0
-offset_right = 819.0
-offset_bottom = 536.0
-text = "Swords: 0"
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -172.0
+offset_top = 66.0
+offset_right = 172.0
+offset_bottom = 123.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "You Lack a Sword"
 label_settings = SubResource("LabelSettings_5qtum")
 horizontal_alignment = 1
 

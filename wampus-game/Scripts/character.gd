@@ -61,7 +61,7 @@ func _physics_process(delta: float) -> void:
 	if not is_on_floor() and taking_input:
 		velocity += get_gravity() * delta
 		if $ShapeCast2D.is_colliding() and velocity.y > 0:
-			velocity.y *= 0.5
+			velocity.y *= 0.8
 			sliding = true
 		else:
 			sliding = false

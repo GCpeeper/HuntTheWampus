@@ -30,9 +30,10 @@ var hazardsLeft = 3
 var swordsLeft = 10
 var roomsPresent = 0
 var doneWithHazard = false
-var wumpusHealth = 1
+var wumpusHealth = 3
 var transitioning = false
 var travels = 0
+var wumpusLocation
 
 func layout(type):
 	match type:
@@ -286,23 +287,25 @@ func layout(type):
 
 func remove_sword():
 	curRoom[7] = 0
-	$"CanvasLayer/Labels for Directions/Sword".text = "Swords: 1"
+	$"CanvasLayer/Labels for Directions/Sword".text = "You Have a Sword!"
 
 func craftRoom(adjN,adjE,adjS,adjW,tileset):
+	# Setting up variables for the room
 	var wumpus = false
 	var hazard = -1
 	var sword = 0
 	roomsPresent+=1
-	if roomsPresent > 1:
+	if roomsPresent > 1: # Will never have wumpus or hazard in the first room, obviously
 		if wumpusSelected == false and randi_range(1,30) > 25:
 			wumpus = true
 			wumpusSelected = true
+			wumpusLocation = roomsPresent-1
 			print("wampus is in a " + str(roomsPresent-1))
 		if randi_range(0,10) > 8 and hazardsLeft > 0:
 			hazardsLeft -= 1
 			hazard = randi_range(0,1) # 0 means bats, 1 means pit
 			print("hazard in " + str(roomsPresent-1))
-		if swordsLeft > 0 and randi_range(0,3) > 0:
+		if swordsLeft > 0 and randi_range(0,3) > 0: # Setting up swords, should be at most 10 in the cave
 			swordsLeft -= 1
 			sword = 1
 			print("theres a sword in " + str(roomsPresent-1))
@@ -314,7 +317,7 @@ func _ready() -> void:
 		roomList.append([])
 		for c in 6:
 			roomList[r].append([])
-	layout(3)
+	layout(randi_range(1,3))
 	if wumpusSelected == false:
 		roomList[4][5][5] = true
 	curRoom = roomList[0][0]
@@ -356,8 +359,6 @@ func runHazard(hazard):
 		$Character.position = Vector2(140,20)
 		add_child(pit)
 		$Character.taking_input = false
-		curRoom = roomList[randi_range(0,4)][randi_range(0,5)]
-		print("new room is " + str(curRoom[8]))
 
 func runWumpus():
 	$Character.taking_input = false
@@ -380,11 +381,12 @@ func runWumpus():
 	if wumpusHealth == 0 or $Character.has_sword == false:
 		await get_tree().change_scene_to_file("res://Scenes/main_menu.tscn")
 	$Character.has_sword = false
-	$"CanvasLayer/Labels for Directions/Sword".text = "Swords: 0"
+	$"CanvasLayer/Labels for Directions/Sword".text = "You Lack a Sword"
 	curRoom[5] = false
 	var newWumpusRoom = roomList[randi_range(0,4)][randi_range(0,5)]
 	roomList[randi_range(0,4)][randi_range(0,5)][5] = true
 	print("wumpus is in " + str(newWumpusRoom[8]))
+	wumpusLocation = newWumpusRoom[8]
 	$Character.taking_input = true
 	$Character.visible = true
 
@@ -487,6 +489,7 @@ func _on_hint_pressed() -> void:
 	if $Character.coins >= 15:
 		$Character.coins -= 15
 		$"Store ui/Control/The hint".visible = true
+		$"Store ui/Control/The hint".text = "Wumpus is in Room " + str(wumpusLocation)
 
 
 func _on_invulner_pressed() -> void:
@@ -499,5 +502,5 @@ func _on_invulner_pressed() -> void:
 func _on_sword_pressed() -> void:
 	if $Character.coins >= 10 and !$Character.has_sword:
 		$Character.coins -= 10
-		$"CanvasLayer/Labels for Directions/Sword".text = "Swords: 1"
+		$"CanvasLayer/Labels for Directions/Sword".text = "You Have a Sword!"
 		$Character.has_sword = true
