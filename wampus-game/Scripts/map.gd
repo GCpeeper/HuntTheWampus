@@ -30,8 +30,9 @@ var hazardsLeft = 3
 var swordsLeft = 10
 var roomsPresent = 0
 var doneWithHazard = false
-var wumpusHealth = 3
+var wumpusHealth = 1
 var transitioning = false
+var travels = 0
 
 func layout(type):
 	match type:
@@ -355,6 +356,8 @@ func runHazard(hazard):
 		$Character.position = Vector2(140,20)
 		add_child(pit)
 		$Character.taking_input = false
+		curRoom = roomList[randi_range(0,4)][randi_range(0,5)]
+		print("new room is " + str(curRoom[8]))
 
 func runWumpus():
 	$Character.taking_input = false
@@ -367,6 +370,7 @@ func runWumpus():
 		else:
 			wumpus._animation_player.play("wampus defeated")
 			print("YOU WON")
+			Global.makeScore($Character.coins,travels)
 	else:
 		wumpus._animation_player.play("wampus not hit")
 		print("YOU DIED")
@@ -393,6 +397,7 @@ func enterRoom(direction):
 		var roomInstance = curRoom[4].instantiate()
 		if curRoom[6] != 1 or doneWithHazard:
 			add_child(roomInstance)
+			travels += 1
 			for node in roomInstance.get_children():
 				if node.name == "Sword" and curRoom[7] != 1:
 					node.queue_free()

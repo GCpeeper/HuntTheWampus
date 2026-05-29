@@ -1,4 +1,4 @@
-[gd_scene load_steps=4 format=3 uid="uid://bxu81g647bgra"]
+[gd_scene load_steps=6 format=3 uid="uid://bxu81g647bgra"]
 
 [ext_resource type="Script" uid="uid://dgxqvvyioeg8e" path="res://Scripts/main_menu.gd" id="1_28flt"]
 
@@ -22,6 +22,14 @@ void fragment() {
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_28flt"]
 shader = SubResource("Shader_erv1k")
 
+[sub_resource type="SystemFont" id="SystemFont_28flt"]
+font_names = PackedStringArray("High Tower Text")
+
+[sub_resource type="LabelSettings" id="LabelSettings_48xlc"]
+font = SubResource("SystemFont_28flt")
+font_size = 101
+font_color = Color(0.6509804, 0, 0, 1)
+
 [node name="CenterContainer" type="CenterContainer"]
 material = SubResource("ShaderMaterial_28flt")
 anchors_preset = 15
@@ -36,8 +44,21 @@ custom_minimum_size = Vector2(1440, 832)
 layout_mode = 2
 color = Color(0.57904935, 0.6152178, 0.6978687, 1)
 
+[node name="LineEdit" type="LineEdit" parent="."]
+visible = false
+layout_mode = 2
+theme_override_font_sizes/font_size = 41
+placeholder_text = "Name?"
+alignment = 1
+max_length = 12
+
 [node name="VBoxContainer" type="VBoxContainer" parent="."]
 layout_mode = 2
+
+[node name="Label" type="Label" parent="VBoxContainer"]
+layout_mode = 2
+text = "HUNT THE WUMPUS"
+label_settings = SubResource("LabelSettings_48xlc")
 
 [node name="NewGame" type="MenuButton" parent="VBoxContainer"]
 layout_mode = 2
@@ -51,4 +72,6 @@ text = "Load Save"
 layout_mode = 2
 text = "Leader Board"
 
+[connection signal="text_submitted" from="LineEdit" to="." method="_on_line_edit_text_submitted"]
 [connection signal="pressed" from="VBoxContainer/NewGame" to="." method="_on_new_game_pressed"]
+[connection signal="pressed" from="VBoxContainer/HighScores" to="." method="_on_high_scores_pressed"]
