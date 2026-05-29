@@ -1,4 +1,4 @@
-[gd_scene load_steps=17 format=3 uid="uid://casrnc0q3x0r0"]
+[gd_scene load_steps=20 format=3 uid="uid://casrnc0q3x0r0"]
 
 [ext_resource type="Script" uid="uid://bmci3la80cafy" path="res://Scripts/map.gd" id="1_p3ir5"]
 [ext_resource type="Script" uid="uid://b03tdrhc008y1" path="res://Scripts/parallax_control.gd" id="2_5qtum"]
@@ -25,6 +25,17 @@ font_color = Color(0.29803923, 0.15686275, 0, 1)
 [sub_resource type="LabelSettings" id="LabelSettings_5qtum"]
 font_size = 41
 font_color = Color(0.43629372, 0.43629366, 0.43629366, 1)
+
+[sub_resource type="LabelSettings" id="LabelSettings_x5dfk"]
+font_size = 50
+
+[sub_resource type="LabelSettings" id="LabelSettings_fls3e"]
+font_size = 31
+font_color = Color(1, 1, 0, 1)
+
+[sub_resource type="LabelSettings" id="LabelSettings_k63oc"]
+font_size = 71
+font_color = Color(1, 0, 0, 1)
 
 [node name="Map" type="Node2D"]
 script = ExtResource("1_p3ir5")
@@ -113,5 +124,115 @@ texture = ExtResource("11_macow")
 wait_time = 5.0
 one_shot = true
 
+[node name="Store ui" type="CanvasLayer" parent="."]
+visible = false
+
+[node name="Control" type="Control" parent="Store ui"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="ColorRect" type="ColorRect" parent="Store ui/Control"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 478.0
+offset_top = 199.0
+offset_right = -497.0
+offset_bottom = -183.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.3027061, 0.30270606, 0.30270603, 1)
+
+[node name="Store" type="Label" parent="Store ui/Control"]
+layout_mode = 0
+offset_left = 655.0
+offset_top = 218.0
+offset_right = 981.0
+offset_bottom = 315.0
+text = "Store"
+label_settings = SubResource("LabelSettings_x5dfk")
+
+[node name="Hint" type="Button" parent="Store ui/Control"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -97.0
+offset_top = -106.0
+offset_right = 94.0
+offset_bottom = -42.5
+grow_horizontal = 2
+grow_vertical = 2
+text = "Wumpus Hint (15 coins)"
+
+[node name="Sword" type="Button" parent="Store ui/Control"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -95.0
+offset_top = -14.0
+offset_right = 96.0
+offset_bottom = 49.5
+grow_horizontal = 2
+grow_vertical = 2
+text = "Sword (10 coins)"
+
+[node name="Invulner" type="Button" parent="Store ui/Control"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -97.0
+offset_top = 70.0
+offset_right = 94.0
+offset_bottom = 133.5
+grow_horizontal = 2
+grow_vertical = 2
+text = "Hazard Invulnerability (20 coins)"
+
+[node name="Coins" type="Label" parent="Store ui/Control"]
+layout_mode = 0
+offset_left = 665.0
+offset_top = 567.0
+offset_right = 782.0
+offset_bottom = 611.0
+text = "Coins: 0"
+label_settings = SubResource("LabelSettings_fls3e")
+horizontal_alignment = 1
+
+[node name="The hint" type="Label" parent="Store ui/Control"]
+visible = false
+layout_mode = 0
+offset_left = 340.0
+offset_top = 637.0
+offset_right = 1077.0
+offset_bottom = 734.0
+text = "Wumpus is in Room 0"
+label_settings = SubResource("LabelSettings_k63oc")
+horizontal_alignment = 1
+
+[node name="CanvasLayer3" type="CanvasLayer" parent="."]
+
+[node name="Store" type="Button" parent="CanvasLayer3"]
+offset_right = 160.0
+offset_bottom = 63.0
+text = "Open Store"
+
 [connection signal="exit_room" from="Character" to="." method="_on_character_exit_room"]
 [connection signal="timeout" from="Hazard Timer" to="." method="_on_hazard_timer_timeout"]
+[connection signal="pressed" from="Store ui/Control/Hint" to="." method="_on_hint_pressed"]
+[connection signal="pressed" from="Store ui/Control/Sword" to="." method="_on_sword_pressed"]
+[connection signal="pressed" from="Store ui/Control/Invulner" to="." method="_on_invulner_pressed"]
+[connection signal="pressed" from="CanvasLayer3/Store" to="." method="_on_store_pressed"]

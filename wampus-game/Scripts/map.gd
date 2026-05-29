@@ -39,8 +39,8 @@ func layout(type):
 			roomList = [
 			[craftRoom(null,null,null,null,DeadEndD),craftRoom(null,null,null,null,DeadEndB),craftRoom(null,null,null,null,SideC),craftRoom(null,null,null,null,SideC),craftRoom(null,null,null,null,SideC),craftRoom(null,null,null,null,DeadEndA)],
 			[craftRoom(null,null,null,null,SideB),craftRoom(null,null,null,null,HallwayA),craftRoom(null,null,null,null,CornerA),craftRoom(null,null,null,null,CornerB),craftRoom(null,null,null,null,SideA),craftRoom(null,null,null,null,DeadEndD)],
-			[craftRoom(null,null,null,null,SideB),craftRoom(null,null,null,null,SideC),craftRoom(null,null,null,null,SideA),craftRoom(null,null,null,null,CornerD),craftRoom(null,null,null,null,SideD),craftRoom(null,null,null,null,CornerA)],
-			[craftRoom(null,null,null,null,HallwayB),craftRoom(null,null,null,null,SideB),craftRoom(null,null,null,null,CornerC),craftRoom(null,null,null,null,SideB),craftRoom(null,null,null,null,CornerC),craftRoom(null,null,null,null,DeadEndD)],
+			[craftRoom(null,null,null,null,SideB),craftRoom(null,null,null,null,SideC),craftRoom(null,null,null,null,CornerC),craftRoom(null,null,null,null,CornerD),craftRoom(null,null,null,null,SideD),craftRoom(null,null,null,null,CornerA)],
+			[craftRoom(null,null,null,null,HallwayB),craftRoom(null,null,null,null,SideB),craftRoom(null,null,null,null,SideA),craftRoom(null,null,null,null,SideB),craftRoom(null,null,null,null,CornerC),craftRoom(null,null,null,null,DeadEndD)],
 			[craftRoom(null,null,null,null,DeadEndC),craftRoom(null,null,null,null,CornerB),craftRoom(null,null,null,null,CornerA),craftRoom(null,null,null,null,DeadEndC),craftRoom(null,null,null,null,CornerB),craftRoom(null,null,null,null,CornerA)],
 			]
 			# Row 1
@@ -116,8 +116,8 @@ func layout(type):
 			roomList = [
 			[craftRoom(null,null,null,null,DeadEndD),craftRoom(null,null,null,null,CornerD),craftRoom(null,null,null,null,SideC),craftRoom(null,null,null,null,SideC),craftRoom(null,null,null,null,SideC),craftRoom(null,null,null,null,CornerC)],
 			[craftRoom(null,null,null,null,SideB),craftRoom(null,null,null,null,SideD),craftRoom(null,null,null,null,CornerA),craftRoom(null,null,null,null,CornerB),craftRoom(null,null,null,null,SideA),craftRoom(null,null,null,null,HallwayB)],
-			[craftRoom(null,null,null,null,SideB),craftRoom(null,null,null,null,SideC),craftRoom(null,null,null,null,SideA),craftRoom(null,null,null,null,CornerD),craftRoom(null,null,null,null,SideD),craftRoom(null,null,null,null,CornerA)],
-			[craftRoom(null,null,null,null,HallwayB),craftRoom(null,null,null,null,SideB),craftRoom(null,null,null,null,CornerC),craftRoom(null,null,null,null,SideB),craftRoom(null,null,null,null,CornerC),craftRoom(null,null,null,null,DeadEndD)],
+			[craftRoom(null,null,null,null,SideB),craftRoom(null,null,null,null,SideC),craftRoom(null,null,null,null,CornerC),craftRoom(null,null,null,null,CornerD),craftRoom(null,null,null,null,SideD),craftRoom(null,null,null,null,CornerA)],
+			[craftRoom(null,null,null,null,HallwayB),craftRoom(null,null,null,null,SideB),craftRoom(null,null,null,null,SideA),craftRoom(null,null,null,null,SideB),craftRoom(null,null,null,null,CornerC),craftRoom(null,null,null,null,DeadEndD)],
 			[craftRoom(null,null,null,null,CornerB),craftRoom(null,null,null,null,SideD),craftRoom(null,null,null,null,CornerA),craftRoom(null,null,null,null,DeadEndC),craftRoom(null,null,null,null,CornerB),craftRoom(null,null,null,null,CornerA)],
 			]
 			# Row 1
@@ -200,7 +200,7 @@ func layout(type):
 			[craftRoom(null,null,null,null,DeadEndD),craftRoom(null,null,null,null,CornerD),craftRoom(null,null,null,null,SideC),craftRoom(null,null,null,null,SideC),craftRoom(null,null,null,null,SideC),craftRoom(null,null,null,null,CornerC)],
 			[craftRoom(null,null,null,null,SideB),craftRoom(null,null,null,null,SideD),craftRoom(null,null,null,null,CornerA),craftRoom(null,null,null,null,CornerB),craftRoom(null,null,null,null,SideC),craftRoom(null,null,null,null,SideA)],
 			[craftRoom(null,null,null,null,SideB),craftRoom(null,null,null,null,HallwayA),craftRoom(null,null,null,null,CornerC),craftRoom(null,null,null,null,CornerD),craftRoom(null,null,null,null,SideD),craftRoom(null,null,null,null,SideA)],
-			[craftRoom(null,null,null,null,SideB),craftRoom(null,null,null,null,SideC),craftRoom(null,null,null,null,CornerC),craftRoom(null,null,null,null,SideB),craftRoom(null,null,null,null,SideC),craftRoom(null,null,null,null,SideA)],
+			[craftRoom(null,null,null,null,SideB),craftRoom(null,null,null,null,SideC),craftRoom(null,null,null,null,SideA),craftRoom(null,null,null,null,SideB),craftRoom(null,null,null,null,SideC),craftRoom(null,null,null,null,SideA)],
 			[craftRoom(null,null,null,null,CornerB),craftRoom(null,null,null,null,SideD),craftRoom(null,null,null,null,CornerA),craftRoom(null,null,null,null,DeadEndC),craftRoom(null,null,null,null,CornerB),craftRoom(null,null,null,null,CornerA)],
 			]
 			# Row 1
@@ -374,14 +374,13 @@ func runWumpus():
 	wumpus.queue_free()
 	wumpusHealth -= 1
 	if wumpusHealth == 0 or $Character.has_sword == false:
-		get_tree().change_scene_to_file("res://Scenes/main_menu.tscn")
+		await get_tree().change_scene_to_file("res://Scenes/main_menu.tscn")
 	$Character.has_sword = false
 	$"CanvasLayer/Labels for Directions/Sword".text = "Swords: 0"
 	curRoom[5] = false
 	var newWumpusRoom = roomList[randi_range(0,4)][randi_range(0,5)]
 	roomList[randi_range(0,4)][randi_range(0,5)][5] = true
 	print("wumpus is in " + str(newWumpusRoom[8]))
-	await get_tree().create_timer(1).timeout
 	$Character.taking_input = true
 	$Character.visible = true
 
@@ -466,3 +465,34 @@ func _do_room_transition(direction):
 
 func _on_hazard_timer_timeout() -> void:
 	doneWithHazard = false
+
+
+func _on_store_pressed() -> void:
+	if $"Store ui".visible:
+		$"Store ui".visible = false
+		$CanvasLayer3/Store.text = "Open Store"
+	else:
+		$"Store ui".visible = true
+		$"Store ui/Control/The hint".visible = false
+		$"Store ui/Control/Coins".text = "Coins: " + str($Character.coins)
+		$CanvasLayer3/Store.text = "Close Store"
+
+# Getting a wumpus hint, takes 15 coins in exchange for showing which room the wumpus is in
+func _on_hint_pressed() -> void:
+	if $Character.coins >= 15:
+		$Character.coins -= 15
+		$"Store ui/Control/The hint".visible = true
+
+
+func _on_invulner_pressed() -> void:
+	if $Character.coins >= 20 and not doneWithHazard:
+		$Character.coins -= 20
+		doneWithHazard = true
+		$"Hazard Timer".start()
+
+
+func _on_sword_pressed() -> void:
+	if $Character.coins >= 10 and !$Character.has_sword:
+		$Character.coins -= 10
+		$"CanvasLayer/Labels for Directions/Sword".text = "Swords: 1"
+		$Character.has_sword = true

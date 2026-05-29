@@ -51,7 +51,7 @@ func some_button_pressed(button):
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
-	if player.position.y > 700 and step == 0:
+	if step == 0:
 		announcement.show()
 		bubble.visible = true
 		$"../Pit Wampus".visible = true
