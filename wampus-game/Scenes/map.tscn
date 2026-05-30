@@ -1,4 +1,4 @@
-[gd_scene load_steps=32 format=3 uid="uid://casrnc0q3x0r0"]
+[gd_scene load_steps=33 format=3 uid="uid://casrnc0q3x0r0"]
 
 [ext_resource type="Script" uid="uid://bmci3la80cafy" path="res://Scripts/map.gd" id="1_p3ir5"]
 [ext_resource type="Script" uid="uid://b03tdrhc008y1" path="res://Scripts/parallax_control.gd" id="2_5qtum"]
@@ -28,7 +28,7 @@ font_names = PackedStringArray("High Tower Text")
 [sub_resource type="LabelSettings" id="LabelSettings_5qtum"]
 font = SubResource("SystemFont_ie368")
 font_size = 41
-font_color = Color(0.43629372, 0.43629366, 0.43629366, 1)
+font_color = Color(0.61513174, 0.61513174, 0.6151315, 1)
 
 [sub_resource type="SystemFont" id="SystemFont_x5dfk"]
 font_names = PackedStringArray("High Tower Text")
@@ -49,8 +49,12 @@ font_color = Color(1, 1, 0, 1)
 font_size = 71
 font_color = Color(1, 0, 0, 1)
 
+[sub_resource type="SystemFont" id="SystemFont_riaky"]
+font_names = PackedStringArray("High Tower Text")
+
 [sub_resource type="LabelSettings" id="LabelSettings_j4oe2"]
-font_size = 70
+font = SubResource("SystemFont_riaky")
+font_size = 100
 font_color = Color(0, 0, 0, 1)
 
 [sub_resource type="SystemFont" id="SystemFont_k63oc"]
@@ -132,6 +136,7 @@ position = Vector2(670, 830)
 layer = -2
 
 [node name="Parallax Control" type="Node2D" parent="CanvasLayer2"]
+modulate = Color(0.61513174, 0.61513174, 0.61513174, 1)
 position = Vector2(714, 420)
 scale = Vector2(0.815, 0.815)
 script = ExtResource("2_5qtum")
@@ -165,6 +170,7 @@ texture = ExtResource("10_rg57b")
 texture = ExtResource("11_macow")
 
 [node name="Blue" type="Sprite2D" parent="CanvasLayer2"]
+modulate = Color(0.61048967, 0.6104896, 0.61048955, 1)
 z_index = -2
 position = Vector2(745, 436)
 texture = ExtResource("3_ie368")
@@ -305,9 +311,9 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -368.0
+offset_left = -355.4925
 offset_top = -261.25
-offset_right = 368.0
+offset_right = 355.4925
 offset_bottom = 261.25
 grow_horizontal = 2
 grow_vertical = 2
@@ -327,7 +333,7 @@ offset_bottom = 239.0
 grow_horizontal = 2
 grow_vertical = 2
 text = "0 | 1 | 2 | 3 | 4 | 5
-6 | 7 |  8 | 9 |10|11
+6 | 7 | 8| 9|10|11
 12|13|14|15|16|17
 18|19|20|21|22|23
 24|25|26|27|28|29"

@@ -36,6 +36,7 @@ var travels = 0
 var wumpusLocation
 
 func layout(type):
+	print(type)
 	match type:
 		1: # Layout 1
 			roomList = [
@@ -199,7 +200,7 @@ func layout(type):
 			roomList[4][5][3] = roomList[4][4]
 		3: # Layout 3
 			roomList = [
-			[craftRoom(null,null,null,null,DeadEndD),craftRoom(null,null,null,null,CornerD),craftRoom(null,null,null,null,SideC),craftRoom(null,null,null,null,SideC),craftRoom(null,null,null,null,SideC),craftRoom(null,null,null,null,CornerC)],
+			[craftRoom(null,null,null,null,DeadEndD),craftRoom(null,null,null,null,CornerD),craftRoom(null,null,null,null,SideC),craftRoom(null,null,null,null,SideC),craftRoom(null,null,null,null,HallwayA),craftRoom(null,null,null,null,CornerC)],
 			[craftRoom(null,null,null,null,SideB),craftRoom(null,null,null,null,SideD),craftRoom(null,null,null,null,CornerA),craftRoom(null,null,null,null,CornerB),craftRoom(null,null,null,null,SideC),craftRoom(null,null,null,null,SideA)],
 			[craftRoom(null,null,null,null,SideB),craftRoom(null,null,null,null,HallwayA),craftRoom(null,null,null,null,CornerC),craftRoom(null,null,null,null,CornerD),craftRoom(null,null,null,null,SideD),craftRoom(null,null,null,null,SideA)],
 			[craftRoom(null,null,null,null,SideB),craftRoom(null,null,null,null,SideC),craftRoom(null,null,null,null,SideA),craftRoom(null,null,null,null,SideB),craftRoom(null,null,null,null,SideC),craftRoom(null,null,null,null,SideA)],
@@ -455,7 +456,7 @@ func craftRoom(adjN,adjE,adjS,adjW,tileset):
 			wumpusSelected = true
 			wumpusLocation = roomsPresent-1
 			#print("wampus is in a " + str(roomsPresent-1))
-		if randi_range(0,11) > 8 and hazardsLeft > 0:
+		if randi_range(0,10) > 7 and hazardsLeft > 0:
 			hazardsLeft -= 1
 			hazard = randi_range(0,1) # 0 means bats, 1 means pit
 			#print("hazard in " + str(roomsPresent-1))
@@ -475,6 +476,7 @@ func _ready() -> void:
 	layout(randi_range(1,5))
 	if wumpusSelected == false or wumpusLocation == null: # If it didn't manage to spawn a wumpus, it will just be set to the bottom right corner room
 		roomList[4][5][5] = true
+		wumpusLocation = 29
 	curRoom = roomList[0][0]
 	enterRoom(1) # Enters room
 	$Character.taking_input = true
@@ -700,5 +702,5 @@ func _on_map_pressed() -> void:
 func _on_gamble_pressed() -> void:
 	if $Character.coins >= 1:
 		$Character.coins -= 1
-		if randi_range(1,150) == 150:
+		if randi_range(1,100) == 100:
 			$Character.coins += 99

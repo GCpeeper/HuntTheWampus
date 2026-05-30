@@ -1118,6 +1118,7 @@ script = ExtResource("1_ja8wb")
 _animation_player = NodePath("AnimationPlayer")
 
 [node name="Parallax Control" type="Node2D" parent="."]
+modulate = Color(0.6197794, 0.61977935, 0.61977935, 1)
 position = Vector2(714, 420)
 scale = Vector2(0.765, 0.765)
 
