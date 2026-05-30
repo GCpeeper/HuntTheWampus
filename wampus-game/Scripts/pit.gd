@@ -42,6 +42,7 @@ func _ready() -> void:
 		i.pressed.connect(some_button_pressed.bind(i))
 
 func some_button_pressed(button):
+	player.coins -= 1
 	if buttonList.get(button) == (riddleList[riddleChoice])[5]:
 		print("yeah")
 		success()
