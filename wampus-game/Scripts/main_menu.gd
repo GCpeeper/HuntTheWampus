@@ -3,15 +3,16 @@ extends CenterContainer
 func _ready() -> void:
 	Global._loadScores()
 
+# Starting a game
 func _on_new_game_pressed() -> void:
 	$LineEdit.visible = true
 	$VBoxContainer.visible = false
 
-
+# Going to the leaderboard
 func _on_high_scores_pressed() -> void:
 	get_tree().change_scene_to_file("res://Scenes/leaderboard.tscn")
 
-# Starting the game
+# Starting the game (for real this time)
 func _on_line_edit_text_submitted(new_text: String) -> void:
 	Global.username = new_text
 	get_tree().change_scene_to_file("res://Scenes/map.tscn")

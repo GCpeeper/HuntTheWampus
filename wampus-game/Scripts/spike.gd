@@ -1,6 +1,6 @@
 extends Area2D
 
-
+# Takes away a coin everytime you touch
 func _on_body_entered(body: Node2D) -> void:
 	if "coins" in body:
 		body.coins -= 1

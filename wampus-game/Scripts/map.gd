@@ -466,17 +466,19 @@ func craftRoom(adjN,adjE,adjS,adjW,tileset):
 	return([null,null,null,null,tileset,wumpus,hazard,sword,roomsPresent-1])
 
 func _ready() -> void:
+	# Sets up the array
 	for r in 5:
 		roomList.append([])
 		for c in 6:
 			roomList[r].append([])
+	# Calls the layout function
 	layout(randi_range(1,5))
 	if wumpusSelected == false or wumpusLocation == null: # If it didn't manage to spawn a wumpus, it will just be set to the bottom right corner room
 		roomList[4][5][5] = true
 	curRoom = roomList[0][0]
-	enterRoom(1)
+	enterRoom(1) # Enters room
 	$Character.taking_input = true
-	print(wumpusLocation)
+	#print(wumpusLocation)
 	
 	
 	#connectRooms()
@@ -495,8 +497,9 @@ enum entrance {
 	EAST
 }
 
+# Running the hazard. 0 is bat, 1 is pit
 func runHazard(hazard):
-	if hazard == 0 and wumpusHealth > 0:
+	if hazard == 0 and wumpusHealth > 0: # Spawns an instance of the bat cutscene, then randomizes your room
 		var bats = BatCutscene.instantiate()
 		add_child(bats)
 		$Character.taking_input = false
@@ -511,14 +514,15 @@ func runHazard(hazard):
 		#print("new room is " + str(curRoom[8]))
 		enterRoom(4)
 		$Character.taking_input = true
-	elif hazard == 1:
+	elif hazard == 1: # Puts in an instance of the pit cutscene
 		var pit = Pit.instantiate()
 		pit.player = $Character
 		$Character.position = Vector2(140,20)
 		add_child(pit)
 		$Character.taking_input = false
-		curRoom = roomList[0][0]
+		curRoom = roomList[0][0] # Sends you back to spawn
 
+# The wumpus. If ou have a sword, you deal 1 damage to it. If not, you get killed.
 func runWumpus():
 	$Character.taking_input = false
 	$Character.visible = false
@@ -530,43 +534,44 @@ func runWumpus():
 		else:
 			wumpus._animation_player.play("wampus defeated")
 			#print("YOU WON")
-			Global.makeScore($Character.coins,travels)
+			Global.makeScore($Character.coins,travels) # Puts in your score in the leaderboard
 	else:
 		wumpus._animation_player.play("wampus not hit")
 		#print("YOU DIED")
 	await get_tree().create_timer(6).timeout
 	wumpus.queue_free()
 	wumpusHealth -= 1
-	if wumpusHealth == 0 or $Character.has_sword == false:
+	if wumpusHealth == 0 or $Character.has_sword == false: # If you won, you go back to the main menu
 		await get_tree().change_scene_to_file("res://Scenes/main_menu.tscn")
-	$Character.has_sword = false
+	$Character.has_sword = false # Breaks your sword
 	$"CanvasLayer/Labels for Directions/Sword".text = "You Lack a Sword"
 	curRoom[5] = false
 	var row = randi_range(0,4)
 	var col = randi_range(0,5)
 	roomList[row][col][5] = true
-	wumpusLocation = roomList[row][col][8]
+	wumpusLocation = roomList[row][col][8] # Makes a new location for the wumpus
 	$Character.taking_input = true
 	$Character.visible = true
 
+# Entering a room. It puts in a new tileset, removes the old one, and runs through all of the logic
 func enterRoom(direction):
 	if curRoom:
-		if curRoom[5] == true:
+		if curRoom[5] == true: # Wumpus comes before hazards
 			await runWumpus()
-		if not doneWithHazard and curRoom[6] >= 0:
+		if not doneWithHazard and curRoom[6] >= 0: # Done with hazard variable is to make sure you don't get hit with a pit or bat back to back
 			await runHazard(curRoom[6])
 			return
 		var roomInstance = curRoom[4].instantiate()
-		if curRoom[6] != 1 or doneWithHazard:
-			add_child(roomInstance)
-			$"CanvasLayer2/Parallax Control".offset()
+		if curRoom[6] != 1 or doneWithHazard: # normal room spawning
+			add_child(roomInstance) # Put in the room
+			$"CanvasLayer2/Parallax Control".offset() # Offset the parallax background
 			travels += 1
 			for node in roomInstance.get_children():
-				if node.name == "Sword" and curRoom[7] != 1:
+				if node.name == "Sword" and curRoom[7] != 1: # Every tileset comes with a sword in it, but if the room says it shouldn't have one then that node gets queued free
 					node.queue_free()
 		curRoomChild = roomInstance
 		$Character.velocity = Vector2(0,0)
-		match direction:
+		match direction: # Sends the player the correct direction
 			entrance.SOUTH:
 				$Character.position = Vector2(670, 70)
 			entrance.NORTH:
@@ -577,10 +582,11 @@ func enterRoom(direction):
 				$Character.position = Vector2(1380, 530)
 			entrance.WEST:
 				$Character.position = Vector2(60, 530)
-			4:
+			4: # Puts player in the center
 				$Character.position = Vector2(724,422)
 		#print(curRoom[5])
 		$"CanvasLayer/Labels for Directions/Current Room".text = str(curRoom[8])
+		# Logic for the player sensing hazards or wumpus
 		$Character.smelling = false
 		$Character.hearing = false
 		$Character.feeling = false
@@ -611,20 +617,24 @@ func enterRoom(direction):
 		if doneWithHazard and $"Hazard Timer".time_left == 0:
 			$"Hazard Timer".start()
 
+# Exiting a room
 func _on_character_exit_room(direction: Variant) -> void:
-	if transitioning:
+	if transitioning: # This is a guardrail that helps make sure you don't exit a room twice in a frame
 		return
 	transitioning = true
+	# Stopping process as another guardrail to prevent double exits
 	set_process(false)
 	set_physics_process(false)
 	call_deferred("_do_room_transition", direction)
 
+# Deferred call, also to prevent double exits
 func _do_room_transition(direction):
 	if curRoomChild:
-		curRoomChild.queue_free()
+		curRoomChild.queue_free() # Removes current tileset
 		set_process(true)
 		set_physics_process(true)
 
+	# Makes the next room and sets everything up
 	var next_room = curRoom[direction]
 	if next_room == null:
 		return
@@ -632,19 +642,19 @@ func _do_room_transition(direction):
 	enterRoom(direction)
 	transitioning = false
 
-
+# Resets done with hazard
 func _on_hazard_timer_timeout() -> void:
 	doneWithHazard = false
 
-# A hotkey for the store would be nice so I added this
+# A hotkey for the store and map would be nice so I added this
 func _process(delta: float) -> void:
 	if Input.is_action_just_pressed("open store"):
 		_on_store_pressed()
 	if Input.is_action_just_pressed("open map"):
 		_on_map_pressed()
-	$"Store ui/Control/Coins".text = str($Character.coins)
+	$"Store ui/Control/Coins".text = str($Character.coins) # Updating coins in store live
 
-# opening through button
+# opening and closing store through button
 func _on_store_pressed() -> void:
 	if $"Store ui".visible:
 		$"Store ui".visible = false
@@ -662,14 +672,14 @@ func _on_hint_pressed() -> void:
 		$"Store ui/Control/The hint".visible = true
 		$"Store ui/Control/The hint".text = "Wumpus is in Room " + str(wumpusLocation)
 
-
+# Turning on hazard timer to be invulnerable to hazards for a bit, allows you to skip them which can be very useful
 func _on_invulner_pressed() -> void:
 	if $Character.coins >= 20 and not doneWithHazard:
 		$Character.coins -= 20
 		doneWithHazard = true
 		$"Hazard Timer".start()
 
-
+# Get a sword for some coins
 func _on_sword_pressed() -> void:
 	if $Character.coins >= 10 and !$Character.has_sword:
 		$Character.coins -= 10
@@ -677,7 +687,7 @@ func _on_sword_pressed() -> void:
 		$"CanvasLayer/Labels for Directions/Sword".text = "You Have a Sword!"
 		$Character.has_sword = true
 
-
+# Open the map. It's kinda scuffed but even then it's helped me find my way a lot
 func _on_map_pressed() -> void:
 	if $"Map ui".visible:
 		$"Map ui".visible = false
@@ -686,7 +696,7 @@ func _on_map_pressed() -> void:
 		$"Map ui".visible = true
 		$CanvasLayer3/Map.text = "Close Map (Enter)"
 
-# Can get extra coins for a coin with a given chance
+# Can get extra coins for a coin with a given chance. I love gambling
 func _on_gamble_pressed() -> void:
 	if $Character.coins >= 1:
 		$Character.coins -= 1

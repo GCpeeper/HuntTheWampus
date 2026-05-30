@@ -67,6 +67,7 @@ func _process(delta: float) -> void:
 	if timerBar.visible == true:
 		timerBar.value = riddleTimer.time_left
 
+# Correct answer
 func success():
 	animation_player.play("talking")
 	roaring.play()
@@ -81,21 +82,23 @@ func success():
 	tries -= 1
 	if tries > 0 and correctTries != 2:
 		timer.start()
-	else:
+	else: # Determining if you still lost or if you won
 		if correctTries == 2:
 			await get_tree().create_timer(1.0).timeout
-			announcement.text = "You survive!!!"
+			announcement.text = "You survive!!!" # yippie
+			await get_tree().create_timer(3.0).timeout
 		else:
 			await get_tree().create_timer(1.0).timeout
 			announcement.text = "You lose!!!"
 			await get_tree().create_timer(3.0).timeout
-			get_tree().change_scene_to_file("res://Scenes/main_menu.tscn")
-		await get_tree().create_timer(3.0).timeout
+			get_tree().change_scene_to_file("res://Scenes/main_menu.tscn") # die
+		# Setting everything back to normal and back to normal room functionality
 		player.taking_input = true
 		get_parent().get_parent().doneWithHazard = true
 		get_parent().get_parent().enterRoom(4)
 		get_parent().queue_free()
-	
+
+# wrong answer
 func failure():
 	animation_player.play("talking")
 	roaring.play()
@@ -109,11 +112,12 @@ func failure():
 	tries -= 1
 	if tries > 0:
 		timer.start()
-	else:
+	else: # You die
 		await get_tree().create_timer(1.0).timeout
 		announcement.text = "You lose!!!"
 		get_tree().change_scene_to_file("res://Scenes/main_menu.tscn")
 
+# Talking timer timed out to start the riddle system
 func _on_timer_timeout() -> void:
 	bubble.visible = false
 	animation_player.play("idle")
@@ -135,7 +139,7 @@ func _on_timer_timeout() -> void:
 func _on_pressed() -> void:
 	pass # Replace with function body.
 
-
+# Ran out of time on the riddle!
 func _on_riddle_timer_timeout() -> void:
 	animation_player.play("talking")
 	roaring.play()
