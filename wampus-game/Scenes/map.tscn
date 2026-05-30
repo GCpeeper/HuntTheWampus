@@ -141,7 +141,6 @@ wait_time = 10.0
 one_shot = true
 
 [node name="Store ui" type="CanvasLayer" parent="."]
-visible = false
 
 [node name="Control" type="Control" parent="Store ui"]
 layout_mode = 3
@@ -218,12 +217,27 @@ grow_horizontal = 2
 grow_vertical = 2
 text = "Hazard Invulnerability for 10 seconds (20 coins)"
 
+[node name="Gamble" type="Button" parent="Store ui/Control"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -188.0
+offset_top = 96.0
+offset_right = 185.0
+offset_bottom = 159.5
+grow_horizontal = 2
+grow_vertical = 2
+text = "Gamble for more coins (1 coin)"
+
 [node name="Coins" type="Label" parent="Store ui/Control"]
 layout_mode = 0
 offset_left = 665.0
-offset_top = 567.0
+offset_top = 590.0
 offset_right = 782.0
-offset_bottom = 611.0
+offset_bottom = 634.0
 text = "Coins: 0"
 label_settings = SubResource("LabelSettings_fls3e")
 horizontal_alignment = 1
@@ -307,5 +321,6 @@ text = "Open Map (Enter)"
 [connection signal="pressed" from="Store ui/Control/Hint" to="." method="_on_hint_pressed"]
 [connection signal="pressed" from="Store ui/Control/Sword" to="." method="_on_sword_pressed"]
 [connection signal="pressed" from="Store ui/Control/Invulner" to="." method="_on_invulner_pressed"]
+[connection signal="pressed" from="Store ui/Control/Gamble" to="." method="_on_gamble_pressed"]
 [connection signal="pressed" from="CanvasLayer3/Store" to="." method="_on_store_pressed"]
 [connection signal="pressed" from="CanvasLayer3/Map" to="." method="_on_map_pressed"]

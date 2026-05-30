@@ -683,3 +683,10 @@ func _on_map_pressed() -> void:
 	else:
 		$"Map ui".visible = true
 		$CanvasLayer3/Map.text = "Close Map (Enter)"
+
+# Can get extra coins for a coin with a given chance
+func _on_gamble_pressed() -> void:
+	if $Character.coins >= 1:
+		$Character.coins -= 1
+		if randi_range(1,150) == 150:
+			$Character.coins += 99
