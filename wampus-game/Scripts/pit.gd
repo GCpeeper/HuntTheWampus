@@ -45,10 +45,10 @@ func _ready() -> void:
 func some_button_pressed(button):
 	player.coins -= 1
 	if buttonList.get(button) == (riddleList[riddleChoice])[5]:
-		print("yeah")
+		#print("yeah")
 		success()
 	else:
-		print("nah")
+		#print("nah")
 		failure()
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
@@ -113,8 +113,8 @@ func failure():
 func _on_timer_timeout() -> void:
 	bubble.visible = false
 	animation_player.play("idle")
-	print("tries" + str(tries))
-	print("correct tries" + str(correctTries))
+	#print("tries" + str(tries))
+	#print("correct tries" + str(correctTries))
 	announcement.hide()
 	announcement2.hide()
 	question.show()

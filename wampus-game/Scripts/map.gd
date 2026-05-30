@@ -454,15 +454,15 @@ func craftRoom(adjN,adjE,adjS,adjW,tileset):
 			wumpus = true
 			wumpusSelected = true
 			wumpusLocation = roomsPresent-1
-			print("wampus is in a " + str(roomsPresent-1))
+			#print("wampus is in a " + str(roomsPresent-1))
 		if randi_range(0,11) > 8 and hazardsLeft > 0:
 			hazardsLeft -= 1
 			hazard = randi_range(0,1) # 0 means bats, 1 means pit
-			print("hazard in " + str(roomsPresent-1))
+			#print("hazard in " + str(roomsPresent-1))
 		if swordsLeft > 0 and randi_range(0,3) > 1: # Setting up swords, should be at most 10 in the cave
 			swordsLeft -= 1
 			sword = 1
-			print("theres a sword in " + str(roomsPresent-1))
+			#print("theres a sword in " + str(roomsPresent-1))
 	return([null,null,null,null,tileset,wumpus,hazard,sword,roomsPresent-1])
 
 func _ready() -> void:
@@ -507,7 +507,7 @@ func runHazard(hazard):
 		roomList[randi_range(0,4)][randi_range(0,5)][6] = 0 # Moving bats to another room
 		curRoom = roomList[randi_range(0,4)][randi_range(0,5)]
 		curRoom[6] = -1 # Making sure it doesn't send you straight into other hazards
-		print("new room is " + str(curRoom[8]))
+		#print("new room is " + str(curRoom[8]))
 		enterRoom(4)
 		$Character.taking_input = true
 	elif hazard == 1:
@@ -528,11 +528,11 @@ func runWumpus():
 			wumpus._animation_player.play("wampus hit")
 		else:
 			wumpus._animation_player.play("wampus defeated")
-			print("YOU WON")
+			#print("YOU WON")
 			Global.makeScore($Character.coins,travels)
 	else:
 		wumpus._animation_player.play("wampus not hit")
-		print("YOU DIED")
+		#print("YOU DIED")
 	await get_tree().create_timer(6).timeout
 	wumpus.queue_free()
 	wumpusHealth -= 1
@@ -578,7 +578,7 @@ func enterRoom(direction):
 				$Character.position = Vector2(60, 530)
 			4:
 				$Character.position = Vector2(724,422)
-		print(curRoom[5])
+		#print(curRoom[5])
 		$"CanvasLayer/Labels for Directions/Current Room".text = str(curRoom[8])
 		$Character.smelling = false
 		$Character.hearing = false
@@ -607,7 +607,7 @@ func enterRoom(direction):
 			$Character.hearing = true
 		elif curRoom[3]!=null and curRoom[3][6] == 1:
 			$Character.feeling = true
-		if doneWithHazard:
+		if doneWithHazard and $"Hazard Timer".time_left == 0:
 			$"Hazard Timer".start()
 
 func _on_character_exit_room(direction: Variant) -> void:
