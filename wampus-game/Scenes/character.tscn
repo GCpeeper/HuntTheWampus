@@ -306,12 +306,13 @@ script = ExtResource("1_ejsiy")
 
 [node name="Sprite2D2" type="Sprite2D" parent="."]
 position = Vector2(0.66666603, 6.666666)
+scale = Vector2(1.25, 1.25)
 texture = ExtResource("3_2mse5")
 hframes = 10
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(0, 5.3333335)
-scale = Vector2(0.865, 0.9750001)
+position = Vector2(0, 8)
+scale = Vector2(1.045, 1.038)
 shape = SubResource("RectangleShape2D_lkv7d")
 
 [node name="CoyoteTime" type="Timer" parent="."]
@@ -336,9 +337,9 @@ target_position = Vector2(-1.7484555e-07, 4)
 [node name="Coin lost" type="Label" parent="."]
 visible = false
 offset_left = -20.666668
-offset_top = -42.666668
+offset_top = -34.666668
 offset_right = 19.333332
-offset_bottom = -19.666668
+offset_bottom = -11.666668
 text = "-1 Coin"
 label_settings = SubResource("LabelSettings_reotu")
 
@@ -347,9 +348,9 @@ one_shot = true
 
 [node name="Label" type="Label" parent="."]
 offset_left = -68.0
-offset_top = 24.666668
+offset_top = 27.333334
 offset_right = 69.0
-offset_bottom = 47.66667
+offset_bottom = 50.333336
 text = "I smell a Wumpus"
 label_settings = SubResource("LabelSettings_2mse5")
 horizontal_alignment = 1
