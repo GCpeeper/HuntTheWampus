@@ -12,15 +12,16 @@ extends Control
 @onready var bubble = $"../TileMapLayer2"
 var step = 0
 var riddleList = []
-var riddle1 = ["What has roots that nobody sees, is taller than trees, up, up it goes, and yet never grows?", "A tall tree.", "A mountain", "A shadow.", "The Parthenon.", 2]
-var riddle2 = ["There is a right triangle with sides A, B, and C. Side AB is 5 feet, angle A is 45, and angle B is 90. What is the area of the triangle?", "56 feet squared.", "25 feet squared.", "12.5 feet squared.", "25.5 feet squared.", 3]
-var riddle3 = ["Idk man.", "56 feet squared.", "25 feet squared.", "12.5 feet squared.", "25.5 feet squared.", 1]
+var riddle1 = ["What has roots that nobody sees, is taller than trees, up, up it goes, and yet never grows?", "A tall tree.", "A mountain", "A shadow", "The Parthenon", 2]
+var riddle2 = ["There is a right triangle with sides A, B, and C. Side AB is 5 feet, angle A is 45, and angle B is 90. What is the area of the triangle?", "56 feet squared", "25 feet squared", "12.5 feet squared", "25.5 feet squared", 3]
+var riddle3 = ["I look at you whenever you look at me. What am I?", "A reflection", "A photo", "Glasses", "Letters", 1]
 var riddle4 = ["When was the Parthenon completed?", "431 BC", "432 BC", "433 BC", "259 BC", 2]
 var riddle5 = ["What is the only land mammal that can't jump?", "Whale", "Deer", "Goat", "Elephant", 4]
 var riddle6 = ["Who made the original Hunt the Wumpus?","Jimmy Donaldson","Gregory Donaldson","Gregory Yob", "Jimmy Yob", 3]
 var riddle7 = ["How many peanuts does it take to make a jar of peanut butter?", "540", "320", "342", "200", 1]
-var riddle8 = ["Using Archimedes' Principle, if the bouyant force on an object is 10 newtons, what is the mass of the object (using 9.8 meters squared)?", "2.3","1.56","1.02", "3",3]
+var riddle8 = ["Using Archimedes' Principle, if the bouyant force on an object is 10 newtons, what is the volume of the object (using 9.8 meters squared)?", "2.3 liters","1.56 liters","1.02 liters", "3 liters",3]
 var riddle9 = ["There is one father with 12 children, who each have 30 or so of their own. They are all immortal and yet all fade away. What is the father?", "A guy with a lot of kids", "A year", "A grandfather", "A spider", 2]
+var riddle10 = ["It's dark but comes from something bright. It flies without wings. Those who see it sometimes cry. It can vanish into thin air. What is it?", "B-2 Stealth Bomber", "A ghost", "Smoke", "Death", 2]
 var answer: int
 var buttonList : Dictionary
 var riddleChoice: int
@@ -36,7 +37,7 @@ func _ready() -> void:
 	question.hide()
 	answers.hide()
 	timerBar.value = 15
-	riddleList = [riddle1, riddle2, riddle3, riddle4,riddle5,riddle6,riddle7,riddle8,riddle9]
+	riddleList = [riddle1, riddle2, riddle3, riddle4,riddle5,riddle6,riddle7,riddle8,riddle9,riddle10]
 	buttonList = {$Buttons/A: 1,$Buttons/B: 2,$Buttons/C: 3,$Buttons/D:4}
 	for i in buttonList.keys():
 		i.pressed.connect(some_button_pressed.bind(i))
@@ -121,7 +122,7 @@ func _on_timer_timeout() -> void:
 	$Buttons.show()
 	timerBar.show()
 	riddleTimer.start()
-	riddleChoice = randi_range(0,7)
+	riddleChoice = randi_range(0,9) # Picking a random riddle
 	#print(riddleChoice)
 	question.text = (riddleList[riddleChoice])[0]
 	answers.text = ": " + (riddleList[riddleChoice])[1] + "\n: " + (riddleList[riddleChoice])[2] + "\n: " + (riddleList[riddleChoice])[3] + "\n: " + (riddleList[riddleChoice])[4]
