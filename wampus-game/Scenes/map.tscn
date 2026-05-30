@@ -127,8 +127,13 @@ texture = ExtResource("10_rg57b")
 [node name="Fifth Stalactites" type="Sprite2D" parent="CanvasLayer2/Parallax Control"]
 texture = ExtResource("11_macow")
 
+[node name="Blue" type="Sprite2D" parent="CanvasLayer2"]
+z_index = -2
+position = Vector2(745, 436)
+texture = ExtResource("3_ie368")
+
 [node name="Hazard Timer" type="Timer" parent="."]
-wait_time = 5.0
+wait_time = 10.0
 one_shot = true
 
 [node name="Store ui" type="CanvasLayer" parent="."]
@@ -172,9 +177,9 @@ anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
 offset_left = -97.0
-offset_top = -106.0
+offset_top = -121.0
 offset_right = 94.0
-offset_bottom = -42.5
+offset_bottom = -57.5
 grow_horizontal = 2
 grow_vertical = 2
 text = "Wumpus Hint (15 coins)"
@@ -187,9 +192,9 @@ anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
 offset_left = -95.0
-offset_top = -14.0
+offset_top = -50.0
 offset_right = 96.0
-offset_bottom = 49.5
+offset_bottom = 13.5
 grow_horizontal = 2
 grow_vertical = 2
 text = "Sword (10 coins)"
@@ -201,13 +206,13 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -97.0
-offset_top = 70.0
-offset_right = 94.0
-offset_bottom = 133.5
+offset_left = -188.0
+offset_top = 25.0
+offset_right = 185.0
+offset_bottom = 88.5
 grow_horizontal = 2
 grow_vertical = 2
-text = "Hazard Invulnerability (20 coins)"
+text = "Hazard Invulnerability for 10 seconds (20 coins)"
 
 [node name="Coins" type="Label" parent="Store ui/Control"]
 layout_mode = 0
@@ -235,7 +240,7 @@ horizontal_alignment = 1
 [node name="Store" type="Button" parent="CanvasLayer3"]
 offset_right = 160.0
 offset_bottom = 63.0
-text = "Open Store"
+text = "Open Store (LShift)"
 
 [connection signal="exit_room" from="Character" to="." method="_on_character_exit_room"]
 [connection signal="timeout" from="Hazard Timer" to="." method="_on_hazard_timer_timeout"]

@@ -3,6 +3,8 @@ extends CharacterBody2D
 @onready var _sprite = $Sprite2D2 # replaced it with a different asset pack placeholder as the other one didnt work very well with animations and frame division
 @onready var _animation_player = $AnimationPlayer # made and animation player system which could work better for more complicated animations (attacks and stuff mainly but otherwise works the same as other method)
 @onready var _sense = $Label
+@onready var _coin_lost_timer = $"Coin lost timer"
+@onready var _coin_lost = $"Coin lost"
 
 const SPEED = 300.0
 const JUMP_VELOCITY = -500.0
@@ -102,3 +104,7 @@ func _physics_process(delta: float) -> void:
 	
 	if was_on_floor and !is_on_floor(): # Adds more leniency towards jumps
 		$CoyoteTime.start()
+
+
+func _on_coin_lost_timer_timeout() -> void:
+	_coin_lost.visible = false

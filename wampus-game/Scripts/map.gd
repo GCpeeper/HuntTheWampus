@@ -50,7 +50,7 @@ func layout(type):
 			roomList[0][1][1] = roomList[0][2] # Dead facing right
 			roomList[0][2][1] = roomList[0][3] # Side facing down
 			roomList[0][2][2] = roomList[1][2]
-			roomList[0][2][3] = roomList[1][1] 
+			roomList[0][2][3] = roomList[0][1] 
 			roomList[0][3][1] = roomList[0][4] # Side facing bottom
 			roomList[0][3][2] = roomList[1][3]
 			roomList[0][3][3] = roomList[0][2]
@@ -284,7 +284,161 @@ func layout(type):
 			roomList[4][4][1] = roomList[4][5]
 			roomList[4][5][0] = roomList[3][5] # Corner facing up left
 			roomList[4][5][3] = roomList[4][4]
-
+		4: # Layout 4
+			roomList = [
+			[craftRoom(null,null,null,null,CornerD),craftRoom(null,null,null,null,HallwayA),craftRoom(null,null,null,null,SideC),craftRoom(null,null,null,null,SideC),craftRoom(null,null,null,null,HallwayA),craftRoom(null,null,null,null,CornerC)],
+			[craftRoom(null,null,null,null,HallwayB),craftRoom(null,null,null,null,CornerD),craftRoom(null,null,null,null,SideA),craftRoom(null,null,null,null,SideB),craftRoom(null,null,null,null,CornerC),craftRoom(null,null,null,null,HallwayB)],
+			[craftRoom(null,null,null,null,SideB),craftRoom(null,null,null,null,SideA),craftRoom(null,null,null,null,DeadEndC),craftRoom(null,null,null,null,DeadEndC),craftRoom(null,null,null,null,SideB),craftRoom(null,null,null,null,SideA)],
+			[craftRoom(null,null,null,null,HallwayB),craftRoom(null,null,null,null,CornerB),craftRoom(null,null,null,null,CornerC),craftRoom(null,null,null,null,CornerD),craftRoom(null,null,null,null,CornerA),craftRoom(null,null,null,null,HallwayB)],
+			[craftRoom(null,null,null,null,CornerB),craftRoom(null,null,null,null,HallwayA),craftRoom(null,null,null,null,SideD),craftRoom(null,null,null,null,SideC),craftRoom(null,null,null,null,HallwayA),craftRoom(null,null,null,null,CornerA)],
+			]
+			# Row 1
+			roomList[0][0][1] = roomList[0][1] # Corner down right
+			roomList[0][0][2] = roomList[1][0]
+			roomList[0][1][1] = roomList[0][2] # Hallway horizontal
+			roomList[0][1][3] = roomList[0][0]
+			roomList[0][2][1] = roomList[0][3] # Side facing down
+			roomList[0][2][2] = roomList[1][2]
+			roomList[0][2][3] = roomList[0][1]
+			roomList[0][3][1] = roomList[0][4] # Side facing down
+			roomList[0][3][2] = roomList[1][3]
+			roomList[0][3][3] = roomList[0][2]
+			roomList[0][4][1] = roomList[0][5] # Hallway horizontal
+			roomList[0][4][3] = roomList[0][3]
+			roomList[0][5][2] = roomList[1][5] # Corner down left
+			roomList[0][5][3] = roomList[0][4]
+			# Row 2
+			roomList[1][0][0] = roomList[0][0] # Hallway vertical
+			roomList[1][0][2] = roomList[2][0]
+			roomList[1][1][1] = roomList[1][2] # Corner down right
+			roomList[1][1][2] = roomList[2][1]
+			roomList[1][2][0] = roomList[0][2] # Side facing left
+			roomList[1][2][2] = roomList[2][2]
+			roomList[1][2][3] = roomList[1][1]
+			roomList[1][3][0] = roomList[0][3] # Side facing right
+			roomList[1][3][1] = roomList[1][4]
+			roomList[1][3][2] = roomList[2][3]
+			roomList[1][4][2] = roomList[2][4] # Corner down left
+			roomList[1][4][3] = roomList[1][3]
+			roomList[1][5][0] = roomList[0][5] # Hallway vertical
+			roomList[1][5][2] = roomList[2][5]
+			# Row 3
+			roomList[2][0][0] = roomList[1][0] # Side facing right
+			roomList[2][0][1] = roomList[2][1]
+			roomList[2][0][2] = roomList[3][0]
+			roomList[2][1][0] = roomList[1][1] # Side facing left
+			roomList[2][1][2] = roomList[3][1]
+			roomList[2][1][3] = roomList[2][0]
+			roomList[2][2][0] = roomList[1][2] # Dead facing up
+			roomList[2][3][0] = roomList[1][3] # Dead facing up
+			roomList[2][4][0] = roomList[1][4] # Side facing right
+			roomList[2][4][1] = roomList[2][5]
+			roomList[2][4][2] = roomList[3][4]
+			roomList[2][5][0] = roomList[1][5] # Side facing left
+			roomList[2][5][2] = roomList[3][5]
+			roomList[2][5][3] = roomList[2][4]
+			# Row 4
+			roomList[3][0][0] = roomList[2][0] # Hallwa vertical
+			roomList[3][0][2] = roomList[4][0]
+			roomList[3][1][0] = roomList[2][1] # Corner up right
+			roomList[3][1][1] = roomList[3][2]
+			roomList[3][2][2] = roomList[4][2] # Corner down left
+			roomList[3][2][3] = roomList[3][1]
+			roomList[3][3][1] = roomList[3][4] # Corner down right
+			roomList[3][3][2] = roomList[4][3]
+			roomList[3][4][0] = roomList[2][4] # Corner up left
+			roomList[3][4][3] = roomList[3][3]
+			roomList[3][5][0] = roomList[2][5] # Hallway horizontal
+			roomList[3][5][2] = roomList[4][5]
+			# Row 5
+			roomList[4][0][0] = roomList[3][0] # Corner up right
+			roomList[4][0][1] = roomList[4][1]
+			roomList[4][1][1] = roomList[4][2] # Hallway horizontal
+			roomList[4][1][3] = roomList[4][0]
+			roomList[4][2][0] = roomList[3][2] # Side facing up
+			roomList[4][2][1] = roomList[4][3]
+			roomList[4][2][3] = roomList[4][1]
+			roomList[4][3][0] = roomList[3][3] # Side facing up
+			roomList[4][3][1] = roomList[4][4]
+			roomList[4][3][3] = roomList[4][2]
+			roomList[4][4][1] = roomList[4][5] # Hallway horizontal
+			roomList[4][4][3] = roomList[4][3]
+			roomList[4][5][0] = roomList[3][5] # Corner up left
+			roomList[4][5][3] = roomList[4][4]
+		5: # Layout 5
+			roomList = [
+			[craftRoom(null,null,null,null,DeadEndD),craftRoom(null,null,null,null,DeadEndD),craftRoom(null,null,null,null,CornerD),craftRoom(null,null,null,null,CornerC),craftRoom(null,null,null,null,DeadEndD),craftRoom(null,null,null,null,DeadEndD)],
+			[craftRoom(null,null,null,null,CornerB),craftRoom(null,null,null,null,SideD),craftRoom(null,null,null,null,SideA),craftRoom(null,null,null,null,SideB),craftRoom(null,null,null,null,SideD),craftRoom(null,null,null,null,CornerA)],
+			[craftRoom(null,null,null,null,DeadEndB),craftRoom(null,null,null,null,SideC),craftRoom(null,null,null,null,CornerA),craftRoom(null,null,null,null,CornerB),craftRoom(null,null,null,null,SideC),craftRoom(null,null,null,null,DeadEndA)],
+			[craftRoom(null,null,null,null,CornerD),craftRoom(null,null,null,null,SideA),craftRoom(null,null,null,null,CornerD),craftRoom(null,null,null,null,CornerC),craftRoom(null,null,null,null,SideB),craftRoom(null,null,null,null,CornerC)],
+			[craftRoom(null,null,null,null,DeadEndC),craftRoom(null,null,null,null,CornerB),craftRoom(null,null,null,null,CornerA),craftRoom(null,null,null,null,CornerB),craftRoom(null,null,null,null,CornerA),craftRoom(null,null,null,null,DeadEndC)],
+			]
+			# Row 1
+			roomList[0][0][2] = roomList[1][0] # Dead facing down
+			roomList[0][1][2] = roomList[1][1] # Dead facing down
+			roomList[0][2][1] = roomList[0][3] # Corner down right
+			roomList[0][2][2] = roomList[1][2]
+			roomList[0][3][2] = roomList[1][3] # Corner down left
+			roomList[0][3][3] = roomList[0][2]
+			roomList[0][4][2] = roomList[1][4] # Dead facing down
+			roomList[0][5][2] = roomList[1][5]
+			# Row 2
+			roomList[1][0][0] = roomList[0][0] # Corner up right
+			roomList[1][0][1] = roomList[1][1]
+			roomList[1][1][0] = roomList[0][1] # Side facing up
+			roomList[1][1][1] = roomList[1][2]
+			roomList[1][1][3] = roomList[1][0]
+			roomList[1][2][0] = roomList[0][2] # Side facing left
+			roomList[1][2][2] = roomList[2][2]
+			roomList[1][2][3] = roomList[1][1]
+			roomList[1][3][0] = roomList[0][3] # Side facing right
+			roomList[1][3][1] = roomList[1][4]
+			roomList[1][3][2] = roomList[2][3]
+			roomList[1][4][0] = roomList[0][4] # Side facing up
+			roomList[1][4][1] = roomList[1][5]
+			roomList[1][4][3] = roomList[1][3]
+			roomList[1][5][0] = roomList[0][5] # Corner up left
+			roomList[1][5][3] = roomList[1][4]
+			# Row 3
+			roomList[2][0][1] = roomList[2][1] # Dead facing right
+			roomList[2][1][1] = roomList[2][2] # Side facing down
+			roomList[2][1][2] = roomList[3][1]
+			roomList[2][1][3] = roomList[2][0]
+			roomList[2][2][0] = roomList[1][2] # Corner up left
+			roomList[2][2][3] = roomList[2][1]
+			roomList[2][3][0] = roomList[1][3] # Corner up right
+			roomList[2][3][1] = roomList[2][4]
+			roomList[2][4][1] = roomList[2][5] # Side facing down
+			roomList[2][4][2] = roomList[3][4]
+			roomList[2][4][3] = roomList[2][3]
+			roomList[2][5][3] = roomList[2][4] # Dead facing left
+			# Row 4
+			roomList[3][0][1] = roomList[3][1] # Corner down right
+			roomList[3][0][2] = roomList[4][0]
+			roomList[3][1][0] = roomList[2][1] # Side facing left
+			roomList[3][1][2] = roomList[4][1]
+			roomList[3][1][3] = roomList[3][0]
+			roomList[3][2][1] = roomList[3][3] # Corner down right
+			roomList[3][2][2] = roomList[4][2]
+			roomList[3][3][2] = roomList[4][3] # Corner down left
+			roomList[3][3][3] = roomList[3][2]
+			roomList[3][4][0] = roomList[2][4] # Side facing right
+			roomList[3][4][1] = roomList[3][5]
+			roomList[3][4][2] = roomList[4][4]
+			roomList[3][5][2] = roomList[4][5] # Corner down left
+			roomList[3][5][3] = roomList[3][4]
+			# Row 5
+			roomList[4][0][0] = roomList[3][0] # Dead facing up
+			roomList[4][1][0] = roomList[3][1] # Corner up right
+			roomList[4][1][1] = roomList[4][2]
+			roomList[4][2][0] = roomList[3][2] # Corner up left
+			roomList[4][2][3] = roomList[4][1]
+			roomList[4][3][0] = roomList[3][3] # Corner up right
+			roomList[4][3][1] = roomList[4][4]
+			roomList[4][4][0] = roomList[3][4] # Corner up left
+			roomList[4][4][3] = roomList[4][3]
+			roomList[4][5][0] = roomList[3][5] # Dead facing up
+			
 func remove_sword():
 	curRoom[7] = 0
 	$"CanvasLayer/Labels for Directions/Sword".text = "You Have a Sword!"
@@ -296,7 +450,7 @@ func craftRoom(adjN,adjE,adjS,adjW,tileset):
 	var sword = 0
 	roomsPresent+=1
 	if roomsPresent > 1: # Will never have wumpus or hazard in the first room, obviously
-		if wumpusSelected == false and randi_range(1,30) > 25:
+		if wumpusSelected == false and randi_range(1,30) > 27:
 			wumpus = true
 			wumpusSelected = true
 			wumpusLocation = roomsPresent-1
@@ -305,20 +459,19 @@ func craftRoom(adjN,adjE,adjS,adjW,tileset):
 			hazardsLeft -= 1
 			hazard = randi_range(0,1) # 0 means bats, 1 means pit
 			print("hazard in " + str(roomsPresent-1))
-		if swordsLeft > 0 and randi_range(0,3) > 0: # Setting up swords, should be at most 10 in the cave
+		if swordsLeft > 0 and randi_range(0,3) > 1: # Setting up swords, should be at most 10 in the cave
 			swordsLeft -= 1
 			sword = 1
 			print("theres a sword in " + str(roomsPresent-1))
 	return([null,null,null,null,tileset,wumpus,hazard,sword,roomsPresent-1])
 
 func _ready() -> void:
-	#layout(randi_range(1,5))
+	layout(randi_range(1,5))
 	for r in 5:
 		roomList.append([])
 		for c in 6:
 			roomList[r].append([])
-	layout(randi_range(1,3))
-	if wumpusSelected == false:
+	if wumpusSelected == false: # If it didn't manage to spawn a wumpus, it will just be set to the bottom right corner room
 		roomList[4][5][5] = true
 	curRoom = roomList[0][0]
 	enterRoom(1)
@@ -350,6 +503,8 @@ func runHazard(hazard):
 		await get_tree().create_timer(5).timeout
 		bats.queue_free()
 		$Character.visible = true
+		curRoom[6] = -1 # Getting rid of bats from this room
+		roomList[randi_range(0,4)][randi_range(0,5)][6] = 0 # Moving bats to another room
 		curRoom = roomList[randi_range(0,4)][randi_range(0,5)]
 		print("new room is " + str(curRoom[8]))
 		enterRoom(4)
@@ -360,6 +515,7 @@ func runHazard(hazard):
 		$Character.position = Vector2(140,20)
 		add_child(pit)
 		$Character.taking_input = false
+		curRoom = roomList[0][0]
 
 func runWumpus():
 	$Character.taking_input = false
@@ -384,16 +540,16 @@ func runWumpus():
 	$Character.has_sword = false
 	$"CanvasLayer/Labels for Directions/Sword".text = "You Lack a Sword"
 	curRoom[5] = false
-	var newWumpusRoom = roomList[randi_range(0,4)][randi_range(0,5)]
-	roomList[randi_range(0,4)][randi_range(0,5)][5] = true
-	print("wumpus is in " + str(newWumpusRoom[8]))
-	wumpusLocation = newWumpusRoom[8]
+	var row = randi_range(0,4)
+	var col = randi_range(0,5)
+	roomList[row][col][5] = true
+	wumpusLocation = roomList[row][col][8]
 	$Character.taking_input = true
 	$Character.visible = true
 
 func enterRoom(direction):
 	if curRoom:
-		if curRoom[5] == true and not doneWithHazard:
+		if curRoom[5] == true:
 			await runWumpus()
 		if not doneWithHazard and curRoom[6] >= 0:
 			await runHazard(curRoom[6])
@@ -478,16 +634,21 @@ func _do_room_transition(direction):
 func _on_hazard_timer_timeout() -> void:
 	doneWithHazard = false
 
+# A hotkey for the store would be nice so I added this
+func _process(delta: float) -> void:
+	if Input.is_action_just_pressed("open store"):
+		_on_store_pressed()
 
+# opening through button
 func _on_store_pressed() -> void:
 	if $"Store ui".visible:
 		$"Store ui".visible = false
-		$CanvasLayer3/Store.text = "Open Store"
+		$CanvasLayer3/Store.text = "Open Store (LShift)"
 	else:
 		$"Store ui".visible = true
 		$"Store ui/Control/The hint".visible = false
 		$"Store ui/Control/Coins".text = "Coins: " + str($Character.coins)
-		$CanvasLayer3/Store.text = "Close Store"
+		$CanvasLayer3/Store.text = "Close Store (LShift)"
 
 # Getting a wumpus hint, takes 15 coins in exchange for showing which room the wumpus is in
 func _on_hint_pressed() -> void:

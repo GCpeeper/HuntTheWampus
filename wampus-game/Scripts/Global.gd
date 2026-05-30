@@ -6,7 +6,7 @@ var rng = RandomNumberGenerator.new()
 var username = ""
 # Leaderboard, keeps track of names and scores
 	# This leaderboard is the base leaderboard that is built off of by subsequent saves
-var LeaderBoard = [["Player 1", 50],["Player 2", 63]]
+var LeaderBoard = [["Player 1", 50, 75, 25],["Player 2", 63, 80, 43]]
 const SAVE_PATH = "user://scores.json" # This is a save path for the score json, set for each user
 
 # Sorting it using a custom function that checks if things are bigger than other things
@@ -16,7 +16,7 @@ func sortLeaderBoard(a,b):
 	return false
 
 func makeScore(coins,travels): # the scoring starts at 100, is decreased for every room travelled, and is increased by the coins you had in your pocket when winning
-	LeaderBoard.append([username,(100-travels+coins)])
+	LeaderBoard.append([username,(100-travels+coins),travels,coins])
 
 # Saving scores, replaces data within the JSON file with the new score list
 func _saveScores():
@@ -51,6 +51,8 @@ func _loadScores():
 		# The parsing was turning the scores into floats so I turned them back into ints with this
 		for score in LeaderBoard:
 			score[1] = int(score[1])
+			score[2] = int(score[2])
+			score[3] = int(score[3])
 		#print(LeaderBoard)
 	# If it doesn't work
 	else:

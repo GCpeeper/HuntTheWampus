@@ -88,7 +88,7 @@ func success():
 		await get_tree().create_timer(3.0).timeout
 		player.taking_input = true
 		get_parent().get_parent().doneWithHazard = true
-		get_parent().get_parent().enterRoom(get_parent().direction)
+		get_parent().get_parent().enterRoom(4)
 		get_parent().queue_free()
 	
 func failure():

@@ -5,5 +5,5 @@ func _ready() -> void:
 
 func offset():
 	for part in get_children():
-		part.offset.x += randi_range(-30,30)
+		part.offset.x += randi_range(-20,20)
 		print(part.offset.x)
