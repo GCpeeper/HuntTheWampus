@@ -290,7 +290,7 @@ func layout(type):
 			[craftRoom(null,null,null,null,HallwayB),craftRoom(null,null,null,null,CornerD),craftRoom(null,null,null,null,SideA),craftRoom(null,null,null,null,SideB),craftRoom(null,null,null,null,CornerC),craftRoom(null,null,null,null,HallwayB)],
 			[craftRoom(null,null,null,null,SideB),craftRoom(null,null,null,null,SideA),craftRoom(null,null,null,null,DeadEndC),craftRoom(null,null,null,null,DeadEndC),craftRoom(null,null,null,null,SideB),craftRoom(null,null,null,null,SideA)],
 			[craftRoom(null,null,null,null,HallwayB),craftRoom(null,null,null,null,CornerB),craftRoom(null,null,null,null,CornerC),craftRoom(null,null,null,null,CornerD),craftRoom(null,null,null,null,CornerA),craftRoom(null,null,null,null,HallwayB)],
-			[craftRoom(null,null,null,null,CornerB),craftRoom(null,null,null,null,HallwayA),craftRoom(null,null,null,null,SideD),craftRoom(null,null,null,null,SideC),craftRoom(null,null,null,null,HallwayA),craftRoom(null,null,null,null,CornerA)],
+			[craftRoom(null,null,null,null,CornerB),craftRoom(null,null,null,null,HallwayA),craftRoom(null,null,null,null,SideD),craftRoom(null,null,null,null,SideD),craftRoom(null,null,null,null,HallwayA),craftRoom(null,null,null,null,CornerA)],
 			]
 			# Row 1
 			roomList[0][0][1] = roomList[0][1] # Corner down right
@@ -466,16 +466,17 @@ func craftRoom(adjN,adjE,adjS,adjW,tileset):
 	return([null,null,null,null,tileset,wumpus,hazard,sword,roomsPresent-1])
 
 func _ready() -> void:
-	layout(randi_range(1,5))
 	for r in 5:
 		roomList.append([])
 		for c in 6:
 			roomList[r].append([])
-	if wumpusSelected == false: # If it didn't manage to spawn a wumpus, it will just be set to the bottom right corner room
+	layout(randi_range(1,5))
+	if wumpusSelected == false or wumpusLocation == null: # If it didn't manage to spawn a wumpus, it will just be set to the bottom right corner room
 		roomList[4][5][5] = true
 	curRoom = roomList[0][0]
 	enterRoom(1)
 	$Character.taking_input = true
+	print(wumpusLocation)
 	
 	
 	#connectRooms()
@@ -672,6 +673,7 @@ func _on_invulner_pressed() -> void:
 func _on_sword_pressed() -> void:
 	if $Character.coins >= 10 and !$Character.has_sword:
 		$Character.coins -= 10
+		$Character.sword()
 		$"CanvasLayer/Labels for Directions/Sword".text = "You Have a Sword!"
 		$Character.has_sword = true
 

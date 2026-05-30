@@ -1,4 +1,4 @@
-[gd_scene load_steps=31 format=4 uid="uid://dcti7p7r2u0bm"]
+[gd_scene load_steps=36 format=4 uid="uid://dcti7p7r2u0bm"]
 
 [ext_resource type="Script" uid="uid://n7two7incos1" path="res://Scripts/wampus_cutscenes.gd" id="1_ja8wb"]
 [ext_resource type="Texture2D" uid="uid://lnhjkavb77yb" path="res://Assests/Character Test/character_walk.png" id="1_yojdq"]
@@ -21,6 +21,9 @@
 [ext_resource type="Texture2D" uid="uid://bxgj8ql3ni55b" path="res://Assests/WampusRoarAttack.png" id="17_vu2mo"]
 [ext_resource type="Texture2D" uid="uid://dwyxqp1xfsqy1" path="res://Assests/RoarAttack.png" id="18_8rq6b"]
 [ext_resource type="Texture2D" uid="uid://c0a6xh1foyrbh" path="res://Assests/WampusAttacked.png" id="18_ruia6"]
+[ext_resource type="AudioStream" uid="uid://b010gl0cdrpth" path="res://Assests/sfx/sword.mp3" id="22_yas4m"]
+[ext_resource type="AudioStream" uid="uid://diaeoko1vo3of" path="res://Assests/sfx/roar.mp3" id="23_qo2oe"]
+[ext_resource type="AudioStream" uid="uid://cej4rcbllsu2v" path="res://Assests/sfx/crash.mp3" id="24_hlp0n"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_0vuao"]
 texture = ExtResource("2_6bmdi")
@@ -432,6 +435,78 @@ tracks/16/keys = {
 "update": 0,
 "values": [0.0]
 }
+tracks/17/type = "value"
+tracks/17/imported = false
+tracks/17/enabled = true
+tracks/17/path = NodePath("Label:visible")
+tracks/17/interp = 1
+tracks/17/loop_wrap = true
+tracks/17/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/18/type = "value"
+tracks/18/imported = false
+tracks/18/enabled = true
+tracks/18/path = NodePath("Label:text")
+tracks/18/interp = 1
+tracks/18/loop_wrap = true
+tracks/18/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": ["YOU WON!"]
+}
+tracks/19/type = "value"
+tracks/19/imported = false
+tracks/19/enabled = true
+tracks/19/path = NodePath("Label:label_settings:font_color")
+tracks/19/interp = 1
+tracks/19/loop_wrap = true
+tracks/19/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(0, 1, 0, 1)]
+}
+tracks/20/type = "value"
+tracks/20/imported = false
+tracks/20/enabled = true
+tracks/20/path = NodePath("Sword:playing")
+tracks/20/interp = 1
+tracks/20/loop_wrap = true
+tracks/20/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/21/type = "value"
+tracks/21/imported = false
+tracks/21/enabled = true
+tracks/21/path = NodePath("Roar:playing")
+tracks/21/interp = 1
+tracks/21/loop_wrap = true
+tracks/21/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/22/type = "value"
+tracks/22/imported = false
+tracks/22/enabled = true
+tracks/22/path = NodePath("Crash:playing")
+tracks/22/interp = 1
+tracks/22/loop_wrap = true
+tracks/22/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
 
 [sub_resource type="Animation" id="Animation_ruia6"]
 resource_name = "wampus defeated"
@@ -580,6 +655,78 @@ tracks/11/keys = {
 "update": 0,
 "values": [0.0, 0.0, -3.0543261909900767]
 }
+tracks/12/type = "value"
+tracks/12/imported = false
+tracks/12/enabled = true
+tracks/12/path = NodePath("Label:visible")
+tracks/12/interp = 1
+tracks/12/loop_wrap = true
+tracks/12/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/13/type = "value"
+tracks/13/imported = false
+tracks/13/enabled = true
+tracks/13/path = NodePath("Label:text")
+tracks/13/interp = 1
+tracks/13/loop_wrap = true
+tracks/13/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": ["YOU WON!"]
+}
+tracks/14/type = "value"
+tracks/14/imported = false
+tracks/14/enabled = true
+tracks/14/path = NodePath("Label:label_settings:font_color")
+tracks/14/interp = 1
+tracks/14/loop_wrap = true
+tracks/14/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(0, 1, 0, 1)]
+}
+tracks/15/type = "value"
+tracks/15/imported = false
+tracks/15/enabled = true
+tracks/15/path = NodePath("Sword:playing")
+tracks/15/interp = 1
+tracks/15/loop_wrap = true
+tracks/15/keys = {
+"times": PackedFloat32Array(2.5000002, 2.6000001),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [false, true]
+}
+tracks/16/type = "value"
+tracks/16/imported = false
+tracks/16/enabled = true
+tracks/16/path = NodePath("Roar:playing")
+tracks/16/interp = 1
+tracks/16/loop_wrap = true
+tracks/16/keys = {
+"times": PackedFloat32Array(4.2000003, 4.3),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [false, true]
+}
+tracks/17/type = "value"
+tracks/17/imported = false
+tracks/17/enabled = true
+tracks/17/path = NodePath("Crash:playing")
+tracks/17/interp = 1
+tracks/17/loop_wrap = true
+tracks/17/keys = {
+"times": PackedFloat32Array(5.0000005, 5.6333337),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [false, true]
+}
 
 [sub_resource type="Animation" id="Animation_oxqgj"]
 resource_name = "wampus hit"
@@ -712,6 +859,30 @@ tracks/10/interp = 1
 tracks/10/loop_wrap = true
 tracks/10/keys = {
 "times": PackedFloat32Array(4, 4.2000003),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [false, true]
+}
+tracks/11/type = "value"
+tracks/11/imported = false
+tracks/11/enabled = true
+tracks/11/path = NodePath("Label:visible")
+tracks/11/interp = 1
+tracks/11/loop_wrap = true
+tracks/11/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/12/type = "value"
+tracks/12/imported = false
+tracks/12/enabled = true
+tracks/12/path = NodePath("Sword:playing")
+tracks/12/interp = 1
+tracks/12/loop_wrap = true
+tracks/12/keys = {
+"times": PackedFloat32Array(2.5000002, 2.6333334),
 "transitions": PackedFloat32Array(1, 1),
 "update": 1,
 "values": [false, true]
@@ -876,6 +1047,54 @@ tracks/12/keys = {
 "update": 0,
 "values": [Vector2(1178, 627)]
 }
+tracks/13/type = "value"
+tracks/13/imported = false
+tracks/13/enabled = true
+tracks/13/path = NodePath("Label:visible")
+tracks/13/interp = 1
+tracks/13/loop_wrap = true
+tracks/13/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/14/type = "value"
+tracks/14/imported = false
+tracks/14/enabled = true
+tracks/14/path = NodePath("Label:text")
+tracks/14/interp = 1
+tracks/14/loop_wrap = true
+tracks/14/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": ["YOU LOSE!"]
+}
+tracks/15/type = "value"
+tracks/15/imported = false
+tracks/15/enabled = true
+tracks/15/path = NodePath("Label:label_settings:font_color")
+tracks/15/interp = 1
+tracks/15/loop_wrap = true
+tracks/15/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 0, 0, 1)]
+}
+tracks/16/type = "value"
+tracks/16/imported = false
+tracks/16/enabled = true
+tracks/16/path = NodePath("Roar:playing")
+tracks/16/interp = 1
+tracks/16/loop_wrap = true
+tracks/16/keys = {
+"times": PackedFloat32Array(2.6666667, 3.0000002),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [false, true]
+}
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_xc1dj"]
 _data = {
@@ -884,6 +1103,15 @@ _data = {
 &"wampus hit": SubResource("Animation_oxqgj"),
 &"wampus not hit": SubResource("Animation_vu2mo")
 }
+
+[sub_resource type="SystemFont" id="SystemFont_ja8wb"]
+font_names = PackedStringArray("Trebuchet MS")
+subpixel_positioning = 0
+
+[sub_resource type="LabelSettings" id="LabelSettings_yas4m"]
+font = SubResource("SystemFont_ja8wb")
+font_size = 91
+font_color = Color(0, 1, 0, 1)
 
 [node name="Node2D" type="Node2D" node_paths=PackedStringArray("_animation_player")]
 script = ExtResource("1_ja8wb")
@@ -957,3 +1185,29 @@ offset_right = 964.2999
 offset_bottom = 537.065
 rotation = -0.36095473
 color = Color(0, 0, 0, 1)
+
+[node name="Label" type="Label" parent="."]
+visible = false
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 493.0
+offset_top = 194.0
+offset_right = 964.0
+offset_bottom = 319.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "YOU WON!"
+label_settings = SubResource("LabelSettings_yas4m")
+horizontal_alignment = 1
+
+[node name="Sword" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("22_yas4m")
+
+[node name="Roar" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("23_qo2oe")
+
+[node name="Crash" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("24_hlp0n")

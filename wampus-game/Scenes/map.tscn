@@ -12,7 +12,7 @@
 [ext_resource type="Texture2D" uid="uid://cj8gqxd35wb43" path="res://Assests/background/7.png" id="9_vtkp8"]
 [ext_resource type="Texture2D" uid="uid://dpanm5fk4jy71" path="res://Assests/background/8fx.png" id="10_rg57b"]
 [ext_resource type="Texture2D" uid="uid://wstj8msu1uwn" path="res://Assests/background/9.png" id="11_macow"]
-[ext_resource type="PackedScene" uid="uid://crkuufpeip0bj" path="res://Scenes/bat cutscene.tscn" id="13_ltf6m"]
+[ext_resource type="AudioStream" uid="uid://d20sfvn3lq771" path="res://Assests/sfx/Menu.mp3" id="14_ie368"]
 
 [sub_resource type="SystemFont" id="SystemFont_5qtum"]
 font_names = PackedStringArray("Trebuchet MS")
@@ -91,9 +91,6 @@ horizontal_alignment = 1
 
 [node name="Character" parent="." instance=ExtResource("2_26yhd")]
 position = Vector2(670, 830)
-
-[node name="Node2D" parent="." instance=ExtResource("13_ltf6m")]
-visible = false
 
 [node name="CanvasLayer2" type="CanvasLayer" parent="."]
 layer = -2
@@ -316,6 +313,10 @@ offset_left = -160.0
 offset_bottom = 63.0
 grow_horizontal = 0
 text = "Open Map (Enter)"
+
+[node name="Music" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("14_ie368")
+autoplay = true
 
 [connection signal="exit_room" from="Character" to="." method="_on_character_exit_room"]
 [connection signal="timeout" from="Hazard Timer" to="." method="_on_hazard_timer_timeout"]

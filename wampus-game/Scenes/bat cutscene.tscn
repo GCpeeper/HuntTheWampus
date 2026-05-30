@@ -1,7 +1,8 @@
-[gd_scene load_steps=7 format=3 uid="uid://crkuufpeip0bj"]
+[gd_scene load_steps=8 format=3 uid="uid://crkuufpeip0bj"]
 
 [ext_resource type="PackedScene" uid="uid://blrlrgcjj7p2y" path="res://Scenes/bat.tscn" id="1_fcsq1"]
 [ext_resource type="Texture2D" uid="uid://tqh7s8urhjq7" path="res://Assests/Character Test/character_idle.png" id="2_dhyv6"]
+[ext_resource type="AudioStream" uid="uid://b2wdjij8hv05f" path="res://Assests/sfx/flap.mp3" id="2_dlypk"]
 [ext_resource type="Texture2D" uid="uid://djm1hu7fm6vvg" path="res://Assests/Character Test/character_jump.png" id="3_i6jrk"]
 
 [sub_resource type="Animation" id="Animation_lwsui"]
@@ -240,6 +241,11 @@ position = Vector2(326, 237)
 
 [node name="Bat33" parent="Bats" instance=ExtResource("1_fcsq1")]
 position = Vector2(347, 167)
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer" parent="Bats"]
+stream = ExtResource("2_dlypk")
+volume_db = 16.825
+autoplay = true
 
 [node name="Sprite2D2" type="Sprite2D" parent="."]
 position = Vector2(743, 388)

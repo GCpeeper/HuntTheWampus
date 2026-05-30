@@ -10,6 +10,7 @@ extends Control
 @onready var timerBar = $ProgressBar
 @onready var animation_player = $"../AnimationPlayer"
 @onready var bubble = $"../TileMapLayer2"
+@onready var roaring = $"../Roar"
 var step = 0
 var riddleList = []
 var riddle1 = ["What has roots that nobody sees, is taller than trees, up, up it goes, and yet never grows?", "A tall tree.", "A mountain", "A shadow", "The Parthenon", 2]
@@ -58,6 +59,7 @@ func _process(delta: float) -> void:
 		bubble.visible = true
 		$"../Pit Wampus".visible = true
 		animation_player.play("talking")
+		roaring.play()
 		announcement.text = "You fell down the Pit!"
 		announcement2.show()
 		timer.start()
@@ -67,6 +69,7 @@ func _process(delta: float) -> void:
 
 func success():
 	animation_player.play("talking")
+	roaring.play()
 	announcement.show()
 	bubble.show()
 	announcement.text = "Good job!"
@@ -95,6 +98,7 @@ func success():
 	
 func failure():
 	animation_player.play("talking")
+	roaring.play()
 	bubble.show()
 	announcement.show()
 	announcement.text = "Wrong answer!"
@@ -134,6 +138,7 @@ func _on_pressed() -> void:
 
 func _on_riddle_timer_timeout() -> void:
 	animation_player.play("talking")
+	roaring.play()
 	bubble.visible = true
 	announcement.show()
 	announcement.text = "You ran out of time!"

@@ -1,4 +1,4 @@
-[gd_scene load_steps=25 format=4 uid="uid://fa072c1hwq7w"]
+[gd_scene load_steps=26 format=4 uid="uid://fa072c1hwq7w"]
 
 [ext_resource type="Script" uid="uid://c1lriaoxc7niv" path="res://Scripts/pitParent.gd" id="1_aacys"]
 [ext_resource type="Texture2D" uid="uid://g78fd3e5acvj" path="res://Assests/Terrain/MarbleTileset.png" id="1_ltng5"]
@@ -6,6 +6,7 @@
 [ext_resource type="Texture2D" uid="uid://bcrgsn55otuao" path="res://Assests/bubbles/multi-line-tilemap.png" id="2_vvulc"]
 [ext_resource type="Script" uid="uid://bs7l80y2jxj5n" path="res://Scripts/pit.gd" id="3_2uyid"]
 [ext_resource type="Texture2D" uid="uid://bg08ee67kunqp" path="res://Assests/PitWampus/Talk.png" id="4_tgwfy"]
+[ext_resource type="AudioStream" uid="uid://diaeoko1vo3of" path="res://Assests/sfx/roar.mp3" id="7_aacys"]
 
 [sub_resource type="Theme" id="Theme_ltng5"]
 
@@ -1393,6 +1394,9 @@ vframes = 4
 libraries = {
 &"": SubResource("AnimationLibrary_aacys")
 }
+
+[node name="Roar" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("7_aacys")
 
 [connection signal="timeout" from="Timer" to="Control" method="_on_timer_timeout"]
 [connection signal="timeout" from="Riddle_Timer" to="Control" method="_on_riddle_timer_timeout"]

@@ -22,6 +22,12 @@ func _ready() -> void:
 	start_pos = position
 	_animation_player.play("fall")
 
+func coin():
+	$coin.play()
+
+func sword():
+	$sword.play()
+
 func _process(delta: float) -> void:
 	if smelling:
 		_sense.visible = true
@@ -57,7 +63,6 @@ func _physics_process(delta: float) -> void:
 			emit_signal("exit_room", 3)
 		elif position.x>=1390:
 			emit_signal("exit_room", 1)
-		
 	
 	# Add the gravity.
 	if not is_on_floor() and taking_input:
@@ -65,6 +70,7 @@ func _physics_process(delta: float) -> void:
 		if $ShapeCast2D.is_colliding() and velocity.y > 0:
 			velocity.y *= 0.8
 			sliding = true
+			
 		else:
 			sliding = false
 		await get_tree().process_frame
