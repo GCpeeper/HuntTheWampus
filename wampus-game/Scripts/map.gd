@@ -638,6 +638,8 @@ func _on_hazard_timer_timeout() -> void:
 func _process(delta: float) -> void:
 	if Input.is_action_just_pressed("open store"):
 		_on_store_pressed()
+	if Input.is_action_just_pressed("open map"):
+		_on_map_pressed()
 
 # opening through button
 func _on_store_pressed() -> void:
@@ -670,3 +672,12 @@ func _on_sword_pressed() -> void:
 		$Character.coins -= 10
 		$"CanvasLayer/Labels for Directions/Sword".text = "You Have a Sword!"
 		$Character.has_sword = true
+
+
+func _on_map_pressed() -> void:
+	if $"Map ui".visible:
+		$"Map ui".visible = false
+		$CanvasLayer3/Map.text = "Open Map (Enter)"
+	else:
+		$"Map ui".visible = true
+		$CanvasLayer3/Map.text = "Close Map (Enter)"

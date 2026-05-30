@@ -1,4 +1,4 @@
-[gd_scene load_steps=20 format=3 uid="uid://casrnc0q3x0r0"]
+[gd_scene load_steps=21 format=3 uid="uid://casrnc0q3x0r0"]
 
 [ext_resource type="Script" uid="uid://bmci3la80cafy" path="res://Scripts/map.gd" id="1_p3ir5"]
 [ext_resource type="Script" uid="uid://b03tdrhc008y1" path="res://Scripts/parallax_control.gd" id="2_5qtum"]
@@ -36,6 +36,10 @@ font_color = Color(1, 1, 0, 1)
 [sub_resource type="LabelSettings" id="LabelSettings_k63oc"]
 font_size = 71
 font_color = Color(1, 0, 0, 1)
+
+[sub_resource type="LabelSettings" id="LabelSettings_j4oe2"]
+font_size = 70
+font_color = Color(0, 0, 0, 1)
 
 [node name="Map" type="Node2D"]
 script = ExtResource("1_p3ir5")
@@ -235,6 +239,53 @@ text = "Wumpus is in Room 0"
 label_settings = SubResource("LabelSettings_k63oc")
 horizontal_alignment = 1
 
+[node name="Map ui" type="CanvasLayer" parent="."]
+visible = false
+
+[node name="Control" type="Control" parent="Map ui"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="ColorRect" type="ColorRect" parent="Map ui/Control"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -368.0
+offset_top = -261.25
+offset_right = 368.0
+offset_bottom = 261.25
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.3860342, 0.38603422, 0.3860342, 1)
+
+[node name="Label" type="Label" parent="Map ui/Control"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -240.0
+offset_top = -236.0
+offset_right = 246.0
+offset_bottom = 239.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "0 | 1 | 2 | 3 | 4 | 5
+6 | 7 |  8 | 9 |10|11
+12|13|14|15|16|17
+18|19|20|21|22|23
+24|25|26|27|28|29"
+label_settings = SubResource("LabelSettings_j4oe2")
+horizontal_alignment = 1
+
 [node name="CanvasLayer3" type="CanvasLayer" parent="."]
 
 [node name="Store" type="Button" parent="CanvasLayer3"]
@@ -242,9 +293,19 @@ offset_right = 160.0
 offset_bottom = 63.0
 text = "Open Store (LShift)"
 
+[node name="Map" type="Button" parent="CanvasLayer3"]
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -160.0
+offset_bottom = 63.0
+grow_horizontal = 0
+text = "Open Map (Enter)"
+
 [connection signal="exit_room" from="Character" to="." method="_on_character_exit_room"]
 [connection signal="timeout" from="Hazard Timer" to="." method="_on_hazard_timer_timeout"]
 [connection signal="pressed" from="Store ui/Control/Hint" to="." method="_on_hint_pressed"]
 [connection signal="pressed" from="Store ui/Control/Sword" to="." method="_on_sword_pressed"]
 [connection signal="pressed" from="Store ui/Control/Invulner" to="." method="_on_invulner_pressed"]
 [connection signal="pressed" from="CanvasLayer3/Store" to="." method="_on_store_pressed"]
+[connection signal="pressed" from="CanvasLayer3/Map" to="." method="_on_map_pressed"]
