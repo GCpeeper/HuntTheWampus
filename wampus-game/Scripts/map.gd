@@ -26,7 +26,7 @@ var roomList = []
 var curRoom = []
 var curRoomChild
 var wumpusSelected = false
-var hazardsLeft = 3
+var hazardsLeft = 4
 var swordsLeft = 10
 var roomsPresent = 0
 var doneWithHazard = false
@@ -455,7 +455,7 @@ func craftRoom(adjN,adjE,adjS,adjW,tileset):
 			wumpusSelected = true
 			wumpusLocation = roomsPresent-1
 			print("wampus is in a " + str(roomsPresent-1))
-		if randi_range(0,10) > 8 and hazardsLeft > 0:
+		if randi_range(0,11) > 8 and hazardsLeft > 0:
 			hazardsLeft -= 1
 			hazard = randi_range(0,1) # 0 means bats, 1 means pit
 			print("hazard in " + str(roomsPresent-1))
@@ -495,7 +495,7 @@ enum entrance {
 }
 
 func runHazard(hazard):
-	if hazard == 0:
+	if hazard == 0 and wumpusHealth > 0:
 		var bats = BatCutscene.instantiate()
 		add_child(bats)
 		$Character.taking_input = false
@@ -506,6 +506,7 @@ func runHazard(hazard):
 		curRoom[6] = -1 # Getting rid of bats from this room
 		roomList[randi_range(0,4)][randi_range(0,5)][6] = 0 # Moving bats to another room
 		curRoom = roomList[randi_range(0,4)][randi_range(0,5)]
+		curRoom[6] = -1 # Making sure it doesn't send you straight into other hazards
 		print("new room is " + str(curRoom[8]))
 		enterRoom(4)
 		$Character.taking_input = true
@@ -640,6 +641,7 @@ func _process(delta: float) -> void:
 		_on_store_pressed()
 	if Input.is_action_just_pressed("open map"):
 		_on_map_pressed()
+	$"Store ui/Control/Coins".text = str($Character.coins)
 
 # opening through button
 func _on_store_pressed() -> void:

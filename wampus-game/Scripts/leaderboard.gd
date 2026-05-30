@@ -8,7 +8,7 @@ func _ready() -> void:
 	# Putting the scores into the label
 	for score in Global.LeaderBoard:
 		# Appends the text
-		LBNames.append_text(score[0] + ": " + str(score[1]) + " (Travels: " + str(score[2]) + ", Coins: " + str(score[1]) + ")" )
+		LBNames.append_text(score[0] + ": " + str(score[1]) + " (Travels: " + str(score[2]) + ", Coins: " + str(score[3]) + ")" )
 		# Creates a new line for the next one
 		LBNames.newline()
 

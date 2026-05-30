@@ -17,6 +17,7 @@ func sortLeaderBoard(a,b):
 
 func makeScore(coins,travels): # the scoring starts at 100, is decreased for every room travelled, and is increased by the coins you had in your pocket when winning
 	LeaderBoard.append([username,(100-travels+coins),travels,coins])
+	_saveScores() # Saves it
 
 # Saving scores, replaces data within the JSON file with the new score list
 func _saveScores():
