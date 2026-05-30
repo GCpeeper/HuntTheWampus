@@ -22,7 +22,7 @@ var riddle6 = ["Who made the original Hunt the Wumpus?","Jimmy Donaldson","Grego
 var riddle7 = ["How many peanuts does it take to make a jar of peanut butter?", "540", "320", "342", "200", 1]
 var riddle8 = ["Using Archimedes' Principle, if the bouyant force on an object is 10 newtons, what is the volume of the object (using 9.8 meters squared)?", "2.3 liters","1.56 liters","1.02 liters", "3 liters",3]
 var riddle9 = ["There is one father with 12 children, who each have 30 or so of their own. They are all immortal and yet all fade away. What is the father?", "A guy with a lot of kids", "A year", "A grandfather", "A spider", 2]
-var riddle10 = ["It's dark but comes from something bright. It flies without wings. Those who see it sometimes cry. It can vanish into thin air. What is it?", "B-2 Stealth Bomber", "A ghost", "Smoke", "Death", 2]
+var riddle10 = ["It's dark but comes from something bright. It flies without wings. Those who see it sometimes cry. It can vanish into thin air. What is it?", "B-2 Stealth Bomber", "A ghost", "Smoke", "Death", 3]
 var answer: int
 var buttonList : Dictionary
 var riddleChoice: int
@@ -115,6 +115,7 @@ func failure():
 	else: # You die
 		await get_tree().create_timer(1.0).timeout
 		announcement.text = "You lose!!!"
+		await get_tree().create_timer(3.0).timeout
 		get_tree().change_scene_to_file("res://Scenes/main_menu.tscn")
 
 # Talking timer timed out to start the riddle system
@@ -150,5 +151,5 @@ func _on_riddle_timer_timeout() -> void:
 	answers.hide()
 	$Buttons.hide()
 	timerBar.hide()
-	await get_tree().create_timer(1.0).timeout
+	await get_tree().create_timer(3.0).timeout
 	get_tree().change_scene_to_file("res://Scenes/main_menu.tscn")
