@@ -12,7 +12,7 @@
 [ext_resource type="AudioStream" uid="uid://c6idpxji07fo1" path="res://Assests/sfx/slide.mp3" id="10_kq7hj"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_lkv7d"]
-size = Vector2(26.666664, 49.230766)
+size = Vector2(16.955685, 36.239315)
 
 [sub_resource type="Animation" id="Animation_owm7s"]
 length = 0.001
@@ -294,6 +294,7 @@ font_color = Color(1, 1, 0, 1)
 
 [sub_resource type="SystemFont" id="SystemFont_wbia7"]
 font_names = PackedStringArray("High Tower Text")
+subpixel_positioning = 0
 
 [sub_resource type="LabelSettings" id="LabelSettings_2mse5"]
 font = SubResource("SystemFont_wbia7")
@@ -304,13 +305,13 @@ scale = Vector2(1.5, 1.5)
 script = ExtResource("1_ejsiy")
 
 [node name="Sprite2D2" type="Sprite2D" parent="."]
-scale = Vector2(1.5, 1.5)
+position = Vector2(0.66666603, 6.666666)
 texture = ExtResource("3_2mse5")
 hframes = 10
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(-0.33333334, 1.5894572e-07)
-scale = Vector2(0.865, 0.975)
+position = Vector2(0, 5.3333335)
+scale = Vector2(0.865, 0.9750001)
 shape = SubResource("RectangleShape2D_lkv7d")
 
 [node name="CoyoteTime" type="Timer" parent="."]
