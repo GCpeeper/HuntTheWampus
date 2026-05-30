@@ -11,7 +11,7 @@ config_version=5
 [application]
 
 config/name="WampusGame"
-run/main_scene="uid://bxu81g647bgra"
+run/main_scene="uid://bxp6ujx88e6qa"
 config/features=PackedStringArray("4.5", "Forward Plus")
 config/icon="res://icon.svg"
 

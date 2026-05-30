@@ -1,0 +1,403 @@
+[gd_scene load_steps=14 format=3 uid="uid://bxp6ujx88e6qa"]
+
+[ext_resource type="Script" uid="uid://cundr267pnefv" path="res://Scripts/intro.gd" id="1_b226h"]
+[ext_resource type="Texture2D" uid="uid://lnhjkavb77yb" path="res://Assests/Character Test/character_walk.png" id="2_alxvg"]
+[ext_resource type="Texture2D" uid="uid://bxgj8ql3ni55b" path="res://Assests/WampusRoarAttack.png" id="3_geirw"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_b226h"]
+font_size = 30
+
+[sub_resource type="LabelSettings" id="LabelSettings_duh1u"]
+font_size = 30
+
+[sub_resource type="LabelSettings" id="LabelSettings_alxvg"]
+font_size = 30
+
+[sub_resource type="LabelSettings" id="LabelSettings_geirw"]
+font_size = 30
+
+[sub_resource type="LabelSettings" id="LabelSettings_hwjxs"]
+font_size = 30
+
+[sub_resource type="LabelSettings" id="LabelSettings_mecp6"]
+font_size = 60
+font_color = Color(1, 0, 0, 1)
+
+[sub_resource type="LabelSettings" id="LabelSettings_rsiac"]
+font_color = Color(0.03322012, 0.033220127, 0.03322012, 1)
+
+[sub_resource type="Animation" id="Animation_duh1u"]
+resource_name = "intro"
+length = 29.5
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Control/Label1:self_modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5, 3, 3.5),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1), Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Control/Label2:self_modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(4, 4.5, 8.5, 9),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1), Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Control/Label3:self_modulate")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(9.500001, 10, 13, 13.5),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1), Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Control/Label4:self_modulate")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(14.000001, 14.500001, 17.5, 18),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1), Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("Control/Label5:self_modulate")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(18.500002, 19.000002, 27.199999, 29.199999),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1), Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("Control/Label:self_modulate")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(21.7, 23.2, 27.2, 29.199999),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1), Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
+}
+tracks/6/type = "value"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("Control/PlayerChar:self_modulate")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(4.5, 5.0000005, 8.5, 9),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 0.36862746), Color(1, 1, 1, 0.36862746), Color(1, 1, 1, 0)]
+}
+tracks/7/type = "value"
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/path = NodePath("Control/Wampus:self_modulate")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/keys = {
+"times": PackedFloat32Array(14.500001, 15.000001, 17.5, 18),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1), Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_alxvg"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Control/Label1:self_modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Control/Label2:self_modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 0)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Control/Label3:self_modulate")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 0)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Control/Label4:self_modulate")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 0)]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("Control/Label5:self_modulate")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 0)]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("Control/Label:self_modulate")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 0)]
+}
+tracks/6/type = "value"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("Control/PlayerChar:self_modulate")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 0)]
+}
+tracks/7/type = "value"
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/path = NodePath("Control/Wampus:self_modulate")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 0)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_geirw"]
+_data = {
+&"RESET": SubResource("Animation_alxvg"),
+&"intro": SubResource("Animation_duh1u")
+}
+
+[node name="Node2D" type="CanvasLayer"]
+script = ExtResource("1_b226h")
+
+[node name="Control" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="ColorRect" type="ColorRect" parent="Control"]
+custom_minimum_size = Vector2(1440, 832)
+layout_mode = 0
+color = Color(0.35076103, 0.38364956, 0.4612704, 1)
+
+[node name="Label1" type="Label" parent="Control"]
+self_modulate = Color(1, 1, 1, 0)
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -168.5
+offset_top = -24.5
+offset_right = 168.5
+offset_bottom = 24.5
+grow_horizontal = 2
+grow_vertical = 2
+text = "Greek poems and mythology are filled with 
+fantastical heroes and monsters..."
+label_settings = SubResource("LabelSettings_b226h")
+horizontal_alignment = 1
+
+[node name="Label2" type="Label" parent="Control"]
+self_modulate = Color(1, 1, 1, 0)
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -168.5
+offset_top = -24.5
+offset_right = 168.5
+offset_bottom = 24.5
+grow_horizontal = 2
+grow_vertical = 2
+text = "Among these heroes is Hercules,
+the son of Zeus, defeater of the Nemean Lion,
+the Lyrnean Hydra, the Erymanthian Boar,
+and many more..."
+label_settings = SubResource("LabelSettings_duh1u")
+horizontal_alignment = 1
+
+[node name="Label3" type="Label" parent="Control"]
+self_modulate = Color(1, 1, 1, 0)
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -168.5
+offset_top = -24.5
+offset_right = 168.5
+offset_bottom = 24.5
+grow_horizontal = 2
+grow_vertical = 2
+text = "But among all of the beasts he defeated,
+one was somehow lost from all of the records..."
+label_settings = SubResource("LabelSettings_alxvg")
+horizontal_alignment = 1
+
+[node name="Label4" type="Label" parent="Control"]
+self_modulate = Color(1, 1, 1, 0)
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -168.5
+offset_top = -24.5
+offset_right = 168.5
+offset_bottom = 24.5
+grow_horizontal = 2
+grow_vertical = 2
+text = "In a deep labyrinth deep below the ground,
+he fought something unlike any creature in the world..."
+label_settings = SubResource("LabelSettings_geirw")
+horizontal_alignment = 1
+
+[node name="Label5" type="Label" parent="Control"]
+self_modulate = Color(1, 1, 1, 0)
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -168.5
+offset_top = -24.5
+offset_right = 168.5
+offset_bottom = 24.5
+grow_horizontal = 2
+grow_vertical = 2
+text = "The Ancient Greeks called this creature...
+"
+label_settings = SubResource("LabelSettings_hwjxs")
+horizontal_alignment = 1
+
+[node name="Label" type="Label" parent="Control"]
+self_modulate = Color(1, 1, 1, 0)
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -200.0
+offset_top = 2.0
+offset_right = 200.0
+offset_bottom = 85.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "THE WUMPUS"
+label_settings = SubResource("LabelSettings_mecp6")
+horizontal_alignment = 1
+
+[node name="Label6" type="Label" parent="Control"]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -74.5
+offset_top = -23.0
+offset_right = 74.5
+grow_horizontal = 2
+grow_vertical = 0
+text = "(Press Shift to Skip)"
+label_settings = SubResource("LabelSettings_rsiac")
+horizontal_alignment = 1
+
+[node name="PlayerChar" type="Sprite2D" parent="Control"]
+modulate = Color(0.43529412, 0.62352943, 0.74509805, 1)
+self_modulate = Color(1, 1, 1, 0)
+position = Vector2(326, 670.00006)
+scale = Vector2(13.191406, 13.191406)
+texture = ExtResource("2_alxvg")
+hframes = 10
+
+[node name="Wampus" type="Sprite2D" parent="Control"]
+modulate = Color(0, 0, 0, 1)
+self_modulate = Color(1, 1, 1, 0)
+position = Vector2(1464.0801, 770.04004)
+scale = Vector2(8.905001, 8.905001)
+texture = ExtResource("3_geirw")
+vframes = 13
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+&"": SubResource("AnimationLibrary_geirw")
+}
+autoplay = "intro"
+
+[connection signal="animation_finished" from="AnimationPlayer" to="." method="_on_animation_player_animation_finished"]
