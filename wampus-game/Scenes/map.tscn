@@ -1,4 +1,4 @@
-[gd_scene load_steps=21 format=3 uid="uid://casrnc0q3x0r0"]
+[gd_scene load_steps=32 format=3 uid="uid://casrnc0q3x0r0"]
 
 [ext_resource type="Script" uid="uid://bmci3la80cafy" path="res://Scripts/map.gd" id="1_p3ir5"]
 [ext_resource type="Script" uid="uid://b03tdrhc008y1" path="res://Scripts/parallax_control.gd" id="2_5qtum"]
@@ -15,21 +15,33 @@
 [ext_resource type="AudioStream" uid="uid://d20sfvn3lq771" path="res://Assests/sfx/Menu.mp3" id="14_ie368"]
 
 [sub_resource type="SystemFont" id="SystemFont_5qtum"]
-font_names = PackedStringArray("Trebuchet MS")
+font_names = PackedStringArray("High Tower Text")
 
 [sub_resource type="LabelSettings" id="LabelSettings_ie368"]
 font = SubResource("SystemFont_5qtum")
 font_size = 161
 font_color = Color(0.29803923, 0.15686275, 0, 1)
 
+[sub_resource type="SystemFont" id="SystemFont_ie368"]
+font_names = PackedStringArray("High Tower Text")
+
 [sub_resource type="LabelSettings" id="LabelSettings_5qtum"]
+font = SubResource("SystemFont_ie368")
 font_size = 41
 font_color = Color(0.43629372, 0.43629366, 0.43629366, 1)
 
+[sub_resource type="SystemFont" id="SystemFont_x5dfk"]
+font_names = PackedStringArray("High Tower Text")
+
 [sub_resource type="LabelSettings" id="LabelSettings_x5dfk"]
+font = SubResource("SystemFont_x5dfk")
 font_size = 50
 
+[sub_resource type="SystemFont" id="SystemFont_fls3e"]
+font_names = PackedStringArray("High Tower Text")
+
 [sub_resource type="LabelSettings" id="LabelSettings_fls3e"]
+font = SubResource("SystemFont_fls3e")
 font_size = 31
 font_color = Color(1, 1, 0, 1)
 
@@ -40,6 +52,30 @@ font_color = Color(1, 0, 0, 1)
 [sub_resource type="LabelSettings" id="LabelSettings_j4oe2"]
 font_size = 70
 font_color = Color(0, 0, 0, 1)
+
+[sub_resource type="SystemFont" id="SystemFont_k63oc"]
+font_names = PackedStringArray("High Tower Text")
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_5qtum"]
+bg_color = Color(0.27450982, 0.26666668, 0, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ie368"]
+bg_color = Color(0.17846814, 0.17846817, 0.17846805, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_x5dfk"]
+bg_color = Color(0.14973193, 0.14973193, 0.14973187, 1)
+
+[sub_resource type="SystemFont" id="SystemFont_j4oe2"]
+font_names = PackedStringArray("High Tower Text")
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_fls3e"]
+bg_color = Color(0.2726783, 0.26542526, 9.62615e-08, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_k63oc"]
+bg_color = Color(0.39688924, 0.39688927, 0.3968891, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_j4oe2"]
+bg_color = Color(0.29849523, 0.2984953, 0.29849514, 1)
 
 [node name="Map" type="Node2D"]
 script = ExtResource("1_p3ir5")
@@ -163,10 +199,10 @@ color = Color(0.3027061, 0.30270606, 0.30270603, 1)
 
 [node name="Store" type="Label" parent="Store ui/Control"]
 layout_mode = 0
-offset_left = 655.0
-offset_top = 218.0
-offset_right = 981.0
-offset_bottom = 315.0
+offset_left = 657.0
+offset_top = 232.0
+offset_right = 983.0
+offset_bottom = 329.0
 text = "Store"
 label_settings = SubResource("LabelSettings_x5dfk")
 
@@ -303,6 +339,11 @@ horizontal_alignment = 1
 [node name="Store" type="Button" parent="CanvasLayer3"]
 offset_right = 160.0
 offset_bottom = 63.0
+theme_override_fonts/font = SubResource("SystemFont_k63oc")
+theme_override_font_sizes/font_size = 30
+theme_override_styles/normal = SubResource("StyleBoxFlat_5qtum")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_ie368")
+theme_override_styles/hover = SubResource("StyleBoxFlat_x5dfk")
 text = "Open Store (LShift)"
 
 [node name="Map" type="Button" parent="CanvasLayer3"]
@@ -312,6 +353,11 @@ anchor_right = 1.0
 offset_left = -160.0
 offset_bottom = 63.0
 grow_horizontal = 0
+theme_override_fonts/font = SubResource("SystemFont_j4oe2")
+theme_override_font_sizes/font_size = 30
+theme_override_styles/normal = SubResource("StyleBoxFlat_fls3e")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_k63oc")
+theme_override_styles/hover = SubResource("StyleBoxFlat_j4oe2")
 text = "Open Map (Enter)"
 
 [node name="Music" type="AudioStreamPlayer" parent="."]
