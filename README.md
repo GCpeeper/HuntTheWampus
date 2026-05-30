@@ -2,7 +2,7 @@
 
 Please keep the files organized based on folder name. I.e. Scenes go in the Sences folder, assests go in the asset folder, create subfolders as needed to keep everything organized. Color Scheme and vibe will be decided later, focuse on adding functionality over making it look good right now.
 
-Theme: Anceint Greece Legends, Heracules Hunting the Neniam Wampus or Sphinx so there is riddles
+Theme: Ancient Greece Legends, Heracules Hunting the Neniam Wampus or Sphinx so there is riddles
 Assets: I (Grady) am making assets. If there is any asset you reqire please ask
 
 Rooms: Use tiles set. 45 tiles horizontal by 26 tiles vertial
@@ -35,15 +35,18 @@ Wumpus (only if 29 other rooms don’t have it)
 
 <h2>Monsters and Character</h2>
 Bat:
-When character enters room they get frozen, bat flies over then fade to black. Character appears in valid room chosen at random.
+When character enters room they get frozen, bat flies over they get moved to another room. Character appears in valid room chosen at random. Bat is removed from previous room and moved to another room.
 
 
 Wampus:
-Red lion thing.
+Red lion thing. If you have a sword on you, you will hit it. Other wise, it will kill you.
 
 
 Bottomless Pit:
-Character fall and reaches the bottom,  wampus with a beard asks riddles. Need three answers to be let out
+Character fall and reaches the bottom,  wampus with a beard asks riddles. Need two correct answers to be let out. Sends you back to spawn. Each answer costs 1 coin
+
+Store:
+Can buy a sword, a hint towards the Wumpus' location, invulnerability to bats and pits for 10 seconds, or can gamble for more coins
 
 
 Store:
