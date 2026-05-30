@@ -1,5 +1,9 @@
+# This is the map scene. It is basically the game loop object. It runs the actual gameplay and everything that goes on in it.
 extends Node2D
 
+# Loading all of the scenes
+
+# These are the 2 door rooms. Corners have doors perpendicular to each other, hallways have them parallel
 @onready var CornerA = preload("res://Scenes/2door/CornerA.tscn")
 @onready var CornerB = preload("res://Scenes/2door/CornerB.tscn")
 @onready var CornerC = preload("res://Scenes/2door/CornerC.tscn")
@@ -7,16 +11,19 @@ extends Node2D
 @onready var HallwayA = preload("res://Scenes/2door/HallwayA.tscn")
 @onready var HallwayB = preload("res://Scenes/2door/HallwayB.tscn")
 
+# These are the 3 door rooms
 @onready var SideA = preload("res://Scenes/3door/SideA.tscn")
 @onready var SideB = preload("res://Scenes/3door/SideB.tscn")
 @onready var SideC = preload("res://Scenes/3door/SideC.tscn")
 @onready var SideD = preload("res://Scenes/3door/SideD.tscn")
 
+# These are the 1 door rooms, aptly named "dead ends"
 @onready var DeadEndA = preload("res://Scenes/deadend/DeadA.tscn")
 @onready var DeadEndB = preload("res://Scenes/deadend/DeadB.tscn")
 @onready var DeadEndC = preload("res://Scenes/deadend/DeadC.tscn")
 @onready var DeadEndD = preload("res://Scenes/deadend/DeadD.tscn")
 
+# These are the hazards and wumpus. They function like cutscenes and get instantiated and queue freed in this map scene
 @onready var BatCutscene = preload("res://Scenes/bat cutscene.tscn")
 @onready var Pit = preload("res://Scenes/pit.tscn")
 @onready var Wumpus = preload("res://Scenes/wampus cutscenes.tscn")
@@ -34,6 +41,7 @@ var wumpusHealth = 3
 var transitioning = false
 var travels = 0
 var wumpusLocation
+var typeOfHazard = 0
 
 func layout(type):
 	print(type)
@@ -459,7 +467,11 @@ func craftRoom(adjN,adjE,adjS,adjW,tileset):
 			#print("wampus is in a " + str(roomsPresent-1))
 		if randi_range(-1,10) > 7 and hazardsLeft > 0 and roomsPresent > 7: # It can only spawn them past the first row
 			hazardsLeft -= 1
-			hazard = randi_range(0,1) # 0 means bats, 1 means pit
+			hazard = typeOfHazard # 0 means bats, 1 means pit
+			if typeOfHazard == 0:
+				typeOfHazard = 1
+			else:
+				typeOfHazard = 0
 			print("hazard in " + str(roomsPresent-1))
 		if swordsLeft > 0 and randi_range(-1,3) > 1 and roomsPresent > 7: # Setting up swords, should be at most 8 in the cave
 			swordsLeft -= 1
@@ -505,8 +517,6 @@ func runHazard(hazard):
 	if hazard == 0 and wumpusHealth > 0: # Spawns an instance of the bat cutscene, then randomizes your room
 		var bats = BatCutscene.instantiate()
 		add_child(bats)
-		$CanvasLayer.visible = false # Hides the room number and stuff
-		$CanvasLayer3.visible = false # Hides the buttons and stuff
 		$Character.taking_input = false
 		$Character.visible = false
 		await get_tree().create_timer(5).timeout
@@ -519,8 +529,6 @@ func runHazard(hazard):
 		#print("new room is " + str(curRoom[8]))
 		enterRoom(4)
 		$Character.taking_input = true
-		$CanvasLayer.visible = true # Shows the room number and stuff
-		$CanvasLayer3.visible = true # Shows the buttons and stuff
 	elif hazard == 1: # Puts in an instance of the pit cutscene
 		var pit = Pit.instantiate()
 		pit.player = $Character
@@ -563,6 +571,8 @@ func runWumpus():
 # Entering a room. It puts in a new tileset, removes the old one, and runs through all of the logic
 func enterRoom(direction):
 	if curRoom:
+		$CanvasLayer.visible = false # Hides the room number and stuff
+		$CanvasLayer3.visible = false # Hides the buttons and stuff
 		if curRoom[5] == true: # Wumpus comes before hazards
 			await runWumpus()
 		if not doneWithHazard and curRoom[6] >= 0: # Done with hazard variable is to make sure you don't get hit with a pit or bat back to back
@@ -576,6 +586,8 @@ func enterRoom(direction):
 			for node in roomInstance.get_children():
 				if node.name == "Sword" and curRoom[7] != 1: # Every tileset comes with a sword in it, but if the room says it shouldn't have one then that node gets queued free
 					node.queue_free()
+			$CanvasLayer.visible = true # Shows the room number and stuff
+			$CanvasLayer3.visible = true # Shows the buttons and stuff
 		curRoomChild = roomInstance
 		$Character.velocity = Vector2(0,0)
 		match direction: # Sends the player the correct direction
@@ -660,7 +672,11 @@ func _process(delta: float) -> void:
 	if Input.is_action_just_pressed("open map"):
 		_on_map_pressed()
 	$"Store ui/Control/Coins".text = str($Character.coins) # Updating coins in store live
-
+	if doneWithHazard:# Updating invulnerability
+		$"CanvasLayer/Labels for Directions/Invulnerability".visible = true
+	else:
+		$"CanvasLayer/Labels for Directions/Invulnerability".visible = false
+	
 # opening and closing store through button
 func _on_store_pressed() -> void:
 	$Creak.play()

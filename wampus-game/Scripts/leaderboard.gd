@@ -1,3 +1,4 @@
+# Leaderboard
 extends Node2D
 
 @onready var LBNames = $CanvasLayer2/RichTextLabel

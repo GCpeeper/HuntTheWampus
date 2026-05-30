@@ -1,11 +1,12 @@
+# This is the player character
 extends CharacterBody2D
 
-@onready var _sprite = $Sprite2D2 # replaced it with a different asset pack placeholder as the other one didnt work very well with animations and frame division
+@onready var _sprite = $Sprite2D2 # The sprite is based off of a template, that we redrew to look like a Greek hero
 @onready var _animation_player = $AnimationPlayer # made and animation player system which could work better for more complicated animations (attacks and stuff mainly but otherwise works the same as other method)
-@onready var _sense = $Label
-@onready var _coin_lost_timer = $"Coin lost timer"
-@onready var _coin_lost = $"Coin lost"
-@onready var _slide = $Slide
+@onready var _sense = $Label # Label for sensing stuff
+@onready var _coin_lost_timer = $"Coin lost timer" # This controls whether _coin_lost is showing or not
+@onready var _coin_lost = $"Coin lost" # Tells the player they lost a coin if they hit a spike
+@onready var _slide = $Slide # Sliding sound
 
 # Most of these are pretty self explanatory
 const SPEED = 300.0
@@ -81,7 +82,7 @@ func _physics_process(delta: float) -> void:
 			_slide.stream_paused = true
 		await get_tree().process_frame
 		if velocity.y > 0:
-			_animation_player.play("fall")
+			_animation_player.play("fall") # Normal gravity circumstanaces
 	else:
 		sliding = false
 	if taking_input:
@@ -115,7 +116,7 @@ func _physics_process(delta: float) -> void:
 	var was_on_floor = is_on_floor()
 	move_and_slide()
 	
-	if was_on_floor and !is_on_floor(): # Adds more leniency towards jumps
+	if was_on_floor and !is_on_floor(): # Adds more leniency towards jumps, allows you to jump after falling for a brief moment
 		$CoyoteTime.start()
 
 # Hiding the indicator for losing a coin to spikes

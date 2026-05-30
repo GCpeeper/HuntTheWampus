@@ -1,3 +1,4 @@
+# Here you can start the game, go to the leaderboard, save scores, or load scores
 extends CenterContainer
 
 func _ready() -> void:

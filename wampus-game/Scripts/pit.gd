@@ -1,5 +1,7 @@
+# Answer a trivia/riddle/math question to get out. Need 2 correct to survive
 extends Control
 
+# Different onreadys mostly referring to the aspects of the cutscene
 @onready var announcement = $Label
 @onready var announcement2 = $Label2
 @onready var question = $Question
@@ -13,6 +15,7 @@ extends Control
 @onready var roaring = $"../Roar"
 var step = 0
 var riddleList = []
+# The riddles/math questions/trivia. [0] is the question, [1][2][3] and [4] are the answers, and [5] is the correct answer (referring to the place in the array)
 var riddle1 = ["What has roots that nobody sees, is taller than trees, up, up it goes, and yet never grows?", "A tall tree.", "A mountain", "A shadow", "The Parthenon", 2]
 var riddle2 = ["There is a right triangle with sides A, B, and C. Side AB is 5 feet, angle A is 45, and angle B is 90. What is the area of the triangle?", "56 feet squared", "25 feet squared", "12.5 feet squared", "25.5 feet squared", 3]
 var riddle3 = ["I look at you whenever you look at me. What am I?", "A reflection", "A photo", "Glasses", "Letters", 1]
@@ -23,6 +26,7 @@ var riddle7 = ["How many peanuts does it take to make a jar of peanut butter?", 
 var riddle8 = ["Using Archimedes' Principle, if the bouyant force on an object is 10 newtons, what is the volume of the object (using 9.8 meters squared)?", "2.3 liters","1.56 liters","1.02 liters", "3 liters",3]
 var riddle9 = ["There is one father with 12 children, who each have 30 or so of their own. They are all immortal and yet all fade away. What is the father?", "A guy with a lot of kids", "A year", "A grandfather", "A spider", 2]
 var riddle10 = ["It's dark but comes from something bright. It flies without wings. Those who see it sometimes cry. It can vanish into thin air. What is it?", "B-2 Stealth Bomber", "A ghost", "Smoke", "Death", 3]
+var riddle11 = ["What is the equatorial circumference of the Earth?", "50,001 kilometers", "70,234 kilometers", "40,075 kilometers", "24,901 kilometers", 3]
 var answer: int
 var buttonList : Dictionary
 var riddleChoice: int
@@ -38,11 +42,12 @@ func _ready() -> void:
 	question.hide()
 	answers.hide()
 	timerBar.value = 15
-	riddleList = [riddle1, riddle2, riddle3, riddle4,riddle5,riddle6,riddle7,riddle8,riddle9,riddle10]
+	riddleList = [riddle1, riddle2, riddle3, riddle4,riddle5,riddle6,riddle7,riddle8,riddle9,riddle10,riddle11] # sets up the riddle list
 	buttonList = {$Buttons/A: 1,$Buttons/B: 2,$Buttons/C: 3,$Buttons/D:4}
 	for i in buttonList.keys():
 		i.pressed.connect(some_button_pressed.bind(i))
 
+# Pressed a button
 func some_button_pressed(button):
 	player.coins -= 1
 	if buttonList.get(button) == (riddleList[riddleChoice])[5]:
@@ -54,6 +59,16 @@ func some_button_pressed(button):
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
+	# They said to make it keyboard functional so here this is
+	if $Buttons.visible:
+		if Input.is_action_just_pressed("A"):
+			some_button_pressed($Buttons/A)
+		if Input.is_action_just_pressed("B"):
+			some_button_pressed($Buttons/B)
+		if Input.is_action_just_pressed("C"):
+			some_button_pressed($Buttons/C)
+		if Input.is_action_just_pressed("D"):
+			some_button_pressed($Buttons/D)
 	if step == 0:
 		announcement.show()
 		bubble.visible = true

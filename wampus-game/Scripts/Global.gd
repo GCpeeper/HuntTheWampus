@@ -1,3 +1,4 @@
+# Global, persists variables across scenes. Used for scoring
 extends Node
 
 var rooms = []

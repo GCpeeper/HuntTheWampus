@@ -1,3 +1,4 @@
+# A short intro with some lore stuff
 extends CanvasLayer
 
 

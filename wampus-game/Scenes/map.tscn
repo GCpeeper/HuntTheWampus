@@ -1,4 +1,4 @@
-[gd_scene load_steps=35 format=3 uid="uid://casrnc0q3x0r0"]
+[gd_scene load_steps=37 format=3 uid="uid://casrnc0q3x0r0"]
 
 [ext_resource type="Script" uid="uid://bmci3la80cafy" path="res://Scripts/map.gd" id="1_p3ir5"]
 [ext_resource type="Script" uid="uid://b03tdrhc008y1" path="res://Scripts/parallax_control.gd" id="2_5qtum"]
@@ -31,6 +31,14 @@ font_names = PackedStringArray("High Tower Text")
 font = SubResource("SystemFont_ie368")
 font_size = 41
 font_color = Color(0.61513174, 0.61513174, 0.6151315, 1)
+
+[sub_resource type="SystemFont" id="SystemFont_vtkp8"]
+font_names = PackedStringArray("High Tower Text")
+
+[sub_resource type="LabelSettings" id="LabelSettings_rg57b"]
+font = SubResource("SystemFont_vtkp8")
+font_size = 20
+font_color = Color(1, 0.7764706, 0, 1)
 
 [sub_resource type="SystemFont" id="SystemFont_x5dfk"]
 font_names = PackedStringArray("High Tower Text")
@@ -129,6 +137,24 @@ grow_horizontal = 2
 grow_vertical = 2
 text = "You Lack a Sword"
 label_settings = SubResource("LabelSettings_5qtum")
+horizontal_alignment = 1
+
+[node name="Invulnerability" type="Label" parent="CanvasLayer/Labels for Directions"]
+visible = false
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = 124.0
+offset_right = 20.0
+offset_bottom = 147.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "YOU ARE INVULNERABLE TO HAZARDS"
+label_settings = SubResource("LabelSettings_rg57b")
 horizontal_alignment = 1
 
 [node name="Character" parent="." instance=ExtResource("2_26yhd")]

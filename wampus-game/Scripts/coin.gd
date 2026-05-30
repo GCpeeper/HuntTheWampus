@@ -1,3 +1,4 @@
+# Coins, can be used to buy stuff in the store and the amount you have left determines your score
 extends Area2D
 
 # This is pretty self explanatory
