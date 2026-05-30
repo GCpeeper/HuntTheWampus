@@ -27,7 +27,7 @@ var curRoom = []
 var curRoomChild
 var wumpusSelected = false
 var hazardsLeft = 4
-var swordsLeft = 10
+var swordsLeft = 8
 var roomsPresent = 0
 var doneWithHazard = false
 var wumpusHealth = 3
@@ -451,19 +451,20 @@ func craftRoom(adjN,adjE,adjS,adjW,tileset):
 	var sword = 0
 	roomsPresent+=1
 	if roomsPresent > 1: # Will never have wumpus or hazard in the first room, obviously
-		if wumpusSelected == false and randi_range(1,30) > 27:
+		# Theres chance involved in all of these but its not that big of a deal as theres a very very low statistical probability that you'll end up without say 4 hazards or 8 swords
+		if wumpusSelected == false and randi_range(1,30) > 27: # Wumpus probability is low enough that sometimes it doesn't spawn, this case is fixed in the ready function though
 			wumpus = true
 			wumpusSelected = true
 			wumpusLocation = roomsPresent-1
 			#print("wampus is in a " + str(roomsPresent-1))
-		if randi_range(0,10) > 7 and hazardsLeft > 0:
+		if randi_range(-1,10) > 7 and hazardsLeft > 0 and roomsPresent > 7: # It can only spawn them past the first row
 			hazardsLeft -= 1
 			hazard = randi_range(0,1) # 0 means bats, 1 means pit
-			#print("hazard in " + str(roomsPresent-1))
-		if swordsLeft > 0 and randi_range(0,3) > 1: # Setting up swords, should be at most 10 in the cave
+			print("hazard in " + str(roomsPresent-1))
+		if swordsLeft > 0 and randi_range(-1,3) > 1 and roomsPresent > 7: # Setting up swords, should be at most 8 in the cave
 			swordsLeft -= 1
 			sword = 1
-			#print("theres a sword in " + str(roomsPresent-1))
+			print("theres a sword in " + str(roomsPresent-1))
 	return([null,null,null,null,tileset,wumpus,hazard,sword,roomsPresent-1])
 
 func _ready() -> void:
@@ -504,6 +505,8 @@ func runHazard(hazard):
 	if hazard == 0 and wumpusHealth > 0: # Spawns an instance of the bat cutscene, then randomizes your room
 		var bats = BatCutscene.instantiate()
 		add_child(bats)
+		$CanvasLayer.visible = false # Hides the room number and stuff
+		$CanvasLayer3.visible = false # Hides the buttons and stuff
 		$Character.taking_input = false
 		$Character.visible = false
 		await get_tree().create_timer(5).timeout
@@ -516,6 +519,8 @@ func runHazard(hazard):
 		#print("new room is " + str(curRoom[8]))
 		enterRoom(4)
 		$Character.taking_input = true
+		$CanvasLayer.visible = true # Shows the room number and stuff
+		$CanvasLayer3.visible = true # Shows the buttons and stuff
 	elif hazard == 1: # Puts in an instance of the pit cutscene
 		var pit = Pit.instantiate()
 		pit.player = $Character
@@ -658,6 +663,7 @@ func _process(delta: float) -> void:
 
 # opening and closing store through button
 func _on_store_pressed() -> void:
+	$Creak.play()
 	if $"Store ui".visible:
 		$"Store ui".visible = false
 		$CanvasLayer3/Store.text = "Open Store (LShift)"
@@ -670,6 +676,7 @@ func _on_store_pressed() -> void:
 # Getting a wumpus hint, takes 15 coins in exchange for showing which room the wumpus is in
 func _on_hint_pressed() -> void:
 	if $Character.coins >= 15:
+		$Character.coin()
 		$Character.coins -= 15
 		$"Store ui/Control/The hint".visible = true
 		$"Store ui/Control/The hint".text = "Wumpus is in Room " + str(wumpusLocation)
@@ -677,13 +684,15 @@ func _on_hint_pressed() -> void:
 # Turning on hazard timer to be invulnerable to hazards for a bit, allows you to skip them which can be very useful
 func _on_invulner_pressed() -> void:
 	if $Character.coins >= 20 and not doneWithHazard:
+		$Character.coin()
 		$Character.coins -= 20
 		doneWithHazard = true
 		$"Hazard Timer".start()
 
 # Get a sword for some coins
 func _on_sword_pressed() -> void:
-	if $Character.coins >= 10 and !$Character.has_sword:
+	if $Character.coins >= 15 and !$Character.has_sword:
+		$Character.coin()
 		$Character.coins -= 10
 		$Character.sword()
 		$"CanvasLayer/Labels for Directions/Sword".text = "You Have a Sword!"
@@ -691,6 +700,7 @@ func _on_sword_pressed() -> void:
 
 # Open the map. It's kinda scuffed but even then it's helped me find my way a lot
 func _on_map_pressed() -> void:
+	$Map.play()
 	if $"Map ui".visible:
 		$"Map ui".visible = false
 		$CanvasLayer3/Map.text = "Open Map (Enter)"
@@ -701,6 +711,7 @@ func _on_map_pressed() -> void:
 # Can get extra coins for a coin with a given chance. I love gambling
 func _on_gamble_pressed() -> void:
 	if $Character.coins >= 1:
+		$Character.coin()
 		$Character.coins -= 1
 		if randi_range(1,100) == 100:
 			$Character.coins += 99

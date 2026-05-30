@@ -1,4 +1,4 @@
-[gd_scene load_steps=33 format=3 uid="uid://casrnc0q3x0r0"]
+[gd_scene load_steps=35 format=3 uid="uid://casrnc0q3x0r0"]
 
 [ext_resource type="Script" uid="uid://bmci3la80cafy" path="res://Scripts/map.gd" id="1_p3ir5"]
 [ext_resource type="Script" uid="uid://b03tdrhc008y1" path="res://Scripts/parallax_control.gd" id="2_5qtum"]
@@ -13,6 +13,8 @@
 [ext_resource type="Texture2D" uid="uid://dpanm5fk4jy71" path="res://Assests/background/8fx.png" id="10_rg57b"]
 [ext_resource type="Texture2D" uid="uid://wstj8msu1uwn" path="res://Assests/background/9.png" id="11_macow"]
 [ext_resource type="AudioStream" uid="uid://d20sfvn3lq771" path="res://Assests/sfx/Menu.mp3" id="14_ie368"]
+[ext_resource type="AudioStream" uid="uid://8mjpxi1qxg43" path="res://Assests/sfx/map.mp3" id="14_x5dfk"]
+[ext_resource type="AudioStream" uid="uid://o6mp5iy5gin0" path="res://Assests/sfx/creak.mp3" id="15_x5dfk"]
 
 [sub_resource type="SystemFont" id="SystemFont_5qtum"]
 font_names = PackedStringArray("High Tower Text")
@@ -240,7 +242,7 @@ offset_right = 96.0
 offset_bottom = 13.5
 grow_horizontal = 2
 grow_vertical = 2
-text = "Sword (10 coins)"
+text = "Sword (15 coins)"
 
 [node name="Invulner" type="Button" parent="Store ui/Control"]
 layout_mode = 1
@@ -369,6 +371,12 @@ text = "Open Map (Enter)"
 [node name="Music" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("14_ie368")
 autoplay = true
+
+[node name="Map" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("14_x5dfk")
+
+[node name="Creak" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("15_x5dfk")
 
 [connection signal="exit_room" from="Character" to="." method="_on_character_exit_room"]
 [connection signal="timeout" from="Hazard Timer" to="." method="_on_hazard_timer_timeout"]

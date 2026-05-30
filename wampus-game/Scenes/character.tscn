@@ -1,4 +1,4 @@
-[gd_scene load_steps=22 format=3 uid="uid://tlu7gp2yuarc"]
+[gd_scene load_steps=23 format=3 uid="uid://tlu7gp2yuarc"]
 
 [ext_resource type="Script" uid="uid://cqxowjopiums0" path="res://Scripts/character.gd" id="1_ejsiy"]
 [ext_resource type="Texture2D" uid="uid://tqh7s8urhjq7" path="res://Assests/Character Test/character_idle.png" id="3_2mse5"]
@@ -9,6 +9,7 @@
 [ext_resource type="AudioStream" uid="uid://cv4x1q378dcjx" path="res://Assests/sfx/coin.mp3" id="7_reotu"]
 [ext_resource type="AudioStream" uid="uid://b010gl0cdrpth" path="res://Assests/sfx/sword.mp3" id="8_a5ess"]
 [ext_resource type="AudioStream" uid="uid://djptjsmnuherv" path="res://Assests/sfx/jump.mp3" id="9_wbia7"]
+[ext_resource type="AudioStream" uid="uid://c6idpxji07fo1" path="res://Assests/sfx/slide.mp3" id="10_kq7hj"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_lkv7d"]
 size = Vector2(26.666664, 49.230766)
@@ -362,5 +363,9 @@ pitch_scale = 0.7
 
 [node name="jump" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource("9_wbia7")
+
+[node name="Slide" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("10_kq7hj")
+autoplay = true
 
 [connection signal="timeout" from="Coin lost timer" to="." method="_on_coin_lost_timer_timeout"]

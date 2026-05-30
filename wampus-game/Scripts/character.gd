@@ -5,15 +5,17 @@ extends CharacterBody2D
 @onready var _sense = $Label
 @onready var _coin_lost_timer = $"Coin lost timer"
 @onready var _coin_lost = $"Coin lost"
+@onready var _slide = $Slide
 
+# Most of these are pretty self explanatory
 const SPEED = 300.0
 const JUMP_VELOCITY = -500.0
 var start_pos
-signal exit_room(direction)
+signal exit_room(direction) # Signal for changing rooms, picked up by the map scene
 var sliding = false # Wall sliding
 var taking_input = false
 var coins = 0
-var has_sword = false
+var has_sword = false # This determines whether you'll hurt the wumpus or be killed by it. Makes a sort of "Pacman" style gameplay loop where you switch from avoiding the wumpus to seeking it out depending on whether you have a sword on hand.
 var smelling = false # Wumpus nearby
 var hearing = false # Bats nearby
 var feeling = false # Pit nearby
@@ -72,9 +74,11 @@ func _physics_process(delta: float) -> void:
 		if $ShapeCast2D.is_colliding() and velocity.y > 0:
 			velocity.y *= 0.8
 			sliding = true
+			_slide.stream_paused = false
 			
 		else:
 			sliding = false
+			_slide.stream_paused = true
 		await get_tree().process_frame
 		if velocity.y > 0:
 			_animation_player.play("fall")
