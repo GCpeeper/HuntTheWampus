@@ -44,7 +44,7 @@ var wumpusLocation
 var typeOfHazard = 0
 
 func layout(type):
-	print(type)
+	#print(type)
 	match type:
 		1: # Layout 1
 			roomList = [
@@ -472,11 +472,11 @@ func craftRoom(adjN,adjE,adjS,adjW,tileset):
 				typeOfHazard = 1
 			else:
 				typeOfHazard = 0
-			print("hazard in " + str(roomsPresent-1))
+			#print("hazard in " + str(roomsPresent-1))
 		if swordsLeft > 0 and randi_range(-1,3) > 1 and roomsPresent > 7: # Setting up swords, should be at most 8 in the cave
 			swordsLeft -= 1
 			sword = 1
-			print("theres a sword in " + str(roomsPresent-1))
+			#print("theres a sword in " + str(roomsPresent-1))
 	return([null,null,null,null,tileset,wumpus,hazard,sword,roomsPresent-1])
 
 func _ready() -> void:
