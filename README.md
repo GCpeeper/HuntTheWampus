@@ -2,7 +2,7 @@
 
 <h2>How to Play</h2>
 
-All you need is the HuntTheWampus.exe and HuntTheWampus.pck found in Executables folder. Then open and .exe and play.
+All you need is the HuntTheWampus.exe and HuntTheWampus.pck. This can be downloaded from any Release or found in Executables folder. Then open the .exe and play.
 
 <h2>General Requests</h2>
 
