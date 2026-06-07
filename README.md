@@ -1,9 +1,14 @@
 # HuntTheWampus
 
+<h2>How to Play</h2>
+
+All you need is the HuntTheWampus.exe and HuntTheWampus.pck found in Executables folder. Then open and .exe and play.
+
+<h2>General Requests</h2>
+
 Please keep the files organized based on folder name. I.e. Scenes go in the Sences folder, assests go in the asset folder, create subfolders as needed to keep everything organized. Color Scheme and vibe will be decided later, focuse on adding functionality over making it look good right now.
 
 Theme: Ancient Greece Legends, Heracules Hunting the Neniam Wampus or Sphinx so there is riddles
-Assets: I (Grady) am making assets. If there is any asset you reqire please ask
 
 Rooms: Use tiles set. 45 tiles horizontal by 26 tiles vertial
 
